@@ -2,7 +2,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const theme = {
   primary: '#E60123',
-  black: '#393939',
+  black: '#333',
+  gray: '#8E8E8E',
   bsColor: '#bbb',
 };
 
@@ -14,6 +15,10 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-size: 10px;
   }
+
+  /* * {
+    outline: 1px solid red;
+  } */
 
   *,
   *:before,

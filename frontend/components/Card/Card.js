@@ -26,7 +26,12 @@ const CardItem = ({ post: { id, imgUrl } }) => {
 
   return (
     <StyledCardItem span={span}>
+      <div className="content">
         <img src={imgUrl} alt={id} ref={el => setContent(el)} />
+        <div className="card-body">
+          card body
+        </div>
+      </div>
     </StyledCardItem>
   );
 };

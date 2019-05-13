@@ -8,7 +8,7 @@ const StyledCardList = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: ${rowGap}px;
-  grid-auto-rows: ${rowHeight}px;
+  /* grid-auto-rows: ${rowHeight}px; */
 `;
 
 export default StyledCardList;
