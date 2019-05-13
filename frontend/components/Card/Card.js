@@ -13,9 +13,7 @@ const CardItem = ({ post: { id, imgUrl } }) => {
   const resizeGridCard = () => {
     content && imagesLoaded(content, () => {
         const contentHeight = content.getBoundingClientRect().height;
-        const rowSpan = Math.ceil(
-          (contentHeight + rowGap) / (rowHeight + rowGap),
-        );
+        const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
         setSpan(rowSpan);
       });
   };

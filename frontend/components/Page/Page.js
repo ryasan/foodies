@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 
 import Header from '../Header/Header';
-import { GlobalStyles } from './PageStyles';
+import { GlobalStyles, Inner } from './PageStyles';
 
 const Page = ({ children }) => (
-  <div>
+  <>
     <GlobalStyles />
     <Header />
-    {children}
-  </div>
+    <Inner>{children}</Inner>
+  </>
 );
 
 Page.propTypes = {

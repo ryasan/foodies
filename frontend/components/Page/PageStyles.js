@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const theme = {
   primary: '#E60123',
@@ -33,4 +33,8 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export { theme, GlobalStyles };
+const Inner = styled.div`
+  padding: 5rem;
+`;
+
+export { theme, GlobalStyles, Inner };
