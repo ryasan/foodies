@@ -1,10 +1,11 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import StyledHeader from './HeaderStyles';
 
 const Header = () => (
-  <AppBar position="static" color="primary">
-    <Toolbar>NotPinterest</Toolbar>
-  </AppBar>
+  <StyledHeader>
+    <h1>
+      <a>NotPinterest</a>
+    </h1>
+  </StyledHeader>
 );
 
 export default Header;

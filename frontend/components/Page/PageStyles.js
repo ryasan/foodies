@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 const theme = {
   primary: '#E60123',
   black: '#393939',
+  bsColor: '#bbb',
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -35,6 +36,7 @@ const GlobalStyles = createGlobalStyle`
 
 const Inner = styled.div`
   padding: 5rem;
+  background: #faf6f6;
 `;
 
 export { theme, GlobalStyles, Inner };

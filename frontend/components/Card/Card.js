@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Card from '@material-ui/core/Card';
 import imagesLoaded from 'imagesloaded';
 
 import StyledCardItem from './CardStyles';
@@ -27,9 +26,7 @@ const CardItem = ({ post: { id, imgUrl } }) => {
 
   return (
     <StyledCardItem span={span}>
-      <Card className="card">
         <img src={imgUrl} alt={id} ref={el => setContent(el)} />
-      </Card>
     </StyledCardItem>
   );
 };
