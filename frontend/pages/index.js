@@ -1,5 +1,5 @@
-import React from 'react';
+import Home from './home';
 
-const Home = () => <div>Welcome to Next.js!</div>;
+const Index = () => <Home />;
 
-export default Home;
+export default Index;

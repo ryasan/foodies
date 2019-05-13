@@ -31,7 +31,7 @@
     "no-shadow": "warn",
     "camelcase": "warn",
     "no-underscore-dangle": [0, "always"],
-    "react/react-in-jsx-scope": "on",
+    "react/react-in-jsx-scope": "off",
     "react/destructuring-assignment": "off",
     "prettier/prettier": "off",
     "jsx-ally/no-static-element-interactions": "off",
