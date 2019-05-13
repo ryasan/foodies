@@ -1,0 +1,41 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "no-undef": "error",
+    "no-unused-vars": "warn",
+    "linebreak-style": "off",
+    "semi": ["warn", "always"],
+    "no-multiple-empty-lines": ["warn", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
+    "no-use-before-define": ["warn", { "functions": false }],
+    "prefer-const": "warn",
+    "react/prop-types": "error",
+    "react/no-array-index-key": "warn",
+    "class-methods-use-this": "warn",
+    "no-case-declarations": "warn",
+    "no-return-assign": "warn",
+    "no-param-reassign": "warn",
+    "no-shadow": "warn",
+    "camelcase": "warn",
+    "no-underscore-dangle": [0, "always"],
+    "react/react-in-jsx-scope": "on",
+    "react/destructuring-assignment": "off",
+    "prettier/prettier": "off",
+    "jsx-ally/no-static-element-interactions": "off",
+    "no-console": "warn",
+    "react/button-has-type": "off"
+  }
+}
