@@ -21,7 +21,7 @@ const StyledCardItem = styled.li`
 
   .content {
     padding: 0.5rem;
-    border-radius: ${borderRadius};
+    border-radius: ${props => props.theme.br};
     transition: all 0.3s ease;
     box-shadow: 0 0 1rem ${props => props.theme.bsColor};
     visibility: hidden;
@@ -36,7 +36,7 @@ const StyledCardItem = styled.li`
 
     img {
       width: 100%;
-      border-radius: ${borderRadius};
+      border-radius: ${props => props.theme.br};
     }
 
     .card-body {
@@ -53,6 +53,7 @@ const StyledCardItem = styled.li`
         height: 3rem;
         font-size: 1.7rem;
         color: ${props => props.theme.gray};
+        cursor: pointer;
         .icon {
           margin: 0 0.5rem;
         }

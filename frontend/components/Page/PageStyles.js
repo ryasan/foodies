@@ -2,13 +2,16 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const theme = {
   primary: '#E60123',
+  white: '#fff',
+  offWhite: '#faf6f6',
   black: '#333',
   gray: '#8E8E8E',
   bsColor: '#bbb',
+  br: '0.5rem',
 };
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
 
   html {
     -webkit-box-sizing: border-box;
@@ -36,12 +39,17 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
+    cursor: pointer;
+  }
+
+  button {
+    cursor: pointer;
   }
 `;
 
 const Inner = styled.div`
   padding: 5rem;
-  background: #faf6f6;
+  background: ${theme.offWhite};
 `;
 
 export { theme, GlobalStyles, Inner };

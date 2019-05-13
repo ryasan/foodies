@@ -4,16 +4,15 @@ import StyledHeader, { Logo } from './HeaderStyles';
 
 const Header = () => (
   <StyledHeader>
-    <Logo>
+    <div className="brand">
       <Link href="/">
-        <a>NP</a>
+        <a className="brand-link">
+          <Logo>NP</Logo>
+          <h1 className="brand-name">NotPinterest</h1>
+        </a>
       </Link>
-    </Logo>
-    <h1 className="brand">
-      <Link href="/">
-        <a>NotPinterest</a>
-      </Link>
-    </h1>
+    </div>
+    <button className="login-btn">Login</button>
   </StyledHeader>
 );
 
