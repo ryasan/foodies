@@ -1,26 +1,9 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import PropTypes from 'prop-types';
-
-import Header from './Header';
-
-const Page = ({ children }) => (
-  <StyledPage>
-    <GlobalStyles />
-    <Header />
-    {children}
-  </StyledPage>
-);
-
-Page.propTypes = {
-  children: PropTypes.object.isRequired,
-};
+import { createGlobalStyle } from 'styled-components';
 
 const theme = {
   primary: '#E60123',
   black: '#393939',
 };
-
-const StyledPage = styled.div``;
 
 const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -50,4 +33,4 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export default Page;
+export { theme, GlobalStyles };
