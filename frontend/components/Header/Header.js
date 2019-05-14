@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { Mutation } from 'react-apollo';
 
 import StyledHeader, { Logo } from './HeaderStyles';
+import { TOGGLE_LOGIN_MUTATION } from '../Login/Login';
 
 const Header = () => (
   <StyledHeader>
@@ -12,7 +14,13 @@ const Header = () => (
         </a>
       </Link>
     </div>
-    <button className="login-btn">Login</button>
+    <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
+      {toggleLogin => (
+        <button className="login-btn" onClick={toggleLogin}>
+          Login
+        </button>
+      )}
+    </Mutation>
   </StyledHeader>
 );
 

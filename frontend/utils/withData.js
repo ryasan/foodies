@@ -18,7 +18,7 @@ const createClient = ({ headers }) => {
       clientState: {
         resolvers: {
           Mutation: {
-            toggleCart(_, variables, { cache }) {
+            toggleLogin(_, variables, { cache }) {
               // read the loginIsOpen value from the cache
               const { loginIsOpen } = cache.readQuery({
                 query: LOCAL_STATE_QUERY,

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledHeader = styled.div`
   width: 100%;
   box-shadow: 0 0 0.4rem ${props => props.theme.bsColor};
+  background: ${props => props.theme.white};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,6 +31,9 @@ const StyledHeader = styled.div`
     &:hover {
       color: ${props => props.theme.white};
       background: ${props => props.theme.primary};
+    }
+    &:focus {
+      outline: 0;
     }
   }
 `;

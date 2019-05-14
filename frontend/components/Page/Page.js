@@ -11,7 +11,7 @@ const Page = ({ children }) => (
     <Query query={LOCAL_STATE_QUERY}>
       {({ data: { loginIsOpen } }) => (
         <>
-          {loginIsOpen && <Login />}
+          <Login loginIsOpen={loginIsOpen} />
           <PageWrap loginIsOpen={loginIsOpen}>
             <GlobalStyles />
             <Header />

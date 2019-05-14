@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: 1.5rem;
     font-family: 'Roboto', sans-serif;
+    background: ${theme.gray};
   }
 
   a {
@@ -54,12 +55,14 @@ const loginOpenCSS = css`
 `;
 
 const PageWrap = styled.div`
+  transition: all 0.5s ease;
   ${props => (props.loginIsOpen ? loginOpenCSS : '')};
 `;
 
 const Inner = styled.div`
   padding: 5rem;
   background: ${theme.offWhite};
+  min-height: 100vh;
 `;
 
 export { theme, GlobalStyles, Inner, PageWrap };
