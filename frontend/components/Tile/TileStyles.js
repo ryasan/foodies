@@ -35,8 +35,8 @@ const throb = keyframes`
   }
 `;
 
-const StyledCardItem = styled.li`
-  grid-row-end: span ${({ span }) => span};
+const StyledTile = styled.div`
+  margin: 0.4rem;
 
   .content {
     padding: 0.5rem;
@@ -56,9 +56,6 @@ const StyledCardItem = styled.li`
     img {
       width: 100%;
       border-radius: ${props => props.theme.br};
-      /* visibility: ${props => (props.imgLoading ? 'hidden' : 'visible')}; */
-      /* opacity: ${props => (props.imgLoading ? 0 : 1)}; */
-      transition: all 1s ease;
     }
 
     .card-body {
@@ -90,4 +87,4 @@ const StyledCardItem = styled.li`
   }
 `;
 
-export default StyledCardItem;
+export default StyledTile;
