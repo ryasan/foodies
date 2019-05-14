@@ -20,9 +20,7 @@ const TOGGLE_LOGIN_MUTATION = gql`
 
 const Login = ({ loginIsOpen }) => (
   <StyledLogin loginIsOpen={loginIsOpen}>
-    <div className="content">
-      <Signup />
-    </div>
+    <Signup />
     <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
       {toggleLogin => (
         <FaTimes onClick={toggleLogin} size="3em" className="close">

@@ -19,10 +19,6 @@ const GlobalStyles = createGlobalStyle`
     font-size: 10px;
   }
 
-  /* * {
-    outline: 1px solid red;
-  } */
-
   *,
   *:before,
   *:after {

@@ -1,10 +1,10 @@
 import { FaEnvelope, FaUser, FaKey } from 'react-icons/fa';
 
-import SignupStyles from './SignupStyles';
-import Form from './../shared/Form';
+import SigninStyles from './SigninStyles';
+import Form from '../shared/Form';
 
-const Signup = () => (
-  <SignupStyles>
+const Signin = () => (
+  <SigninStyles>
     <Form>
       <fieldset>
         <h2>Sign up for an account</h2>
@@ -17,20 +17,14 @@ const Signup = () => (
             <FaKey className="fa" />
             <input type="password" name="password" placeholder="Password" />
           </div>
-          <div className="input-container">
-            <FaUser className="fa" />
-            <input type="text" name="username" placeholder="Username" />
-          </div>
         </div>
         <button type="submit">Sign Up</button>
       </fieldset>
     </Form>
-    <div className="footer">
-      <small>
-        Already have an account? <a>Sign In</a>
-      </small>
-    </div>
-  </SignupStyles>
+    <small>
+      Are you new? <a>Sign Up</a>
+    </small>
+  </SigninStyles>
 );
 
-export default Signup;
+export default Signin;

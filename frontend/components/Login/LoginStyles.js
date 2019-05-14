@@ -13,7 +13,6 @@ const showLoginCSS = css`
 `;
 
 const StyledLogin = styled.div`
-  background: white;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -24,13 +23,6 @@ const StyledLogin = styled.div`
   align-items: center;
   transition: all 0.5s ease;
   ${props => (props.loginIsOpen ? showLoginCSS : hideLoginCSS)};
-
-  .content {
-    width: 35rem;
-    height: 40rem;
-    background: ${props => props.theme.white};
-    box-shadow: 0 0 1rem ${props => props.theme.bsColor};
-  }
 
   .close {
     top: 0;
