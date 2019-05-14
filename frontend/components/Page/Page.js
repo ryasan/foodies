@@ -2,14 +2,18 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
 import Header from '../Header/Header';
-import { theme, GlobalStyles, Inner } from './PageStyles';
+import Login from './../Login/Login';
+import { theme, GlobalStyles, Inner, PageWrap } from './PageStyles';
 
 const Page = ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
-      <GlobalStyles />
-      <Header />
-      <Inner>{children}</Inner>
+      <Login />
+      <PageWrap>
+        <GlobalStyles />
+        <Header />
+        <Inner>{children}</Inner>
+      </PageWrap>
     </>
   </ThemeProvider>
 );

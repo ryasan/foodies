@@ -47,9 +47,15 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const PageWrap = styled.div`
+  filter: blur(3px) grayscale(1);
+  transform: scale(0.95);
+  pointer-events: none;
+`;
+
 const Inner = styled.div`
   padding: 5rem;
   background: ${theme.offWhite};
 `;
 
-export { theme, GlobalStyles, Inner };
+export { theme, GlobalStyles, Inner, PageWrap };

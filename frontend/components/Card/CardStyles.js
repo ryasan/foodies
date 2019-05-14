@@ -1,8 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { darken } from 'polished';
 
-const borderRadius = '0.5rem';
-
 const cardScale = keyframes`
   0% {
     transform: scale(0);
@@ -13,6 +11,27 @@ const cardScale = keyframes`
   100% {
     transform: scale(1);
     visibility: visible;
+  }
+`;
+
+const throb = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.5);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.5);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
   }
 `;
 
@@ -54,6 +73,12 @@ const StyledCardItem = styled.li`
         font-size: 1.7rem;
         color: ${props => props.theme.gray};
         cursor: pointer;
+        &:hover {
+          color: ${props => props.theme.primary};
+          .icon {
+            animation: ${throb} 1.5s infinite;
+          }
+        }
         .icon {
           margin: 0 0.5rem;
         }
