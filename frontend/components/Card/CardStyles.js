@@ -56,6 +56,9 @@ const StyledCardItem = styled.li`
     img {
       width: 100%;
       border-radius: ${props => props.theme.br};
+      /* visibility: ${props => (props.imgLoading ? 'hidden' : 'visible')}; */
+      /* opacity: ${props => (props.imgLoading ? 0 : 1)}; */
+      transition: all 1s ease;
     }
 
     .card-body {

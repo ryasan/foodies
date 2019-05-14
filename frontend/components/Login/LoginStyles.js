@@ -28,8 +28,17 @@ const StyledLogin = styled.div`
   .content {
     width: 35rem;
     height: 40rem;
-    border: 1px solid red;
     background: ${props => props.theme.white};
+    box-shadow: 0 0 1rem ${props => props.theme.bsColor};
+  }
+
+  .close {
+    top: 0;
+    right: 0;
+    margin: 2rem;
+    position: absolute;
+    color: ${props => props.theme.primary};
+    cursor: pointer;
   }
 `;
 

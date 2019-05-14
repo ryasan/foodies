@@ -2,6 +2,9 @@ import StyledLogin from './LoginStyles';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
+import { FaTimes } from 'react-icons/fa';
+
+import Signup from '../Signup/Signup';
 
 const LOCAL_STATE_QUERY = gql`
   query {
@@ -18,10 +21,15 @@ const TOGGLE_LOGIN_MUTATION = gql`
 const Login = ({ loginIsOpen }) => (
   <StyledLogin loginIsOpen={loginIsOpen}>
     <div className="content">
-      <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
-        {toggleLogin => <button onClick={toggleLogin}>close</button>}
-      </Mutation>
+      <Signup />
     </div>
+    <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
+      {toggleLogin => (
+        <FaTimes onClick={toggleLogin} size="3em" className="close">
+          close
+        </FaTimes>
+      )}
+    </Mutation>
   </StyledLogin>
 );
 

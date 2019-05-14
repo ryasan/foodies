@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import imagesLoaded from 'imagesloaded';
 import { FaHeart } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import { rowHeight, rowGap } from './../../constants';
 
 const CardItem = ({ post: { id, imgUrl, likes, user } }) => {
   const [span, setSpan] = useState(0);
+  const [imgLoading, setImgLoading] = useState(true);
   const [content, setContent] = useState(null);
 
   // this works with css grid for masonry style cards
@@ -30,9 +31,14 @@ const CardItem = ({ post: { id, imgUrl, likes, user } }) => {
   });
 
   return (
-    <StyledCardItem span={span}>
+    <StyledCardItem span={span} imgLoading={imgLoading}>
       <div className="content">
-        <img src={imgUrl} alt={id} ref={el => setContent(el)} />
+        <img
+          src={imgUrl}
+          alt={id}
+          ref={el => setContent(el)}
+          onLoad={() => setImgLoading(false)}
+        />
         <div className="card-body">
           {user}
           <div className="likes">

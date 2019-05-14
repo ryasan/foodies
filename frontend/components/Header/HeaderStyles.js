@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.div`
   width: 100%;
-  box-shadow: 0 0 0.4rem ${props => props.theme.bsColor};
   background: ${props => props.theme.white};
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 2rem;
+  box-shadow: 0 0 0.4rem ${props => props.theme.bsColor};
 
   .brand-link {
     display: flex;
