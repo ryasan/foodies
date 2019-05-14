@@ -1,20 +1,25 @@
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import { Query } from 'react-apollo';
 
 import Header from '../Header/Header';
-import Login from './../Login/Login';
+import Login, { LOCAL_STATE_QUERY } from './../Login/Login';
 import { theme, GlobalStyles, Inner, PageWrap } from './PageStyles';
 
 const Page = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <>
-      <Login />
-      <PageWrap>
-        <GlobalStyles />
-        <Header />
-        <Inner>{children}</Inner>
-      </PageWrap>
-    </>
+    <Query query={LOCAL_STATE_QUERY}>
+      {({ data: { loginIsOpen } }) => (
+        <>
+          {loginIsOpen && <Login />}
+          <PageWrap loginIsOpen={loginIsOpen}>
+            <GlobalStyles />
+            <Header />
+            <Inner>{children}</Inner>
+          </PageWrap>
+        </>
+      )}
+    </Query>
   </ThemeProvider>
 );
 

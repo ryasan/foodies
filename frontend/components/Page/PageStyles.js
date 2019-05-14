@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 const theme = {
   primary: '#E60123',
@@ -47,10 +47,14 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const PageWrap = styled.div`
+const loginOpenCSS = css`
   filter: blur(3px) grayscale(1);
   transform: scale(0.95);
   pointer-events: none;
+`;
+
+const PageWrap = styled.div`
+  ${props => (props.loginIsOpen ? loginOpenCSS : '')};
 `;
 
 const Inner = styled.div`
