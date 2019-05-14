@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { FaEnvelope, FaUser, FaKey } from 'react-icons/fa';
 
 import SignupStyles from './SignupStyles';
 import Form from './../shared/Form';
 
-const Signup = () => (
+const Signup = ({ setIsSignup }) => (
   <SignupStyles>
     <Form>
       <fieldset>
@@ -25,12 +26,14 @@ const Signup = () => (
         <button type="submit">Sign Up</button>
       </fieldset>
     </Form>
-    <div className="footer">
-      <small>
-        Already have an account? <a>Sign In</a>
-      </small>
-    </div>
+    <p>
+      Already have an account? <a onClick={() => setIsSignup(false)}>Sign In</a>
+    </p>
   </SignupStyles>
 );
+
+Signup.propTypes = {
+  setIsSignup: PropTypes.func.isRequired,
+};
 
 export default Signup;
