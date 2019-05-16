@@ -1,0 +1,42 @@
+# enums
+enum Permission {
+  ADMIN
+  USER
+  ITEMCREATE
+  ITEMUPDATE
+  ITEMDELETE
+  PERMISSIONUPDATE
+}
+
+# types
+type Query {
+  users: [User!]!
+  hello(name: String): String!
+}
+
+type Mutation {
+  signup(signupInput: SignupInput): User!
+}
+
+type User {
+  _id: ID!
+  email: String!
+  password: String!
+  username: String!
+  permissions: [Permission!]!
+}
+
+type Post {
+  _id: ID!
+  imgUrl: String!
+  likes: Int!
+  description: String!
+  user: User!
+}
+
+# inputs
+input SignupInput {
+  email: String!
+  password: String!
+  username: String!
+}

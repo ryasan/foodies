@@ -17,6 +17,9 @@ const GlobalStyles = createGlobalStyle`
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 10px;
+    @media (max-width: 425px) {
+      font-size: 8px;
+    }
   }
 
   *,

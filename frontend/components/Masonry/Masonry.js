@@ -8,6 +8,7 @@ const Masonry = ({ children }) => {
   const [columns, setColumns] = useState(1);
   const [masonryRef, setRef] = useState(null);
 
+  // get number of columns based on how wide screen is
   const getColumns = w => {
     return (
       brakePoints.reduceRight((p, c, i) => {
@@ -16,6 +17,7 @@ const Masonry = ({ children }) => {
     );
   };
 
+  // handle window resize
   const onResize = () => {
     if (masonryRef) {
       const newColumns = getColumns(masonryRef.offsetWidth);
@@ -23,6 +25,7 @@ const Masonry = ({ children }) => {
     }
   };
 
+  // put posts in columns
   const mapChildren = () => {
     const cols = [];
     const numC = columns;
