@@ -2,7 +2,7 @@ import { ApolloProvider } from 'react-apollo';
 import App,{ Container } from 'next/app';
 import PropTypes from 'prop-types';
 
-import Page from './../components/Page/Page';
+import Page from '../components/Page/Page';
 import withData from '../utils/withData';
 
 class MyApp extends App {
@@ -16,13 +16,13 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, apollo } = this.props;
+    const { Component, apollo, pageProps } = this.props;
 
     return (
       <Container>
         <ApolloProvider client={apollo}>
           <Page>
-            <Component />
+            <Component {...pageProps} />
           </Page>
         </ApolloProvider>
       </Container>

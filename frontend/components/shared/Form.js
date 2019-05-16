@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const loading = keyframes`
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 100%;
+  }
+`;
 
 const Form = styled.form`
   padding: 0.5rem;
@@ -17,7 +27,6 @@ const Form = styled.form`
     width: 100%;
     padding: 0.75rem 1.2rem;
     border: 1px solid ${props => props.theme.bsColor};
-    border-bottom: none;
   }
 
   button,
@@ -31,19 +40,49 @@ const Form = styled.form`
     border-radius: 3px;
   }
 
-  .input-group {
-    .input-container {
-      display: flex;
-      align-items: center;
-      &:last-child {
-        input {
-          border-bottom: 1px solid ${props => props.theme.bsColor};
-        }
+  fieldset {
+    border: 0;
+    padding: 0;
+    &[disabled] {
+      opacity: 0.5;
+    }
+    &::before {
+      height: 10px;
+      content: '';
+      display: block;
+      background-image: linear-gradient(
+        to right,
+        #ff3019 0%,
+        #e2b04a 50%,
+        #ff3019 100%
+      );
+    }
+    &[aria-busy='true']::before {
+      background-size: 50% auto;
+      animation: ${loading} 0.5s linear infinite;
+    }
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    input {
+      border-bottom: none;
+      outline: none;
+    }
+    .fa {
+      position: absolute;
+      margin: 0 1rem;
+      color: ${props => props.theme.bsColor};
+    }
+    &:last-child {
+      input {
+        border-bottom: 1px solid ${props => props.theme.bsColor};
       }
+    }
+    &:focus-within {
       .fa {
-        position: absolute;
-        margin: 0 1rem;
-        color: ${props => props.theme.bsColor};
+        color: ${props => props.theme.primary};
       }
     }
   }

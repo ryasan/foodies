@@ -6,7 +6,7 @@ import { FaTimes } from 'react-icons/fa';
 
 import StyledLogin from './LoginStyles';
 import Signup from '../Signup/Signup';
-import Signin from './../Signin/Signin';
+import Signin from '../Signin/Signin';
 
 const LOCAL_STATE_QUERY = gql`
   query {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { FaEnvelope, FaKey } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 import SigninStyles from './SigninStyles';
 import Form from '../shared/Form';

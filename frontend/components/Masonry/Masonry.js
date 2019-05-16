@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import StyledMasonry from './MasonryStyles';
-import { brakePoints } from './../../constants';
+import { brakePoints } from '../../constants';
 
 const Masonry = ({ children }) => {
   const [columns, setColumns] = useState(1);
