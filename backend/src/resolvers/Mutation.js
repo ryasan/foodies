@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const User = require('../models/user');
 
 const Mutation = {
   async signup(parent, { signupInput }, ctx, info) {
@@ -7,18 +8,17 @@ const Mutation = {
     signupInput.email = signupInput.email.toLowerCase();
     // hash their password
     const password = await bcrypt.hash(signupInput.password, 10);
-    // TODO: create the user in the database
-    const user = {
-      _id: Math.random().toString(),
+    // create the user in the database
+    const newUser = new User({
       email: signupInput.email,
       username: signupInput.username,
       password,
-    };
+    });
+    const user = await newUser.save();
     // create JWT token for user
     const token = jwt.sign({ userId: user._id }, process.env.APP_SECRET);
     // set the jwt as a cookie on the response
     setCookieToken(ctx, token);
-
     // return user
     return user;
   },

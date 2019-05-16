@@ -23,7 +23,8 @@ type User {
   email: String!
   password: String!
   username: String!
-  permissions: [Permission!]!
+  # posts: [Post!]!
+  # permissions: [Permission!]!
 }
 
 type Post {
