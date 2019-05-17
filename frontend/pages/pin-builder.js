@@ -1,8 +1,9 @@
 import PleaseSignin from '../components/PleaseSignin/PleaseSignin';
+import CreatePin from '../components/CreatePin/CreatePin';
 
 const PinBuilderPage = () => (
   <PleaseSignin>
-    <div>Pin Builder Page</div>
+    <CreatePin />
   </PleaseSignin>
 );
 

@@ -41,6 +41,7 @@ const StyledLogin = styled.div`
     justify-content: space-between;
     background: ${props => props.theme.white};
     box-shadow: 0 0 1rem ${props => props.theme.bsColor};
+    border-radius: ${props => props.theme.br};
     padding-top: 1rem;
 
     button {

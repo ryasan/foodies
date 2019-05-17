@@ -38,6 +38,7 @@ const Form = styled.form`
     &::before {
       height: 10px;
       content: '';
+      border-radius: ${props => props.theme.br};
       display: block;
       background-image: linear-gradient(
         to right,
@@ -64,9 +65,15 @@ const Form = styled.form`
       margin: 0 1rem;
       color: ${props => props.theme.bsColor};
     }
+    &:first-child {
+      input {
+        border-radius: ${props => `${props.theme.br} ${props.theme.br}`} 0 0;
+      }
+    }
     &:last-child {
       input {
         border-bottom: 1px solid ${props => props.theme.bsColor};
+        border-radius: 0 0 ${props => `${props.theme.br} ${props.theme.br}`};
       }
     }
     &:focus-within {

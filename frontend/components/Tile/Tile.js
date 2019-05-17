@@ -8,7 +8,7 @@ const Tile = ({ post: { imgUrl, likes, user } }) => (
     <div className="content">
       <img src={imgUrl} />
       <div className="card-body">
-        {user}
+        {user.username}
         <div className="likes">
           <FaHeart className="icon" />
           {likes}

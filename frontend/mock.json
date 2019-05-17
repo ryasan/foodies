@@ -1,68 +1,90 @@
 [
   {
     "id": 1,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/500/300?image=1011",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 2,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/300/600?image=883",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 3,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/200/300?image=1074",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 4,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/200/200?image=823",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 5,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/300/500?image=64",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 6,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/300/300?image=65",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 7,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/300/700?image=839",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 8,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/200/300?image=314",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 9,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/400/400?image=256",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 10,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/200/200?image=316",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   },
   {
     "id": 11,
+    "title": "title",
+    "description": "description",
     "imgUrl": "https://unsplash.it/500/400?image=92",
-    "user": "user_1",
+    "user": { "username": "user_1" },
     "likes": 5
   }
 ]

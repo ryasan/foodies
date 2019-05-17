@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
+import device from '../../utils/device';
 
 const theme = {
   primary: '#E60123',
@@ -6,6 +7,7 @@ const theme = {
   offWhite: '#faf6f6',
   black: '#333',
   gray: '#8E8E8E',
+  lightGray: '#f2f2f2',
   bsColor: '#bbb',
   br: '0.5rem',
   maxWidth: '1200px',
@@ -18,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 10px;
-    @media (max-width: 425px) {
+    @media ${device.mobileL} {
       font-size: 8px;
     }
   }
