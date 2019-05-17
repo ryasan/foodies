@@ -29,17 +29,6 @@ const Form = styled.form`
     border: 1px solid ${props => props.theme.bsColor};
   }
 
-  button,
-  input[type='submit'] {
-    background: ${props => props.theme.primary};
-    color: ${props => props.theme.white};
-    width: 100%;
-    border: none;
-    padding: 1rem 1.2rem;
-    margin: 1rem 0;
-    border-radius: 3px;
-  }
-
   fieldset {
     border: 0;
     padding: 0;

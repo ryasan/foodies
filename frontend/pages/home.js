@@ -2,7 +2,7 @@ import Masonry from '../components/Masonry/Masonry';
 import Tile from '../components/Tile/Tile';
 import posts from '../mock.json';
 
-const Home = () => (
+const HomePage = () => (
   <Masonry>
     {posts.map(post => (
       <Tile key={post.id} post={post} />
@@ -10,4 +10,4 @@ const Home = () => (
   </Masonry>
 );
 
-export default Home;
+export default HomePage;

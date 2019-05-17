@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import SIGNIN_MUTATION from '../../graphql/mutations/signin';
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin';
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
-import SigninStyles from './SigninStyles';
 import Form from '../shared/Form';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Button from '../shared/Button';
 
 const Signin = ({ setIsSignup }) => {
   const [fields, setFields] = useState({
@@ -36,7 +36,7 @@ const Signin = ({ setIsSignup }) => {
       {(signin, { loading, error }) => (
         <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
           {toggleLogin => (
-            <SigninStyles>
+            <div className="sign-form">
               <Form onSubmit={e => handleSubmit(e, signin, toggleLogin)}>
                 <fieldset disabled={loading} aria-busy={loading}>
                   <h2>Sign into your account</h2>
@@ -64,13 +64,15 @@ const Signin = ({ setIsSignup }) => {
                       />
                     </div>
                   </div>
-                  <button type="submit">Sign In</button>
+                  <Button type="submit" color="primary">
+                    Sign In
+                  </Button>
                 </fieldset>
               </Form>
               <p>
                 Are you new? <a onClick={() => setIsSignup(true)}>Sign Up</a>
               </p>
-            </SigninStyles>
+            </div>
           )}
         </Mutation>
       )}

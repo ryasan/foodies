@@ -25,11 +25,10 @@ type User {
   email: String!
   password: String!
   username: String!
-  # posts: [Post!]!
-  # permissions: [Permission!]!
+  # pins: [Pins!]!
 }
 
-type Post {
+type Pin {
   _id: ID!
   imgUrl: String!
   likes: Int!

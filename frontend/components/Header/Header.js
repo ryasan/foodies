@@ -1,28 +1,35 @@
 import Link from 'next/link';
 import { Mutation } from 'react-apollo';
+import { FaPlus } from 'react-icons/fa';
 
-import User from '../User/User';
-import StyledHeader, { Logo } from './HeaderStyles';
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin';
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
 import SIGN_OUT_MUTATION from '../../graphql/mutations/signout';
+import User from '../User/User';
+import Button from '../shared/Button';
+import StyledHeader, { Logo } from './HeaderStyles';
 
 const AuthView = me => {
   return (
-    <div className="auth-view">
-      <p>{me.username}</p>
-      <Mutation
-        mutation={SIGN_OUT_MUTATION}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
-        {signout => {
-          return (
-            <button className="login-btn" onClick={signout}>
-              Signout
-            </button>
-          );
-        }}
-      </Mutation>
-    </div>
+    <Mutation
+      mutation={SIGN_OUT_MUTATION}
+      refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
+      {signout => {
+        return (
+          <nav>
+            <Link href="/account">
+              <Button>{me.username}</Button>
+            </Link>
+            <Link href="/pin-builder">
+              <Button className="icon-btn">
+                <FaPlus />
+              </Button>
+            </Link>
+            <Button onClick={signout}>Signout</Button>
+          </nav>
+        );
+      }}
+    </Mutation>
   );
 };
 
@@ -30,9 +37,14 @@ const UnAuthView = () => {
   return (
     <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
       {toggleLogin => (
-        <button className="login-btn" onClick={toggleLogin}>
-          Login
-        </button>
+        <nav>
+          <Link href="/pin-builder">
+            <Button className="icon-btn">
+              <FaPlus />
+            </Button>
+          </Link>
+          <Button onClick={toggleLogin}>Signin</Button>
+        </nav>
       )}
     </Mutation>
   );

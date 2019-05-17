@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import { FaTimes } from 'react-icons/fa';
 
-import StyledLogin from './LoginStyles';
+import LoginStyles from './LoginStyles';
 import Signup from '../Signup/Signup';
 import Signin from '../Signin/Signin';
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin';
@@ -12,7 +12,7 @@ const Login = ({ loginIsOpen }) => {
   const [isSignup, setIsSignup] = useState(true);
 
   return (
-    <StyledLogin loginIsOpen={loginIsOpen}>
+    <LoginStyles loginIsOpen={loginIsOpen}>
       {isSignup ? (
         <Signup setIsSignup={setIsSignup} />
       ) : (
@@ -25,7 +25,7 @@ const Login = ({ loginIsOpen }) => {
           </FaTimes>
         )}
       </Mutation>
-    </StyledLogin>
+    </LoginStyles>
   );
 };
 

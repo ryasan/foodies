@@ -8,6 +8,7 @@ const theme = {
   gray: '#8E8E8E',
   bsColor: '#bbb',
   br: '0.5rem',
+  maxWidth: '1200px',
 };
 
 const GlobalStyles = createGlobalStyle`
@@ -62,6 +63,8 @@ const PageWrap = styled.div`
 const Inner = styled.div`
   padding: 5rem;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
 `;
 
 export { theme, GlobalStyles, Inner, PageWrap };

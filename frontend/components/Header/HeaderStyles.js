@@ -19,30 +19,9 @@ const StyledHeader = styled.div`
     }
   }
 
-  .login-btn {
-    background: none;
-    color: ${props => props.theme.primary};
-    border: 2px solid ${props => props.theme.primary};
-    border-radius: ${props => props.theme.br};
-    padding: 1rem 2rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    transition: all 0.2s ease;
-    &:hover {
-      color: ${props => props.theme.white};
-      background: ${props => props.theme.primary};
-    }
-    &:focus {
-      outline: 0;
-    }
-  }
-
-  .auth-view {
+  nav {
     display: flex;
     align-items: center;
-    p {
-      margin-right: 1rem;
-    }
   }
 `;
 
