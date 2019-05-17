@@ -7,9 +7,7 @@ mongoose
     `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@notpinterest-cluster-bwpri.mongodb.net/${MONGO_DB}?retryWrites=true`,
     { useNewUrlParser: true, useCreateIndex: true },
   )
-  .then(() => console.log('connected to mongo db'))
-  .catch(err => {
-    console.log(err);
-  });
+  .then((result) => console.log('connected to DB'))
+  .catch(err => console.log(err));
 
 module.exports = mongoose;

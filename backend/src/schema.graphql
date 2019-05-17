@@ -2,20 +2,22 @@
 enum Permission {
   ADMIN
   USER
-  ITEMCREATE
-  ITEMUPDATE
-  ITEMDELETE
+  POSTCREATE
+  POSTUPDATE
+  POSTDELETE
   PERMISSIONUPDATE
 }
 
 # types
 type Query {
   users: [User!]!
-  hello(name: String): String!
+  me: User
 }
 
 type Mutation {
   signup(signupInput: SignupInput): User!
+  signin(email: String!, password: String!): User!
+  signout: SuccessMessage
 }
 
 type User {
@@ -33,6 +35,10 @@ type Post {
   likes: Int!
   description: String!
   user: User!
+}
+
+type SuccessMessage {
+  message: String
 }
 
 # inputs

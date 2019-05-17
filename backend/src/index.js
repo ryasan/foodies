@@ -1,10 +1,10 @@
+require('dotenv').config({ path: 'variables.env' });
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
-require('dotenv').config({ path: 'variables.env' });
-
 const createServer = require('./createServer');
 const server = createServer();
+const User = require('./models/user');
 
 server.express.use(cookieParser());
 
@@ -18,8 +18,15 @@ server.express.use((req, res, next) => {
   next();
 });
 
-// TODO: create middleware that populates the user on each request
-// server.express.use(async (req, res, next) => {});
+// create middleware that populates the user on each request
+server.express.use(async (req, res, next) => {
+  // skip if user isn't logged in
+  if (!req.userId) return next();
+  const user = await User.findById(req.userId, '_id email username');
+
+  req.user = user;
+  next();
+});
 
 const options = {
   cors: {

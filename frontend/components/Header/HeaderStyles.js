@@ -36,6 +36,14 @@ const StyledHeader = styled.div`
       outline: 0;
     }
   }
+
+  .auth-view {
+    display: flex;
+    align-items: center;
+    p {
+      margin-right: 1rem;
+    }
+  }
 `;
 
 const Logo = styled.h1`
