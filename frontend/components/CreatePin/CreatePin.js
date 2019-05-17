@@ -1,31 +1,57 @@
-import { useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { FaArrowAltCircleUp } from 'react-icons/fa';
+import { useState } from 'react';
+import TextareaAutosize from 'react-autosize-textarea';
 
 import CreatePinStyles from './CreatePinStyles';
+import Dropzone from '../Dropzone/Dropzone';
+import Button from '../shared/Button';
 
 const CreatePin = () => {
-  const onDrop = useCallback(acceptedFiles => {
-    // Do something with the files
-  }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const [fields, setFields] = useState({
+    title: '',
+    description: '',
+    image: '',
+    largeImage: '',
+  });
+
+  const saveFields = e => {
+    setFields({ ...fields, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    // call the mutation
+    // redirect user to pin details page
+  };
 
   return (
-    <CreatePinStyles>
-      <div className="column drop">
-        <div className="dropzone" {...getRootProps()}>
-          <input {...getInputProps()} />
-          {isDragActive ? (
-            <div className="drop-area">Drop the files here ...</div>
-          ) : (
-            <div className="drop-area">
-              <FaArrowAltCircleUp className="fa" />
-              <p>Drag and drop or click to upload</p>
-            </div>
-          )}
-        </div>
+    <CreatePinStyles onSubmit={handleSubmit}>
+      <div className="column dropzone">
+        <Dropzone fields={fields} setFields={setFields} />
       </div>
-      <div className="column text-inputs">text inputs</div>
+      <div className="column inputs">
+        <div className="text-inputs">
+          <TextareaAutosize
+            name="title"
+            className="title-input"
+            type="text"
+            rows={1}
+            placeholder="Add your title"
+            value={fields.title}
+            onChange={saveFields}
+          />
+          <TextareaAutosize
+            name="description"
+            className="description-input"
+            type="text"
+            placeholder="Tell everyone what your Pin is about"
+            value={fields.description}
+            onChange={saveFields}
+          />
+        </div>
+        <Button type="submit" color="primary">
+          Save
+        </Button>
+      </div>
     </CreatePinStyles>
   );
 };

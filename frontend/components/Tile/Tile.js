@@ -3,10 +3,10 @@ import { FaHeart } from 'react-icons/fa';
 
 import StyledTile from './TileStyles';
 
-const Tile = ({ post: { imgUrl, likes, user } }) => (
+const Tile = ({ post: { image, likes, user } }) => (
   <StyledTile>
     <div className="content">
-      <img src={imgUrl} />
+      <img src={image} />
       <div className="card-body">
         {user.username}
         <div className="likes">

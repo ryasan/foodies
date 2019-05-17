@@ -2,9 +2,9 @@
 enum Permission {
   ADMIN
   USER
-  POSTCREATE
-  POSTUPDATE
-  POSTDELETE
+  PINCREATE
+  PINUPDATE
+  PINDELETE
   PERMISSIONUPDATE
 }
 
@@ -30,7 +30,8 @@ type User {
 
 type Pin {
   _id: ID!
-  imgUrl: String!
+  image: String!
+  largeImage: String!
   likes: Int!
   description: String!
   user: User!

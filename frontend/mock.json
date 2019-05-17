@@ -3,7 +3,7 @@
     "id": 1,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/500/300?image=1011",
+    "image": "https://unsplash.it/500/300?image=1011",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/300/600?image=883",
+    "image": "https://unsplash.it/300/600?image=883",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/200/300?image=1074",
+    "image": "https://unsplash.it/200/300?image=1074",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/200/200?image=823",
+    "image": "https://unsplash.it/200/200?image=823",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/300/500?image=64",
+    "image": "https://unsplash.it/300/500?image=64",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/300/300?image=65",
+    "image": "https://unsplash.it/300/300?image=65",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/300/700?image=839",
+    "image": "https://unsplash.it/300/700?image=839",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/200/300?image=314",
+    "image": "https://unsplash.it/200/300?image=314",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/400/400?image=256",
+    "image": "https://unsplash.it/400/400?image=256",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -75,7 +75,7 @@
     "id": 10,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/200/200?image=316",
+    "image": "https://unsplash.it/200/200?image=316",
     "user": { "username": "user_1" },
     "likes": 5
   },
@@ -83,7 +83,7 @@
     "id": 11,
     "title": "title",
     "description": "description",
-    "imgUrl": "https://unsplash.it/500/400?image=92",
+    "image": "https://unsplash.it/500/400?image=92",
     "user": { "username": "user_1" },
     "likes": 5
   }

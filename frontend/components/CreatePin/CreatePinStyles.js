@@ -1,59 +1,72 @@
 import styled from 'styled-components';
-import { lighten } from 'polished';
 
 import device from '../../utils/device';
 
-const CreatePinStyles = styled.div`
+const CreatePinStyles = styled.form`
+  flex-grow: 0;
   background: ${props => props.theme.white};
+  max-width: ${props => props.theme.maxWidth};
   padding: 5rem;
-  max-width: 1000px;
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
-  @media ${device.tablet} {
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2),
+    0 0 0.5rem rgba(0, 0, 0, 0.2);
+  @media ${device.laptop} {
+    padding: 2rem;
     flex-direction: column;
   }
 
   .column {
-    @media ${device.tablet} {
+    @media ${device.laptop} {
       width: 100%;
+      display: flex;
+      justify-content: center;
     }
   }
 
-  .drop {
-    width: 40%;
-    .dropzone {
+  .dropzone {
+    @media ${device.laptop} {
       width: 100%;
-      max-width: 40rem;
-      padding: 2rem;
-      cursor: pointer;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      background: ${props => props.theme.lightGray};
-      min-height: 45rem;
-      display: flex;
-      flex-flow: column;
-      outline: none;
-      .drop-area {
-        flex: 1;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 3rem;
+    @media ${device.laptop} {
+      margin: 0;
+      width: 100%;
+      align-items: center;
+    }
+    .text-inputs {
+      textarea {
+        font-family: inherit;
+        border: none;
+        border-bottom: 1px solid gray;
+        outline: none;
+        resize: none;
+        padding: 1rem 0;
+        margin-bottom: 1rem;
         width: 100%;
-        border: 0.2rem dashed ${props => lighten(0.2, props.theme.gray)};
-        border-radius: 0.5rem;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        .fa {
-          font-size: 3rem;
-          color: ${props => props.theme.gray};
+        &.title-input {
+          font-weight: 900;
+          font-size: 3.5rem;
+        }
+        &.description-input {
+          font-size: 2rem;
         }
       }
     }
-  }
-
-  .text-inputs {
-    width: 50%;
+    button {
+      width: 20rem;
+      margin-top: 3rem;
+    }
   }
 `;
 
