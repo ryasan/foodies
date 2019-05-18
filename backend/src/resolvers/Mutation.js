@@ -45,6 +45,14 @@ const Mutation = {
     ctx.response.clearCookie('token');
     return { message: 'See you again soon!' };
   },
+  async createPin(parent, { createPinInput }, ctx) {
+    // 1. check if they are logged in
+    if (ctx.request.userId) throw Error('You must be logged in to do that');
+
+    // 2. save pin to database
+
+    // 3. return pin
+  },
 };
 
 const setCookieToken = (ctx, token) => {
