@@ -23,8 +23,10 @@ const CreatePin = () => {
     // call the mutation
     const res = await createPin();
     // redirect user to pin details page
-    console.log('do something with pin-> ', res.data);
-    Router.push({ pathname: '/' });
+    Router.push({
+      pathname: '/pin-details',
+      query: { id: res.data.createPin._id },
+    });
   };
 
   return (

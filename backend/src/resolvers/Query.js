@@ -8,7 +8,10 @@ const Query = {
     return await User.findById(ctx.request.userId);
   },
   async pins(parent, args, ctx) {
-    return Pin.find({});
+    return await Pin.find({});
+  },
+  async pinDetails(parent, { id }, ctx) {
+    return await Pin.findById(id);
   },
 };
 

@@ -13,6 +13,7 @@ type Query {
   users: [User!]!
   me: User
   pins: [Pin!]!
+  pinDetails(id: ID!): Pin
 }
 
 type Mutation {

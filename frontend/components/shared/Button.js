@@ -2,17 +2,20 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const defaultCSS = css`
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   color: ${props => props.theme.gray};
   background: none;
   &:hover {
-    border: 2px solid ${props => props.theme.lightGray};
+    border: 3px solid ${props => props.theme.lightGray};
     background: ${props => props.theme.lightGray};
+  }
+  &:active {
+    border: 3px solid #9fc0ff;
   }
 `;
 
 const clearCSS = css`
-  border: 2px solid ${props => props.theme.primary};
+  border: 3px solid ${props => props.theme.primary};
   color: ${props => props.theme.primary};
   background: none;
   &:hover {
@@ -22,7 +25,7 @@ const clearCSS = css`
 `;
 
 const primaryCSS = css`
-  border: 2px solid ${props => props.theme.primary};
+  border: 3px solid ${props => props.theme.primary};
   background: ${props => props.theme.primary};
   color: ${props => props.theme.white};
   &:hover {

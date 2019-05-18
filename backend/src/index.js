@@ -1,10 +1,11 @@
 require('dotenv').config({ path: 'variables.env' });
-const jwt = require('jsonwebtoken');
+
+const jwt          = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
 const createServer = require('./createServer');
-const server = createServer();
-const User = require('./models/user');
+const server       = createServer();
+const User         = require('./models/user');
 
 server.express.use(cookieParser());
 

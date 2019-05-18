@@ -50,12 +50,12 @@ const StyledTile = styled.div`
     &:hover {
       box-shadow: 0 0 1rem ${props => props.theme.bsColor},
         0 1rem 1rem -2px ${props => props.theme.bsColor};
-      cursor: zoom-in;
     }
 
     img {
       width: 100%;
       border-radius: ${props => props.theme.br};
+      cursor: zoom-in;
     }
 
     .card-body {

@@ -1,5 +1,5 @@
 import { ApolloProvider } from 'react-apollo';
-import App,{ Container } from 'next/app';
+import App, { Container } from 'next/app';
 import PropTypes from 'prop-types';
 
 import Page from '../components/Page/Page';
@@ -11,6 +11,9 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
+
+    // expose the query params to the user
+    pageProps.query = ctx.query;
 
     return { pageProps };
   }

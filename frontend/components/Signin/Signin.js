@@ -66,7 +66,7 @@ const Signin = ({ setIsSignup }) => {
                       />
                     </div>
                   </div>
-                  <Button type="submit" color="primary">
+                  <Button type="submit" color="clear">
                     Sign In
                   </Button>
                 </fieldset>

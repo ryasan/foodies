@@ -52,7 +52,7 @@ const Dropzone = ({ imgFields, setImgFields, loading }) => {
   return (
     <DropzoneStyles loading={loading}>
       <div className="drop-wrap" {...getRootProps()}>
-        <input {...getInputProps()} name="image" disabled={loading} required />
+        <input {...getInputProps()} disabled={loading} name="image" required />
         {isDragActive ? (
           <div className="drop-area">Drop the files here...</div>
         ) : (
