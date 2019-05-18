@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 
 const DropzoneStyles = styled.div`
-  min-width: 30rem;
+  min-height: 40vh;
   .image-preview-container {
     border-radius: 1rem;
     position: relative;
+    max-width: 30rem;
     &:hover {
       .overlay {
         opacity: 1;
@@ -66,6 +67,7 @@ const DropzoneStyles = styled.div`
       flex-direction: column;
       padding: 1rem;
       text-align: center;
+      white-space: nowrap;
       .fa {
         font-size: 3rem;
         color: ${props => props.theme.gray};

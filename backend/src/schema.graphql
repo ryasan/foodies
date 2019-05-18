@@ -12,6 +12,7 @@ enum Permission {
 type Query {
   users: [User!]!
   me: User
+  pins: [Pin!]!
 }
 
 type Mutation {
@@ -36,7 +37,8 @@ type Pin {
   largeImage: String!
   likes: Int!
   description: String!
-  userId: String!
+  creatorUsername: String!
+  creatorId: String!
 }
 
 type SuccessMessage {

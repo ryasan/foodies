@@ -34,11 +34,11 @@ const CreatePinStyles = styled.form`
   }
 
   .inputs {
+    @media ${device.laptop} {
+      text-align: center;
+    }
     fieldset {
       border: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       position: relative;
       margin-left: 3rem;
       @media ${device.laptop} {
@@ -70,7 +70,7 @@ const CreatePinStyles = styled.form`
         }
       }
       button {
-        width: 20rem;
+        width: 15rem;
         margin-top: 3rem;
       }
     }

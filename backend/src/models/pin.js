@@ -8,7 +8,8 @@ const pinSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   likes: { type: Number, default: 0 },
-  userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  creatorUsername: { type: String, required: true },
+  creatorId: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 module.exports = mongoose.model('Pin', pinSchema);

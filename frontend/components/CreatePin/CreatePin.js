@@ -1,23 +1,21 @@
 import { useState } from 'react';
 import { Mutation } from 'react-apollo';
+import Router from 'next/router';
 import TextareaAutosize from 'react-autosize-textarea';
 
+import CREATE_PIN_MUTATION from '../../graphql/mutations/createPin';
+import ALL_PINS_QUERY from '../../graphql/queries/pins';
 import CreatePinStyles from './CreatePinStyles';
 import Dropzone from '../Dropzone/Dropzone';
 import Button from '../shared/Button';
-import CREATE_PIN_MUTATION from '../../graphql/mutations/createPin';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const CreatePin = () => {
-  const [fields, setFields] = useState({
-    title: '',
-    description: '',
-    image: '',
-    largeImage: '',
-  });
+  const [textFields, setTextFields] = useState({ title: '', description: '' });
+  const [imgFields, setImgFields] = useState({ image: '', largeImage: '' });
 
   const saveFields = e => {
-    setFields({ ...fields, [e.target.name]: e.target.value });
+    setTextFields({ ...textFields, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e, createPin) => {
@@ -25,17 +23,23 @@ const CreatePin = () => {
     // call the mutation
     const res = await createPin();
     // redirect user to pin details page
-    console.log(res.data);
+    console.log('do something with pin-> ', res.data);
+    Router.push({ pathname: '/' });
   };
 
   return (
     <Mutation
       mutation={CREATE_PIN_MUTATION}
-      variables={{ createPinInput: fields }}>
+      variables={{ createPinInput: { ...textFields, ...imgFields } }}
+      refetchQueries={[{ query: ALL_PINS_QUERY }]}>
       {(createPin, { loading, error }) => (
         <CreatePinStyles onSubmit={e => handleSubmit(e, createPin)}>
           <div className="column dropzone">
-            <Dropzone fields={fields} loading={loading} setFields={setFields} />
+            <Dropzone
+              imgFields={imgFields}
+              loading={loading}
+              setImgFields={setImgFields}
+            />
           </div>
           <div className="column inputs">
             <fieldset disabled={loading}>
@@ -48,7 +52,7 @@ const CreatePin = () => {
                   type="text"
                   rows={1}
                   placeholder="Add your title"
-                  value={fields.title}
+                  value={textFields.title}
                   onChange={saveFields}
                 />
                 <TextareaAutosize
@@ -57,7 +61,7 @@ const CreatePin = () => {
                   className="description-input"
                   type="text"
                   placeholder="Tell everyone what your Pin is about"
-                  value={fields.description}
+                  value={textFields.description}
                   onChange={saveFields}
                 />
               </div>

@@ -3,12 +3,12 @@ import { FaHeart } from 'react-icons/fa';
 
 import StyledTile from './TileStyles';
 
-const Tile = ({ post: { image, likes, user } }) => (
+const Tile = ({ pin: { image, likes, creatorUsername } }) => (
   <StyledTile>
     <div className="content">
       <img src={image} />
       <div className="card-body">
-        {user.username}
+        {creatorUsername}
         <div className="likes">
           <FaHeart className="icon" />
           {likes}
@@ -19,7 +19,7 @@ const Tile = ({ post: { image, likes, user } }) => (
 );
 
 Tile.propTypes = {
-  post: PropTypes.object.isRequired,
+  pin: PropTypes.object.isRequired,
 };
 
 export default Tile;

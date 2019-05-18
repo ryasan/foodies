@@ -6,9 +6,9 @@ const StyledMasonry = styled.div`
   justify-content: center;
   align-content: stretch;
   width: 100%;
-  margin: auto;
 
   .column {
+    min-width: ${props => `calc(300px / ${props.columns})`};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

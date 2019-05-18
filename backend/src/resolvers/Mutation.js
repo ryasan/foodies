@@ -44,7 +44,7 @@ const Mutation = {
   },
   async createPin(parent, { createPinInput }, ctx) {
     const { image, largeImage, title, description } = createPinInput;
-    const { userId } = ctx.request;
+    const { userId, user } = ctx.request;
     // 1. check if they are logged in
     if (!userId) throw Error('You must be logged in to do that');
     // 2. save pin to database
@@ -53,7 +53,8 @@ const Mutation = {
       largeImage,
       title,
       description,
-      userId,
+      creatorUsername: user.username,
+      creatorId: userId,
     }).save();
     // 3. return pin
     return pin;

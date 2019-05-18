@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FaArrowAltCircleUp, FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import DropzoneStyles from './DropzoneStyles';
 import Button from '../shared/Button';
 
-const Dropzone = ({ fields, setFields, loading }) => {
+const Dropzone = ({ imgFields, setImgFields, loading }) => {
   // upload file to hosting service
   const onDrop = useCallback(async acceptedFiles => {
     const data = new FormData();
@@ -19,8 +19,7 @@ const Dropzone = ({ fields, setFields, loading }) => {
 
     const file = await res.json();
     // get image urls and save them to state
-    setFields({
-      ...fields,
+    setImgFields({
       image: file.secure_url,
       largeImage: file.eager[0].secure_url,
     });
@@ -28,17 +27,17 @@ const Dropzone = ({ fields, setFields, loading }) => {
 
   // unselect image
   const removeImage = () => {
-    setFields({ ...fields, image: '', largeImage: '' });
+    setImgFields({ image: '', largeImage: '' });
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   // show image preview if an image has been selected
-  if (fields.image) {
+  if (imgFields.image) {
     return (
       <DropzoneStyles loading={loading}>
         <div className="image-preview-container">
-          <img alt="Upload Preview" src={fields.image} />
+          <img alt="Upload Preview" src={imgFields.image} />
           <div className="overlay">
             <Button className="icon-btn" onClick={removeImage}>
               <FaTrash />
@@ -68,8 +67,8 @@ const Dropzone = ({ fields, setFields, loading }) => {
 };
 
 Dropzone.propTypes = {
-  fields: PropTypes.object,
-  setFields: PropTypes.func,
+  imgFields: PropTypes.object,
+  setImgFields: PropTypes.func,
   loading: PropTypes.bool,
 };
 

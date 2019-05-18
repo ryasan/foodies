@@ -25,7 +25,7 @@ const Masonry = ({ children }) => {
     }
   };
 
-  // put posts in columns
+  // put pins in columns
   const mapChildren = () => {
     const cols = [];
     const numC = columns;
@@ -46,11 +46,11 @@ const Masonry = ({ children }) => {
   });
 
   return (
-    <StyledMasonry ref={el => setRef(el)}>
-      {mapChildren().map((col, ci) => (
-        <div className="column" key={ci}>
+    <StyledMasonry ref={el => setRef(el)} columns={columns}>
+      {mapChildren().map((col, i) => (
+        <div className="column" key={i}>
           {col.map(child => (
-            <div key={child.props.post.id}>{child}</div>
+            <div key={child.props.pin._id}>{child}</div>
           ))}
         </div>
       ))}
