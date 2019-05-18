@@ -35,34 +35,36 @@ const CreatePin = () => {
       {(createPin, { loading, error }) => (
         <CreatePinStyles onSubmit={e => handleSubmit(e, createPin)}>
           <div className="column dropzone">
-            <Dropzone fields={fields} setFields={setFields} />
+            <Dropzone fields={fields} loading={loading} setFields={setFields} />
           </div>
           <div className="column inputs">
-            <ErrorMessage error={error} />
-            <div className="text-inputs">
-              <TextareaAutosize
-                required
-                name="title"
-                className="title-input"
-                type="text"
-                rows={1}
-                placeholder="Add your title"
-                value={fields.title}
-                onChange={saveFields}
-              />
-              <TextareaAutosize
-                required
-                name="description"
-                className="description-input"
-                type="text"
-                placeholder="Tell everyone what your Pin is about"
-                value={fields.description}
-                onChange={saveFields}
-              />
-            </div>
-            <Button type="submit" color="primary">
-              Save
-            </Button>
+            <fieldset disabled={loading}>
+              <ErrorMessage error={error} />
+              <div className="text-inputs">
+                <TextareaAutosize
+                  required
+                  name="title"
+                  className="title-input"
+                  type="text"
+                  rows={1}
+                  placeholder="Add your title"
+                  value={fields.title}
+                  onChange={saveFields}
+                />
+                <TextareaAutosize
+                  required
+                  name="description"
+                  className="description-input"
+                  type="text"
+                  placeholder="Tell everyone what your Pin is about"
+                  value={fields.description}
+                  onChange={saveFields}
+                />
+              </div>
+              <Button type="submit" color="primary">
+                Save
+              </Button>
+            </fieldset>
           </div>
         </CreatePinStyles>
       )}

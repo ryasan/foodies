@@ -13,6 +13,7 @@ const DropzoneStyles = styled.div`
     }
     img {
       width: 100%;
+      border-radius: 1rem;
     }
 
     .overlay {
@@ -51,6 +52,8 @@ const DropzoneStyles = styled.div`
     flex-flow: column;
     outline: none;
     cursor: pointer;
+    opacity: ${props => (props.loading ? 0.5 : 1)};
+
     .drop-area {
       flex: 1;
       width: 100%;

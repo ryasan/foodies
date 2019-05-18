@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Meta from '../Meta/Meta';
-import { theme, GlobalStyles, Inner, PageWrap } from './PageStyles';
+import { theme, GlobalStyles, PageInner, PageWrap } from './PageStyles';
 import LOCAL_STATE_QUERY from '../../graphql/queries/localState';
 
 const Page = ({ children }) => (
@@ -18,7 +18,7 @@ const Page = ({ children }) => (
           <Login loginIsOpen={loginIsOpen} />
           <PageWrap loginIsOpen={loginIsOpen}>
             <Header />
-            <Inner>{children}</Inner>
+            <PageInner>{children}</PageInner>
           </PageWrap>
         </>
       )}

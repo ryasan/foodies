@@ -5,6 +5,10 @@ const PleaseSigninStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  .inner {
+    text-align: center;
+  }
 `;
 
 export default PleaseSigninStyles;

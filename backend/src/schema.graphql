@@ -26,16 +26,17 @@ type User {
   email: String!
   password: String!
   username: String!
-  # pins: [Pin!]!
+  pins: [Pin!]!
 }
 
 type Pin {
   _id: ID!
+  title: String!
   image: String!
   largeImage: String!
   likes: Int!
   description: String!
-  user: User!
+  userId: String!
 }
 
 type SuccessMessage {
@@ -52,7 +53,6 @@ input SignupInput {
 input CreatePinInput {
   image: String!
   largeImage: String!
-  likes: Int!
   title: String!
   description: String!
 }

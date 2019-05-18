@@ -6,6 +6,7 @@ import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin';
 import PleaseSigninStyles from './PleaseSigninStyles';
 import Button from '../shared/Button';
+import InnerContent from '../shared/InnerContent';
 
 const PleaseSignin = ({ children }) => (
   <PleaseSigninStyles>
@@ -14,7 +15,7 @@ const PleaseSignin = ({ children }) => (
         if (loading) return <p>Loading...</p>;
         if (!data.me) {
           return (
-            <div>
+            <InnerContent>
               <h2>Please sign in before continuing</h2>
               <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
                 {toggleLogin => (
@@ -23,7 +24,7 @@ const PleaseSignin = ({ children }) => (
                   </Button>
                 )}
               </Mutation>
-            </div>
+            </InnerContent>
           );
         }
         return children;

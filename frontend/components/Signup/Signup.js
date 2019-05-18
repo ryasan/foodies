@@ -45,6 +45,7 @@ const Signup = ({ setIsSignup }) => {
                     <div className="input-container">
                       <FaEnvelope className="fa" />
                       <input
+                        required
                         type="email"
                         name="email"
                         placeholder="Email"
@@ -55,6 +56,7 @@ const Signup = ({ setIsSignup }) => {
                     <div className="input-container">
                       <FaKey className="fa" />
                       <input
+                        required
                         type="password"
                         name="password"
                         placeholder="Password"
@@ -66,6 +68,7 @@ const Signup = ({ setIsSignup }) => {
                     <div className="input-container">
                       <FaUser className="fa" />
                       <input
+                        required
                         type="text"
                         name="username"
                         placeholder="Username"

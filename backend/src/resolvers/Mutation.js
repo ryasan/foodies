@@ -2,20 +2,17 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
+const Pin = require('../models/pin');
 
 const Mutation = {
   async signup(parent, { signupInput }, ctx) {
+    let { email, password, username } = signupInput;
     // 1. lowercase their emails
-    signupInput.email = signupInput.email.toLowerCase();
+    email = email.toLowerCase();
     // 2. hash their password
-    const password = await bcrypt.hash(signupInput.password, 10);
+    const hashedPw = await bcrypt.hash(password, 10);
     // 3 .create the user in the database
-    const newUser = new User({
-      email: signupInput.email,
-      username: signupInput.username,
-      password,
-    });
-    const user = await newUser.save();
+    const user = await new User({ email, username, password: hashedPw }).save();
     // 4 .create JWT token for user
     const token = jwt.sign({ userId: user._id }, process.env.APP_SECRET);
     // 5 .set the jwt as a cookie on the response
@@ -46,12 +43,20 @@ const Mutation = {
     return { message: 'See you again soon!' };
   },
   async createPin(parent, { createPinInput }, ctx) {
+    const { image, largeImage, title, description } = createPinInput;
+    const { userId } = ctx.request;
     // 1. check if they are logged in
-    if (ctx.request.userId) throw Error('You must be logged in to do that');
-
+    if (!userId) throw Error('You must be logged in to do that');
     // 2. save pin to database
-
+    const pin = await new Pin({
+      image,
+      largeImage,
+      title,
+      description,
+      userId,
+    }).save();
     // 3. return pin
+    return pin;
   },
 };
 

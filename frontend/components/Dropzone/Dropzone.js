@@ -6,18 +6,19 @@ import PropTypes from 'prop-types';
 import DropzoneStyles from './DropzoneStyles';
 import Button from '../shared/Button';
 
-const Dropzone = ({ fields, setFields }) => {
+const Dropzone = ({ fields, setFields, loading }) => {
+  // upload file to hosting service
   const onDrop = useCallback(async acceptedFiles => {
     const data = new FormData();
     data.append('file', acceptedFiles[0]);
     data.append('upload_preset', 'notpinterest');
-
     const res = await fetch(
       'https://api.cloudinary.com/v1_1/dbir6orpj/image/upload',
       { method: 'POST', body: data },
     );
 
     const file = await res.json();
+    // get image urls and save them to state
     setFields({
       ...fields,
       image: file.secure_url,
@@ -25,15 +26,17 @@ const Dropzone = ({ fields, setFields }) => {
     });
   }, []);
 
+  // unselect image
   const removeImage = () => {
     setFields({ ...fields, image: '', largeImage: '' });
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-  const renderDropzoneOrImagePreview = () => {
-    if (fields.image) {
-      return (
+  // show image preview if an image has been selected
+  if (fields.image) {
+    return (
+      <DropzoneStyles loading={loading}>
         <div className="image-preview-container">
           <img alt="Upload Preview" src={fields.image} />
           <div className="overlay">
@@ -42,12 +45,15 @@ const Dropzone = ({ fields, setFields }) => {
             </Button>
           </div>
         </div>
-      );
-    }
+      </DropzoneStyles>
+    );
+  }
 
-    return (
+  // otherwise just show dropzone
+  return (
+    <DropzoneStyles loading={loading}>
       <div className="drop-wrap" {...getRootProps()}>
-        <input {...getInputProps()} name="image" required />
+        <input {...getInputProps()} name="image" disabled={loading} required />
         {isDragActive ? (
           <div className="drop-area">Drop the files here...</div>
         ) : (
@@ -57,15 +63,14 @@ const Dropzone = ({ fields, setFields }) => {
           </div>
         )}
       </div>
-    );
-  };
-
-  return <DropzoneStyles>{renderDropzoneOrImagePreview()}</DropzoneStyles>;
+    </DropzoneStyles>
+  );
 };
 
 Dropzone.propTypes = {
   fields: PropTypes.object,
   setFields: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 export default Dropzone;

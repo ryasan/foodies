@@ -52,6 +52,12 @@ const GlobalStyles = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  fieldset {
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
 `;
 
 const loginOpenCSS = css`
@@ -66,11 +72,11 @@ const PageWrap = styled.div`
   ${props => (props.loginIsOpen ? loginOpenCSS : '')};
 `;
 
-const Inner = styled.div`
+const PageInner = styled.div`
   padding: 5rem;
   min-height: 100vh;
   display: flex;
   justify-content: center;
 `;
 
-export { theme, GlobalStyles, Inner, PageWrap };
+export { theme, GlobalStyles, PageInner, PageWrap };

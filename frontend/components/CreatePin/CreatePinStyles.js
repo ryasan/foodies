@@ -34,42 +34,45 @@ const CreatePinStyles = styled.form`
   }
 
   .inputs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    margin-left: 3rem;
-    @media ${device.laptop} {
-      margin: 0;
-      width: 100%;
-      align-items: center;
-    }
-    .text-inputs {
-      textarea {
-        font-family: inherit;
-        border: none;
-        border-bottom: 1px solid ${props => props.theme.gray};
-        outline: none;
-        resize: none;
-        padding: 1rem 0;
-        margin-bottom: 1rem;
+    fieldset {
+      border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      margin-left: 3rem;
+      @media ${device.laptop} {
+        margin: 0;
         width: 100%;
-        transition: all 0.3s ease;
-        &.title-input {
-          font-weight: 900;
-          font-size: 3.5rem;
-        }
-        &.description-input {
-          font-size: 2rem;
-        }
-        &:focus {
-          border-color: ${props => props.theme.primary};
+        align-items: center;
+      }
+      .text-inputs {
+        textarea {
+          font-family: inherit;
+          border: none;
+          border-bottom: 1px solid ${props => props.theme.gray};
+          outline: none;
+          resize: none;
+          padding: 1rem 0;
+          margin-bottom: 1rem;
+          width: 100%;
+          transition: all 0.3s ease;
+          &.title-input {
+            font-weight: 900;
+            font-size: 3.5rem;
+          }
+          &.description-input {
+            font-size: 2rem;
+          }
+          &:focus {
+            border-color: ${props => props.theme.primary};
+          }
         }
       }
-    }
-    button {
-      width: 20rem;
-      margin-top: 3rem;
+      button {
+        width: 20rem;
+        margin-top: 3rem;
+      }
     }
   }
 `;
