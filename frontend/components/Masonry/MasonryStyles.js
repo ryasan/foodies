@@ -9,6 +9,7 @@ const StyledMasonry = styled.div`
 
   .column {
     min-width: ${props => `calc(300px / ${props.columns})`};
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

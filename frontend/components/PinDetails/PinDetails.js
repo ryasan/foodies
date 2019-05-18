@@ -5,7 +5,6 @@ import { Query } from 'react-apollo';
 import PinDetailsStyles from './PinDetailsStyles';
 import PIN_DETAILS_QUERY from '../../graphql/queries/pinDetails';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import InnerContent from '../shared/InnerContent';
 
 const PinDetails = ({ id }) => (
   <Query query={PIN_DETAILS_QUERY} variables={{ id: id }}>
@@ -19,13 +18,13 @@ const PinDetails = ({ id }) => (
           <Head>
             <title>NP | {pinDetails.title}</title>
           </Head>
-          <InnerContent>
+          <div className="column img-container">
             <img src={pinDetails.largeImage} alt={pinDetails.title} />
-            <div className="details">
-              <h2>Viewing {pinDetails.title}</h2>
-              <p>{pinDetails.description}</p>
-            </div>
-          </InnerContent>
+          </div>
+          <div className="column details">
+            <h1>{pinDetails.title}</h1>
+            <p>{pinDetails.description}</p>
+          </div>
         </PinDetailsStyles>
       );
     }}

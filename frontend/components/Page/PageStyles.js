@@ -9,7 +9,10 @@ const theme = {
   gray: '#8E8E8E',
   lightGray: '#f2f2f2',
   bsColor: '#bbb',
+  bigBoxShadow:
+    '0 0.25rem 0.25rem rgba(0, 0, 0, 0.2), 0 0 0.5rem rgba(0, 0, 0, 0.2)',
   br: '0.5rem',
+  bigBr: '1rem',
   maxWidth: '1200px',
 };
 

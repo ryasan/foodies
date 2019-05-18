@@ -7,11 +7,10 @@ const CreatePinStyles = styled.form`
   background: ${props => props.theme.white};
   max-width: ${props => props.theme.maxWidth};
   padding: 5rem;
-  border-radius: 1rem;
   display: flex;
   justify-content: space-between;
-  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2),
-    0 0 0.5rem rgba(0, 0, 0, 0.2);
+  border-radius: ${props => props.theme.bigBr};
+  box-shadow: ${props => props.theme.bigBoxShadow};
   @media ${device.laptop} {
     padding: 2rem;
     flex-direction: column;
