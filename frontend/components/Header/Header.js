@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import { Mutation } from 'react-apollo';
 import { FaPlus } from 'react-icons/fa';
 
@@ -8,6 +10,16 @@ import SIGN_OUT_MUTATION from '../../graphql/mutations/signout';
 import User from '../User/User';
 import Button from '../shared/Button';
 import StyledHeader, { Logo } from './HeaderStyles';
+
+Router.onRouteChangeStart = () => {
+  NProgress.start();
+};
+Router.onRouteChangeComplete = () => {
+  NProgress.done();
+};
+Router.onRouteChangeError = () => {
+  NProgress.done();
+};
 
 const AuthView = me => {
   return (

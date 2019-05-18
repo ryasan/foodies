@@ -43,7 +43,6 @@ const DropzoneStyles = styled.div`
 
   .drop-wrap {
     padding: 2rem;
-    cursor: pointer;
     border-radius: 1rem;
     padding: 1.5rem;
     background: ${props => props.theme.lightGray};
@@ -51,6 +50,7 @@ const DropzoneStyles = styled.div`
     display: flex;
     flex-flow: column;
     outline: none;
+    cursor: pointer;
     .drop-area {
       flex: 1;
       width: 100%;

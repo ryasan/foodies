@@ -48,18 +48,22 @@ const CreatePinStyles = styled.form`
       textarea {
         font-family: inherit;
         border: none;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid ${props => props.theme.gray};
         outline: none;
         resize: none;
         padding: 1rem 0;
         margin-bottom: 1rem;
         width: 100%;
+        transition: all 0.3s ease;
         &.title-input {
           font-weight: 900;
           font-size: 3.5rem;
         }
         &.description-input {
           font-size: 2rem;
+        }
+        &:focus {
+          border-color: ${props => props.theme.primary};
         }
       }
     }

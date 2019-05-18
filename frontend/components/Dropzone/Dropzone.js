@@ -47,7 +47,7 @@ const Dropzone = ({ fields, setFields }) => {
 
     return (
       <div className="drop-wrap" {...getRootProps()}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} name="image" required />
         {isDragActive ? (
           <div className="drop-area">Drop the files here...</div>
         ) : (
