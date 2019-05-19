@@ -7,7 +7,7 @@ const PleaseSigninStyles = styled.div`
   align-items: flex-start;
 
   .inner {
-    text-align: center;
+    width: ${props => props.theme.maxWidth};
   }
 `;
 

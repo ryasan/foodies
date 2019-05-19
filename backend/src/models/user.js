@@ -23,6 +23,7 @@ const userSchema = new Schema({
       ref: 'Pin',
     },
   ],
+  // likedPins: Object,
 });
 
 module.exports = mongoose.model('User', userSchema);
