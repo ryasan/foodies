@@ -14,7 +14,8 @@ const DropzoneStyles = styled.div`
     }
     img {
       width: 100%;
-      border-radius: 1rem;
+      max-width: 300px;
+      border-radius: ${props => props.theme.bigBr};
     }
 
     .overlay {

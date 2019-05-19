@@ -20,9 +20,7 @@ const Login = ({ loginIsOpen }) => {
       )}
       <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
         {toggleLogin => (
-          <FaTimes onClick={toggleLogin} size="3em" className="close">
-            close
-          </FaTimes>
+          <FaTimes onClick={toggleLogin} size="3em" className="close" />
         )}
       </Mutation>
     </LoginStyles>

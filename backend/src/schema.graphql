@@ -28,7 +28,7 @@ type User {
   email: String!
   password: String!
   username: String!
-  pins: [Pin!]!
+  pins: [ID!]!
 }
 
 type Pin {

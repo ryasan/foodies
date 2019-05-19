@@ -56,7 +56,9 @@ const Mutation = {
       creatorUsername: user.username,
       creatorId: userId,
     }).save();
-    // 3. return pin
+    // 3. update user's pin id collection
+    await User.findOneAndUpdate({ _id: userId }, { $push: { pins: pin._id } });
+    // 4. return pin
     return pin;
   },
 };
