@@ -13,6 +13,16 @@ const Query = {
   async pinDetails(parent, { id }, ctx) {
     return await Pin.findById(id);
   },
+  async myPins(parent, args, ctx) {
+    // 1. find user
+    const user = await User.findById(ctx.request.userId);
+    // 2. get user's pin id collection and return actual pin item
+    const pins = user.pins.map(async pinId => {
+      return await Pin.findById(pinId);
+    });
+
+    return pins;
+  },
 };
 
 module.exports = Query;

@@ -74,8 +74,7 @@ const Header = () => {
         </Link>
       </div>
       <User>
-        {({ data }) => {
-          const me = data ? data.me : null;
+        {({ data: { me } }) => {
           return me ? AuthView(me) : UnAuthView();
         }}
       </User>
