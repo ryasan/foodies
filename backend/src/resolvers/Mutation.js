@@ -23,11 +23,13 @@ const Mutation = {
   async signin(parent, { email, password }, ctx) {
     // 1. check if user with email exists
     const user = await User.findOne({ email }, '_id email username password');
+
     if (!user) {
       throw new Error(`No such user found for email ${email}`);
     }
     // 2. check if the password is correct
     const validPassword = await bcrypt.compare(password, user.password);
+
     if (!validPassword) {
       throw new Error('Invalid Password!');
     }
@@ -60,6 +62,26 @@ const Mutation = {
     await User.findOneAndUpdate({ _id: userId }, { $push: { pins: pin._id } });
     // 4. return pin
     return pin;
+  },
+  async updatePinLikes(parent, { pinId }, ctx) {
+    const pin = await Pin.findById(pinId);
+    return pin;
+  },
+  async deletePin(parent, { pinId }, ctx) {
+    // 1. find the pin
+    const pin = await Pin.findById(pinId);
+    // 2. check if they own the pin
+    const ownsPin = pin.creatorId.toString() === ctx.request.userId;
+
+    if (!ownsPin) {
+      throw new Error("This isn't yours to delete!");
+    }
+    // TODO: 3. delete image from cloudinary
+
+    // 4. delete pin
+    await Pin.findByIdAndDelete(pinId);
+    // 5. return pin id
+    return { _id: pinId };
   },
 };
 

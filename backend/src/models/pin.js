@@ -23,6 +23,7 @@ const pinSchema = new Schema({
     type: Number,
     default: 0,
   },
+  likedByIds: Array,
   creatorUsername: {
     type: String,
     required: true,

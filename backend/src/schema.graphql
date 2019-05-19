@@ -22,6 +22,8 @@ type Mutation {
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
   createPin(createPinInput: CreatePinInput): Pin!
+  updatePinLikes(pinId: ID!): Pin!
+  deletePin(pinId: ID!): Pin!
 }
 
 type User {
@@ -38,6 +40,7 @@ type Pin {
   image: String!
   largeImage: String!
   likes: Int!
+  likeByIds: [ID!]!
   description: String!
   creatorUsername: String!
   creatorId: String!
