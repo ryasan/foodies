@@ -14,7 +14,6 @@ const PinDetailsStyles = styled.div`
   .column {
     width: 50%;
     padding: 3rem;
-    height: 100%;
     @media ${device.laptop} {
       width: 100%;
     }
@@ -24,17 +23,28 @@ const PinDetailsStyles = styled.div`
     img {
       border-radius: ${props => props.theme.bigBr};
       width: 100%;
-      max-width: 500px;
     }
   }
 
-  .details {
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .body {
     h1 {
       font-size: 3.5rem;
+      margin-top: 0;
     }
     p {
       font-size: 2rem;
     }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
   }
 `;
 
