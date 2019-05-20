@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 const Pin = require('../models/pin');
+const utils = require('../utils');
 
 const Mutation = {
   async signup(parent, { signupInput }, ctx) {
@@ -80,16 +81,13 @@ const Mutation = {
     const pin = await Pin.findById(pinId);
     // 2. check if they own the pin
     const ownsPin = pin.creatorId.toString() === ctx.request.userId;
-
     if (!ownsPin) {
       throw new Error("This isn't yours to delete!");
     }
-    // TODO: 3. delete image from cloudinary
-
-    console.log(ctx.response);
-    // console.log(bota('881992544133924' + 'Sw-v4sMOSPtqTce8Rnp2ElELSYc'));
-    // // 4. delete pin
-    // await Pin.findByIdAndDelete(pinId);
+    // 3. delete image from cloudinary
+    utils.deleteImageFromCloud(pin.imgPublicId, ctx.response);
+    // 4. delete pin
+    await Pin.findByIdAndDelete(pinId);
     // 5. return pin id
     return { _id: pinId };
   },
