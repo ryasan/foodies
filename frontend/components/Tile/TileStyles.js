@@ -14,27 +14,6 @@ const cardScale = keyframes`
   }
 `;
 
-const throb = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1.5);
-  }
-  40% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(1.5);
-  }
-  80% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-
 const StyledTile = styled.div`
   margin: 0.4rem;
 
@@ -70,22 +49,6 @@ const StyledTile = styled.div`
         display: flex;
         align-items: center;
         color: ${props => props.theme.gray};
-        .likes {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          &:hover {
-            color: ${props => props.theme.primary};
-            .icon {
-              animation: ${throb} 1.5s infinite;
-            }
-          }
-        }
-
-        .icon {
-          margin: 0 0.5rem;
-        }
       }
     }
   }

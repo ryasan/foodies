@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 
+import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
 import StyledMasonry from './MasonryStyles';
 import { brakePoints } from '../../constants';
 
