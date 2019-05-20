@@ -7,6 +7,7 @@ const PinDetailsStyles = styled.div`
   box-shadow: ${props => props.theme.bigBoxShadow};
   background: ${props => props.theme.white};
   max-width: 1000px;
+  min-width: 50vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

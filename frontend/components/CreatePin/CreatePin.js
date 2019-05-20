@@ -11,15 +11,46 @@ import Button from '../shared/Button';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const CreatePin = () => {
-  const [textFields, setTextFields] = useState({ title: '', description: '' });
-  const [imgFields, setImgFields] = useState({ image: '', largeImage: '' });
+  const [textFields, setTextFields] = useState({
+    title: '',
+    description: '',
+  });
+
+  const [imgFields, setImgFields] = useState({
+    image: '',
+    largeImage: '',
+    imgPublicId: '',
+  });
+
+  const [imgFile, setImgFile] = useState(null);
 
   const saveFields = e => {
     setTextFields({ ...textFields, [e.target.name]: e.target.value });
   };
 
+  // upload file to hosting service
+  const hostImg = async () => {
+    const data = new FormData();
+    data.append('file', imgFile);
+    data.append('upload_preset', 'notpinterest');
+
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/dbir6orpj/image/upload',
+      { method: 'POST', body: data },
+    );
+
+    const file = await res.json();
+    // get image urls and save them to state
+    setImgFields({
+      imgPublicId: file.public_id,
+      image: file.secure_url,
+      largeImage: file.eager[0].secure_url,
+    });
+  };
+
   const handleSubmit = async (e, createPin) => {
     e.preventDefault();
+    await hostImg();
     // call the mutation
     const res = await createPin();
     // redirect user to pin details page
@@ -40,7 +71,7 @@ const CreatePin = () => {
             <Dropzone
               imgFields={imgFields}
               loading={loading}
-              setImgFields={setImgFields}
+              setImgFile={setImgFile}
             />
           </div>
           <div className="column inputs">

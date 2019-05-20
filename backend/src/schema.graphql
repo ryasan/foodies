@@ -39,6 +39,7 @@ type Pin {
   title: String!
   image: String!
   largeImage: String!
+  imgPublicId: String!
   likes: Int!
   likeByIds: [ID!]!
   description: String!
@@ -62,4 +63,5 @@ input CreatePinInput {
   largeImage: String!
   title: String!
   description: String!
+  imgPublicId: String!
 }

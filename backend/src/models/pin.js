@@ -3,31 +3,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const pinSchema = new Schema({
-  image: {
-    type: String,
-    required: true,
-  },
-  largeImage: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
+  image: String,
+  largeImage: String,
+  imgPublicId: String,
+  title: String,
+  description: String,
+  likedByIds: Array,
   likes: {
     type: Number,
     default: 0,
   },
-  likedByIds: Array,
-  creatorUsername: {
-    type: String,
-    required: true,
-  },
+  creatorUsername: String,
   creatorId: {
     type: Schema.Types.ObjectId,
     ref: 'User',

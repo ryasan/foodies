@@ -45,7 +45,14 @@ const Mutation = {
     return { message: 'See you again soon!' };
   },
   async createPin(parent, { createPinInput }, ctx) {
-    const { image, largeImage, title, description } = createPinInput;
+    const {
+      image,
+      largeImage,
+      title,
+      description,
+      imgPublicId,
+    } = createPinInput;
+
     const { userId, user } = ctx.request;
     // 1. check if they are logged in
     if (!userId) throw Error('You must be logged in to do that');
@@ -55,6 +62,7 @@ const Mutation = {
       largeImage,
       title,
       description,
+      imgPublicId,
       creatorUsername: user.username,
       creatorId: userId,
     }).save();
@@ -78,8 +86,10 @@ const Mutation = {
     }
     // TODO: 3. delete image from cloudinary
 
-    // 4. delete pin
-    await Pin.findByIdAndDelete(pinId);
+    console.log(ctx.response);
+    // console.log(bota('881992544133924' + 'Sw-v4sMOSPtqTce8Rnp2ElELSYc'));
+    // // 4. delete pin
+    // await Pin.findByIdAndDelete(pinId);
     // 5. return pin id
     return { _id: pinId };
   },

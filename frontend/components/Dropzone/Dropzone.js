@@ -6,40 +6,32 @@ import PropTypes from 'prop-types';
 import DropzoneStyles from './DropzoneStyles';
 import Button from '../shared/Button';
 
-const Dropzone = ({ imgFields, setImgFields, loading }) => {
-  // upload file to hosting service
-  const onDrop = useCallback(async acceptedFiles => {
-    const data = new FormData();
-    data.append('file', acceptedFiles[0]);
-    data.append('upload_preset', 'notpinterest');
-    const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dbir6orpj/image/upload',
-      { method: 'POST', body: data },
-    );
+const Dropzone = ({ setImgFile, loading }) => {
+  const [imgPreview, setImgPreview] = useState(null);
 
-    const file = await res.json();
-    // get image urls and save them to state
-    setImgFields({
-      image: file.secure_url,
-      largeImage: file.eager[0].secure_url,
-    });
+  // create image preview
+  const onDrop = useCallback(acceptedFiles => {
+    const [file] = acceptedFiles.map(file => ({
+      ...file,
+      preview: URL.createObjectURL(file),
+    }));
+
+    setImgFile(acceptedFiles[0]);
+    setImgPreview(file.preview);
   }, []);
 
-  // unselect image
-  const removeImage = () => {
-    setImgFields({ image: '', largeImage: '' });
-  };
+  const removePreview = () => setImgPreview(null);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   // show image preview if an image has been selected
-  if (imgFields.image) {
+  if (imgPreview) {
     return (
       <DropzoneStyles loading={loading}>
         <div className="image-preview-container">
-          <img alt="Upload Preview" src={imgFields.image} />
+          <img alt="Upload Preview" src={imgPreview} />
           <div className="overlay">
-            <Button className="icon-btn" onClick={removeImage}>
+            <Button className="icon-btn" onClick={removePreview}>
               <FaTrash />
             </Button>
           </div>
@@ -67,8 +59,7 @@ const Dropzone = ({ imgFields, setImgFields, loading }) => {
 };
 
 Dropzone.propTypes = {
-  imgFields: PropTypes.object,
-  setImgFields: PropTypes.func,
+  setImgFile: PropTypes.func,
   loading: PropTypes.bool,
 };
 

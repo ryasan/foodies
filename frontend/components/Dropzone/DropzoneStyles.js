@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 
 const DropzoneStyles = styled.div`
-  min-height: 40vh;
   .image-preview-container {
     border-radius: 1rem;
     position: relative;
