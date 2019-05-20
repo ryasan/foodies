@@ -65,20 +65,24 @@ const StyledTile = styled.div`
       font-weight: 900;
       font-size: 1.4rem;
       color: ${props => darken(0.3, props.theme.gray)};
-      .likes {
+      font-size: 1.5rem;
+      .end {
         display: flex;
-        justify-content: center;
         align-items: center;
-        height: 3rem;
-        font-size: 1.7rem;
         color: ${props => props.theme.gray};
-        cursor: pointer;
-        &:hover {
-          color: ${props => props.theme.primary};
-          .icon {
-            animation: ${throb} 1.5s infinite;
+        .likes {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            color: ${props => props.theme.primary};
+            .icon {
+              animation: ${throb} 1.5s infinite;
+            }
           }
         }
+
         .icon {
           margin: 0 0.5rem;
         }

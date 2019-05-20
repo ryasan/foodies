@@ -17,7 +17,7 @@ const Mutation = {
     // 4 .create JWT token for user
     const token = jwt.sign({ userId: user._id }, process.env.APP_SECRET);
     // 5 .set the jwt as a cookie on the response
-    setCookieToken(ctx, token);
+    utils.setCookieToken(ctx, token);
     // 6 .return user
     return user;
   },
@@ -37,7 +37,7 @@ const Mutation = {
     // 3. create JWT token
     const token = jwt.sign({ userId: user._id }, process.env.APP_SECRET);
     // 4. set the cookie with the token
-    setCookieToken(ctx, token);
+    utils.setCookieToken(ctx, token);
     // 5. return the user
     return user;
   },
@@ -68,12 +68,27 @@ const Mutation = {
       creatorId: userId,
     }).save();
     // 3. update user's pin id collection
-    await User.findOneAndUpdate({ _id: userId }, { $push: { pins: pin._id } });
+    await User.findByIdAndUpdate(userId, { $push: { pins: pin._id } });
     // 4. return pin
     return pin;
   },
   async updatePinLikes(parent, { pinId }, ctx) {
+    // 1. find pin that needs to be updated
     const pin = await Pin.findById(pinId);
+    const { userId } = ctx.request;
+    const { likedByIds } = pin;
+
+    // 2. if user already liked pin remove like
+    if (likedByIds.includes(userId)) {
+      likedByIds.splice(likedByIds.indexOf(userId, 1));
+      // 3. if user hasn't like pin yet add like
+    } else {
+      likedByIds.push(userId);
+    }
+
+    await pin.save();
+
+    // 4. return pin
     return pin;
   },
   async deletePin(parent, { pinId }, ctx) {
@@ -86,18 +101,15 @@ const Mutation = {
     }
     // 3. delete image from cloudinary
     utils.deleteImageFromCloud(pin.imgPublicId, ctx.response);
-    // 4. delete pin
+    // 4. remove pin from users pin collection
+    await User.findByIdAndUpdate(ctx.request.userId, {
+      $pull: { pins: pin._id },
+    });
+    // 5. delete pin
     await Pin.findByIdAndDelete(pinId);
-    // 5. return pin id
+    // 6. return pin id
     return { _id: pinId };
   },
-};
-
-const setCookieToken = (ctx, token) => {
-  ctx.response.cookie('token', token, {
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year cookie
-  });
 };
 
 module.exports = Mutation;

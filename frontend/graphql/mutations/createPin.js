@@ -6,7 +6,7 @@ const CREATE_PIN_MUTATION = gql`
       _id
       title
       description
-      likes
+      likedByIds
       image
       largeImage
     }

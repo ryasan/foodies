@@ -1,13 +1,3 @@
-# enums
-enum Permission {
-  ADMIN
-  USER
-  PINCREATE
-  PINUPDATE
-  PINDELETE
-  PERMISSIONUPDATE
-}
-
 # types
 type Query {
   users: [User!]!
@@ -40,8 +30,7 @@ type Pin {
   image: String!
   largeImage: String!
   imgPublicId: String!
-  likes: Int!
-  likeByIds: [ID!]!
+  likedByIds: [ID!]!
   description: String!
   creatorUsername: String!
   creatorId: String!

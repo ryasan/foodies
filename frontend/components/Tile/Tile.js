@@ -8,7 +8,7 @@ import ALL_PINS_QUERY from './../../graphql/queries/pins';
 import StyledTile from './TileStyles';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
-const Tile = ({ pin: { image, likes, creatorUsername, _id } }) => {
+const Tile = ({ pin: { title, image, likedByIds, creatorUsername, _id } }) => {
   const goToDetails = () => {
     Router.push({ pathname: '/pin-details', query: { id: _id } });
   };
@@ -27,10 +27,13 @@ const Tile = ({ pin: { image, likes, creatorUsername, _id } }) => {
             <div className="content">
               <img src={image} onClick={goToDetails} />
               <div className="card-body">
-                {creatorUsername}
-                <div className="likes">
-                  <FaHeart className="icon" onClick={updatePinLikes} />
-                  {likes}
+                {title}
+                <div className="end">
+                  <small>by {creatorUsername}</small>
+                  <div className="likes">
+                    <FaHeart className="icon" onClick={updatePinLikes} />
+                    {likedByIds.length}
+                  </div>
                 </div>
               </div>
             </div>

@@ -6,8 +6,8 @@ const ALL_PINS_QUERY = gql`
       _id
       title
       description
-      likes
       image
+      likedByIds
       largeImage
       creatorUsername
       creatorId

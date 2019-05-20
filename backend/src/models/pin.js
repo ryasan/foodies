@@ -8,11 +8,12 @@ const pinSchema = new Schema({
   imgPublicId: String,
   title: String,
   description: String,
-  likedByIds: Array,
-  likes: {
-    type: Number,
-    default: 0,
-  },
+  likedByIds: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
   creatorUsername: String,
   creatorId: {
     type: Schema.Types.ObjectId,

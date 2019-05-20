@@ -6,7 +6,6 @@ const UPDATE_PIN_LIKES_MUTATION = gql`
       _id
       title
       description
-      likes
       likedByIds
       image
       largeImage

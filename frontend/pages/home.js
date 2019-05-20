@@ -11,7 +11,7 @@ const HomePage = () => {
       {({ data: { pins }, error, loading }) => {
         if (error) return <ErrorMessage error={error} />;
         if (loading) return <h1>Loading Pins...</h1>;
-
+        
         return (
           <Masonry>
             {pins.map(pin => (
