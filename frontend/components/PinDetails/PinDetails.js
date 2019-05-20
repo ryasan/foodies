@@ -9,7 +9,7 @@ import DeletePin from '../DeletePin/DeletePin';
 
 const PinDetails = ({ pinId, currentUserId }) => {
   return (
-    <Query query={PIN_DETAILS_QUERY} variables={{ id: pinId }}>
+    <Query query={PIN_DETAILS_QUERY} variables={{ pinId }}>
       {({ error, loading, data: { pinDetails } }) => {
         if (error) return <ErrorMessage error={error} />;
         if (loading) return <p>Loading...</p>;

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 const MY_PINS_QUERY = gql`
-  query MY_PINS_QUERY($id: ID!) {
-    myPins(id: $id) {
+  query MY_PINS_QUERY($userId: ID!) {
+    myPins(userId: $userId) {
       _id
       title
       description

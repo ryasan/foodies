@@ -32,10 +32,10 @@ const AccountPage = () => {
         {({ data: { me } }) => {
           return (
             me && (
-              <Query query={MY_PINS_QUERY} variables={{ id: me._id }}>
+              <Query query={MY_PINS_QUERY} variables={{ userId: me._id }}>
                 {({ data: { myPins }, error, loading }) => {
                   if (error) return <ErrorMessage error={error} />;
-                  if (loading) return <h1>Loading Pins...</h1>;
+                  if (loading) return <h2>Loading Pins...</h2>;
 
                   return (
                     <AccountPageStyles>
@@ -45,11 +45,15 @@ const AccountPage = () => {
                       <Button className={firstActive ? '' : 'active'}>
                         Liked Pins
                       </Button>
-                      <Masonry>
-                        {myPins.map(pin => (
-                          <Tile key={pin._id} pin={pin} />
-                        ))}
-                      </Masonry>
+                      {myPins.length ? (
+                        <Masonry>
+                          {myPins.map(pin => (
+                            <Tile key={pin._id} pin={pin} />
+                          ))}
+                        </Masonry>
+                      ) : (
+                        <h2>You have no pins yet 😢</h2>
+                      )}
                     </AccountPageStyles>
                   );
                 }}

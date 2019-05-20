@@ -10,17 +10,15 @@ const Query = {
   async pins(parent, args, ctx) {
     return await Pin.find({});
   },
-  async pinDetails(parent, { id }, ctx) {
-    return await Pin.findById(id);
+  async pinDetails(parent, { pinId }, ctx) {
+    return await Pin.findById(pinId);
   },
   async myPins(parent, args, ctx) {
     // 1. find user
     const user = await User.findById(ctx.request.userId);
     // 2. get user's pin id collection and return actual pin item
-    const pins = user.pins.map(async pinId => {
-      return await Pin.findById(pinId);
-    });
-
+    const pins = await Pin.find({ _id: { $in: user.pins } });
+    // 3. return pins
     return pins;
   },
 };
