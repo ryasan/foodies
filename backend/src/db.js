@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const { MONGO_USER, MONGO_PASSWORD, MONGO_DB } = process.env;
+const { MLAB_USER, MLAB_PASSWORD } = process.env;
 
 mongoose
   .connect(
-    `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@notpinterest-cluster-bwpri.mongodb.net/${MONGO_DB}?retryWrites=true`,
+    `mongodb://${MLAB_USER}:${MLAB_PASSWORD}@ds259596.mlab.com:59596/notpinterest-db`,
     { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false },
   )
   .then(result => console.log('connected to DB'))
