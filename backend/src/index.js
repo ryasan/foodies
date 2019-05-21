@@ -30,14 +30,11 @@ server.express.use(async (req, res, next) => {
 });
 
 const options = {
-  // cors: {
-  //   credentials: true,
-  //   origin:
-  //     process.env.NODE_ENV === 'development'
-  //       ? process.env.FRONTEND_URL
-  //       : process.env.NOW_FRONTEND_URL,
-  // },
-  // port: process.env.PORT,
+  cors: {
+    credentials: true,
+    origin: process.env.FRONTEND_URL,
+  },
+  port: process.env.PORT,
 };
 
 server.start(options, deets => {
