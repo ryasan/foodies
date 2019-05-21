@@ -32,7 +32,7 @@ server.express.use(async (req, res, next) => {
 const options = {
   cors: {
     credentials: true,
-    origin: process.env.FRONTEND_URL,
+    origin: [process.env.FRONTEND_URL, process.env.HEROKU_FRONTEND_URL],
   },
   port: process.env.PORT,
 };
