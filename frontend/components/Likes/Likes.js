@@ -4,30 +4,16 @@ import PropTypes from 'prop-types';
 
 import UPDATE_PIN_LIKES_MUTATION from '../../graphql/mutations/updatePinLikes';
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
-import ALL_PINS_QUERY from './../../graphql/queries/pins';
+import ALL_PINS_QUERY from '../../graphql/queries/pins';
+import LIKED_PINS_QUERY from '../../graphql/queries/likedPins';
+import MY_PINS_QUERY from '../../graphql/queries/myPins';
 import TOGGLE_LOGIN_MUTATION from './../../graphql/mutations/toggleLogin';
 import StyledLikes from './LikesStyles';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
+// TODO: manually update the cache on the client so it matches the server
 const Likes = ({ pinId, likedByIds, me }) => {
   const liked = me && likedByIds.includes(me._id);
-  // manually update the cache on the client so it matches the server
-  const update = (cache, payload) => {
-    // // 1. read the cache for the pins we want
-    // const data = cache.readQuery({ query: ALL_PINS_QUERY });
-    // // 2. remove/add userId from likedByIds
-    // data.pins = data.pins.map(pin => {
-    //   let { likedByIds } = pin;
-    //   if (liked) {
-    //     likedByIds = likedByIds.filter(id => id !== me._id);
-    //   } else {
-    //     likedByIds = [...likedByIds, me._id];
-    //   }
-    //   return { ...pin };
-    // });
-    // // 3. put the items back
-    // cache.writeQuery({ query: ALL_PINS_QUERY, data });
-  };
 
   const handleLikeClick = (updatePinLikes, toggleLogin) => {
     me ? updatePinLikes() : toggleLogin();
@@ -40,7 +26,11 @@ const Likes = ({ pinId, likedByIds, me }) => {
           <Mutation
             mutation={UPDATE_PIN_LIKES_MUTATION}
             variables={{ pinId }}
-            refetchQueries={[{ query: ALL_PINS_QUERY }]}>
+            refetchQueries={[
+              { query: ALL_PINS_QUERY },
+              { query: LIKED_PINS_QUERY },
+              { query: MY_PINS_QUERY },
+            ]}>
             {(updatePinLikes, { loading, error }) => {
               if (error) return <ErrorMessage error={error} />;
               return (
