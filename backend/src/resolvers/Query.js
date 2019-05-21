@@ -20,6 +20,9 @@ const Query = {
     // 3. return pins
     return pins;
   },
+  async likedPins(parent, args, ctx) {
+    return await Pin.find({ likedByIds: ctx.request.userId });
+  },
 };
 
 module.exports = Query;
