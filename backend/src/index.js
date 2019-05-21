@@ -1,11 +1,11 @@
 require('dotenv').config({ path: 'variables.env' });
 
-const jwt          = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
 const createServer = require('./createServer');
-const server       = createServer();
-const User         = require('./models/user');
+const server = createServer();
+const User = require('./models/user');
 
 server.express.use(cookieParser());
 
@@ -30,11 +30,14 @@ server.express.use(async (req, res, next) => {
 });
 
 const options = {
-  cors: {
-    credentials: true,
-    origin: process.env.FRONTEND_URL,
-  },
-  port: process.env.PORT,
+  // cors: {
+  //   credentials: true,
+  //   origin:
+  //     process.env.NODE_ENV === 'development'
+  //       ? process.env.FRONTEND_URL
+  //       : process.env.NOW_FRONTEND_URL,
+  // },
+  // port: process.env.PORT,
 };
 
 server.start(options, deets => {
