@@ -34,6 +34,7 @@ const options = {
     credentials: true,
     origin: process.env.FRONTEND_URL,
   },
+  port: process.env.PORT,
 };
 
 server.start(options, deets => {
