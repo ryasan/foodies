@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
-const MY_PINS_QUERY = gql`
+const LIKED_PINS_QUERY = gql`
   query {
-    myPins {
+    likedPins {
       _id
       title
       description
@@ -15,4 +15,4 @@ const MY_PINS_QUERY = gql`
   }
 `;
 
-export default MY_PINS_QUERY;
+export default LIKED_PINS_QUERY;

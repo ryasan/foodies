@@ -6,7 +6,6 @@ const defaultCSS = css`
   color: ${props => props.theme.gray};
   background: none;
   &:hover {
-    border: 3px solid ${props => props.theme.lightGray};
     background: ${props => props.theme.lightGray};
   }
   &:active {

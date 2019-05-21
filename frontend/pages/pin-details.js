@@ -5,13 +5,13 @@ import User from '../components/User/User';
 
 const PinDetailsPage = ({ query }) => (
   <User>
-    {({ data: { me } }) =>
-      me && (
+    {({ data: { me } }) => {
+      return (
         <div>
-          <PinDetails pinId={query.id} currentUserId={me._id} />
+          <PinDetails pinId={query.id} currentUserId={me && me._id} />
         </div>
-      )
-    }
+      );
+    }}
   </User>
 );
 

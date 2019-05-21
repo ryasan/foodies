@@ -13,21 +13,20 @@ const Likes = ({ pinId, likedByIds, me }) => {
   const liked = me && likedByIds.includes(me._id);
   // manually update the cache on the client so it matches the server
   const update = (cache, payload) => {
-    // 1. read the cache for the pins we want
-    const data = cache.readQuery({ query: ALL_PINS_QUERY });
-    // 2. remove/add userId from likedByIds
-    data.pins = data.pins.map(pin => {
-      let { likedByIds } = pin;
-      if (liked) {
-        likedByIds = likedByIds.filter(id => id !== me._id);
-      } else {
-        likedByIds = [...likedByIds, me._id];
-      }
-
-      return { ...pin };
-    });
-    // 3. put the items back
-    cache.writeQuery({ query: ALL_PINS_QUERY, data });
+    // // 1. read the cache for the pins we want
+    // const data = cache.readQuery({ query: ALL_PINS_QUERY });
+    // // 2. remove/add userId from likedByIds
+    // data.pins = data.pins.map(pin => {
+    //   let { likedByIds } = pin;
+    //   if (liked) {
+    //     likedByIds = likedByIds.filter(id => id !== me._id);
+    //   } else {
+    //     likedByIds = [...likedByIds, me._id];
+    //   }
+    //   return { ...pin };
+    // });
+    // // 3. put the items back
+    // cache.writeQuery({ query: ALL_PINS_QUERY, data });
   };
 
   const handleLikeClick = (updatePinLikes, toggleLogin) => {
@@ -41,7 +40,7 @@ const Likes = ({ pinId, likedByIds, me }) => {
           <Mutation
             mutation={UPDATE_PIN_LIKES_MUTATION}
             variables={{ pinId }}
-            update={update}>
+            refetchQueries={[{ query: ALL_PINS_QUERY }]}>
             {(updatePinLikes, { loading, error }) => {
               if (error) return <ErrorMessage error={error} />;
               return (
