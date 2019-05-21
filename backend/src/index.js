@@ -3,40 +3,42 @@ require('dotenv').config({ path: 'variables.env' });
 const jwt          = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 
-const createServer = require('./createServer');
-const server       = createServer();
-const User         = require('./models/user');
+console.log('test');
 
-server.express.use(cookieParser());
+// const createServer = require('./createServer');
+// const server       = createServer();
+// const User         = require('./models/user');
 
-// decode the JWT so we can get the user Id on each request
-server.express.use((req, res, next) => {
-  const { token } = req.cookies;
-  if (token) {
-    const { userId } = jwt.verify(token, process.env.APP_SECRET);
-    req.userId = userId;
-  }
-  next();
-});
+// server.express.use(cookieParser());
 
-// create middleware that populates the user on each request
-server.express.use(async (req, res, next) => {
-  // skip if user isn't logged in
-  if (!req.userId) return next();
-  const user = await User.findById(req.userId, '_id email username');
+// // decode the JWT so we can get the user Id on each request
+// server.express.use((req, res, next) => {
+//   const { token } = req.cookies;
+//   if (token) {
+//     const { userId } = jwt.verify(token, process.env.APP_SECRET);
+//     req.userId = userId;
+//   }
+//   next();
+// });
 
-  req.user = user;
-  next();
-});
+// // create middleware that populates the user on each request
+// server.express.use(async (req, res, next) => {
+//   // skip if user isn't logged in
+//   if (!req.userId) return next();
+//   const user = await User.findById(req.userId, '_id email username');
 
-const options = {
-  cors: {
-    credentials: true,
-    origin: process.env.FRONTEND_URL,
-  },
-  port: process.env.PORT,
-};
+//   req.user = user;
+//   next();
+// });
 
-server.start(options, deets => {
-  console.log(`Server is now running on port http://localhost:${deets.port}`);
-});
+// const options = {
+//   cors: {
+//     credentials: true,
+//     origin: process.env.FRONTEND_URL,
+//   },
+//   port: process.env.PORT,
+// };
+
+// server.start(options, deets => {
+//   console.log(`Server is now running on port http://localhost:${deets.port}`);
+// });
