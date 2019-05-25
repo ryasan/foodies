@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const StyledHeader = styled.div`
+  position: sticky;
+  top: 0;
   width: 100%;
   background: ${props => props.theme.white};
   display: flex;
@@ -8,6 +10,7 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   padding: 0rem 2rem;
   box-shadow: 0 0 0.4rem ${props => props.theme.bsColor};
+  z-index: 1;
 
   .brand-link {
     display: flex;

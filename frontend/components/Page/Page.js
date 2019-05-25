@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Query } from 'react-apollo';
+import PropTypes from 'prop-types';
 
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -19,8 +20,10 @@ const Page = ({ children }) => (
           <Login loginIsOpen={loginIsOpen} />
           <PageWrap loginIsOpen={loginIsOpen}>
             <Welcome />
-            <Header />
-            <PageInner>{children}</PageInner>
+            <div className="page-container">
+              <Header />
+              <PageInner>{children}</PageInner>
+            </div>
           </PageWrap>
         </>
       )}

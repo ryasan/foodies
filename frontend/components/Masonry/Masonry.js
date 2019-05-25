@@ -46,7 +46,7 @@ const Masonry = ({ children }) => {
   });
 
   return (
-    <StyledMasonry ref={el => setRef(el)} columns={columns}>
+    <StyledMasonry ref={ref => setRef(ref)} columns={columns}>
       {mapChildren().map((col, i) => (
         <div className="column" key={i}>
           {col.map(child => (
