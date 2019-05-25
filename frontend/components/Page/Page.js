@@ -7,6 +7,7 @@ import Login from '../Login/Login';
 import Meta from '../Meta/Meta';
 import { theme, GlobalStyles, PageInner, PageWrap } from './PageStyles';
 import LOCAL_STATE_QUERY from '../../graphql/queries/localState';
+import Welcome from './../Welcome/Welcome';
 
 const Page = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -17,6 +18,7 @@ const Page = ({ children }) => (
           <GlobalStyles />
           <Login loginIsOpen={loginIsOpen} />
           <PageWrap loginIsOpen={loginIsOpen}>
+            <Welcome />
             <Header />
             <PageInner>{children}</PageInner>
           </PageWrap>

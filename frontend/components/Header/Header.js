@@ -29,7 +29,7 @@ const AuthView = me => {
       refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
       {signout => {
         return (
-          <nav>
+          <>
             <Link href="/account">
               <Button>{me.username}</Button>
             </Link>
@@ -39,7 +39,7 @@ const AuthView = me => {
               </Button>
             </Link>
             <Button onClick={signout}>Signout</Button>
-          </nav>
+          </>
         );
       }}
     </Mutation>
@@ -50,14 +50,14 @@ const UnAuthView = () => {
   return (
     <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
       {toggleLogin => (
-        <nav>
+        <>
           <Link href="/pin-builder">
             <Button className="icon-btn">
               <FaPlus />
             </Button>
           </Link>
           <Button onClick={toggleLogin}>Signin</Button>
-        </nav>
+        </>
       )}
     </Mutation>
   );
@@ -69,19 +69,20 @@ const Header = () => {
       <Link href="/">
         <a className="brand-link">
           <Logo>NP</Logo>
-          <h1 className="brand-name">NotPinterest</h1>
         </a>
       </Link>
-      <Button
-        className="icon-btn"
-        onClick={() => window.open(repoUrl, '_blank').focus()}>
-        <FaGithub />
-      </Button>
-      <User>
-        {({ data: { me } }) => {
-          return me ? AuthView(me) : UnAuthView();
-        }}
-      </User>
+      <nav>
+        <User>
+          {({ data: { me } }) => {
+            return me ? AuthView(me) : UnAuthView();
+          }}
+        </User>
+        <Button
+          className="icon-btn"
+          onClick={() => window.open(repoUrl, '_blank').focus()}>
+          <FaGithub />
+        </Button>
+      </nav>
     </StyledHeader>
   );
 };

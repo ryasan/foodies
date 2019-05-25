@@ -66,7 +66,7 @@ const AccountPage = () => {
                           ))}
                         </Masonry>
                       ) : (
-                        <h2>You have no pins yet 😢</h2>
+                        <h2>Nothing to see here 👀</h2>
                       )}
                     </AccountPageStyles>
                   );

@@ -6,17 +6,12 @@ const StyledHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 2rem;
+  padding: 0rem 2rem;
   box-shadow: 0 0 0.4rem ${props => props.theme.bsColor};
 
   .brand-link {
     display: flex;
     align-items: center;
-    .brand-name {
-      font-size: 2.5rem;
-      margin-left: 1rem;
-      color: ${props => props.theme.gray};
-    }
   }
 
   nav {
@@ -26,7 +21,7 @@ const StyledHeader = styled.div`
 `;
 
 const Logo = styled.h1`
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   transform: skew(-10deg);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
