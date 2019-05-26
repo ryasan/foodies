@@ -36,6 +36,22 @@ const StyledWelcome = styled.header`
     position: absolute;
     background: url('/static/images/welcome-bg.jpg') center center;
   }
+
+  button {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    color: ${props => props.theme.white};
+    font-size: 2.5rem;
+    margin: 1rem;
+    transition: all 0.3s;
+    &:hover {
+      color: ${props => props.theme.primary};
+    }
+  }
 `;
 
 export default StyledWelcome;

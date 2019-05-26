@@ -10,7 +10,6 @@ import SIGN_OUT_MUTATION from '../../graphql/mutations/signout';
 import User from '../User/User';
 import Button from '../shared/Button';
 import StyledHeader, { Logo } from './HeaderStyles';
-import { repoUrl } from '../../constants';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -29,7 +28,7 @@ const AuthView = me => {
       refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
       {signout => {
         return (
-          <>
+          <nav>
             <Link href="/account">
               <Button>{me.username}</Button>
             </Link>
@@ -39,7 +38,7 @@ const AuthView = me => {
               </Button>
             </Link>
             <Button onClick={signout}>Signout</Button>
-          </>
+          </nav>
         );
       }}
     </Mutation>
@@ -50,14 +49,14 @@ const UnAuthView = () => {
   return (
     <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
       {toggleLogin => (
-        <>
+        <nav>
           <Link href="/pin-builder">
             <Button className="icon-btn">
               <FaPlus />
             </Button>
           </Link>
           <Button onClick={toggleLogin}>Signin</Button>
-        </>
+        </nav>
       )}
     </Mutation>
   );
@@ -71,18 +70,11 @@ const Header = () => {
           <Logo>NP</Logo>
         </a>
       </Link>
-      <nav>
-        <User>
-          {({ data: { me } }) => {
-            return me ? AuthView(me) : UnAuthView();
-          }}
-        </User>
-        <Button
-          className="icon-btn"
-          onClick={() => window.open(repoUrl, '_blank').focus()}>
-          <FaGithub />
-        </Button>
-      </nav>
+      <User>
+        {({ data: { me } }) => {
+          return me ? AuthView(me) : UnAuthView();
+        }}
+      </User>
     </StyledHeader>
   );
 };

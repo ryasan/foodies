@@ -5,3 +5,4 @@
 5. Add debounce for when user submits a pin.
 6. Infinite scroll *fetch more pins on scroll.
 7. Add follow feature.
+8. Update cache for optimistic response.
