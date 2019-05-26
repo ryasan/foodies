@@ -11,12 +11,13 @@ const HomePage = () => {
     <Query query={ALL_PINS_QUERY}>
       {({ data: { pins }, error, loading }) => {
         if (error) return <ErrorMessage error={error} />;
-        if (loading)
+        if (loading) {
           return (
             <div style={{ margin: '5rem' }}>
               <Loader />
             </div>
           );
+        }
 
         return (
           <Masonry>

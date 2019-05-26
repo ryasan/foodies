@@ -27,14 +27,15 @@ const StyledLoader = styled.div`
     animation: ${lineScalePulseOut} 0.9s -0.6s infinite cubic-bezier(0.85, 0.25, 0.37, 0.85);
   }
 
-  .line-scale-pulse-out > div:nth-child(2),
-  .line-scale-pulse-out > div:nth-child(4) {
-    animation-delay: -0.4s;
-  }
-
-  .line-scale-pulse-out > div:nth-child(1),
-  .line-scale-pulse-out > div:nth-child(5) {
-    animation-delay: -0.2s;
+  .line-scale-pulse-out {
+    div:nth-child(2),
+    div:nth-child(4) {
+      animation-delay: -0.4s;
+    }
+    div:nth-child(1),
+    div:nth-child(5) {
+      animation-delay: -0.2s;
+    }
   }
 `;
 
