@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
