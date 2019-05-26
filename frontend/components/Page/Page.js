@@ -20,10 +20,8 @@ const Page = ({ children }) => (
           <Login loginIsOpen={loginIsOpen} />
           <PageWrap loginIsOpen={loginIsOpen}>
             <Welcome />
-            <div className="page-container">
-              <Header />
-              <PageInner>{children}</PageInner>
-            </div>
+            <Header />
+            <PageInner>{children}</PageInner>
           </PageWrap>
         </>
       )}

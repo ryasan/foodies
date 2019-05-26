@@ -76,7 +76,7 @@ const PageWrap = styled.div`
 `;
 
 const PageInner = styled.div`
-  padding: 8rem 5rem 2rem 5rem;
+  padding: 2.5rem 5rem;
   min-height: 100vh;
   display: flex;
   justify-content: center;
