@@ -40,7 +40,7 @@ const StyledLogin = styled.div`
     flex-direction: column;
     justify-content: space-between;
     background: ${props => props.theme.white};
-    box-shadow: 0 0 1rem ${props => props.theme.bsColor};
+    box-shadow: 0 0 1rem ${props => props.theme.black};
     border-radius: ${props => props.theme.br};
     padding-top: 1rem;
 

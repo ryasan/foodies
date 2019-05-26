@@ -65,14 +65,13 @@ const GlobalStyles = createGlobalStyle`
 
 const loginOpenCSS = css`
   filter: blur(3px) grayscale(0.5);
-  transform: scale(0.95);
   pointer-events: none;
 `;
 
 const PageWrap = styled.div`
   transition: all 0.5s ease;
   background: ${theme.offWhite};
-  ${props => (props.loginIsOpen ? loginOpenCSS : '')};
+  ${props => props.loginIsOpen && loginOpenCSS};
 `;
 
 const PageInner = styled.div`

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Query } from 'react-apollo';
 
 import ALL_PINS_QUERY from '../graphql/queries/pins';
@@ -7,6 +8,33 @@ import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import Loader from '../components/Loader/Loader';
 
 const HomePage = () => {
+  const getScrollTop = () => {
+    return window.pageYOffset !== undefined
+      ? window.pageYOffset
+      : (document.documentElement || document.body.parentNode || document.body)
+          .scrollTop;
+  };
+
+  const getDocumentHeight = () => {
+    const body = document.body;
+    const html = document.documentElement;
+
+    return Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight,
+    );
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
+      console.log('bottom reached');
+    });
+  });
+
   return (
     <Query query={ALL_PINS_QUERY}>
       {({ data: { pins }, error, loading }) => {
