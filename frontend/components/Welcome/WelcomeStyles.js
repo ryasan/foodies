@@ -10,7 +10,7 @@ const StyledWelcome = styled.header`
   .text {
     position: relative;
     z-index: 1;
-    background: rgba(34, 17, 1, 0.91);
+    background: rgba(34, 17, 1, 0.8);
     width: 100%;
     height: 100%;
     color: white;
@@ -35,6 +35,7 @@ const StyledWelcome = styled.header`
     height: 100%;
     position: absolute;
     background: url('/static/images/welcome-bg.jpg') center center;
+    filter: grayscale(1);
   }
 
   button {
