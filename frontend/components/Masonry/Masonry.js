@@ -5,7 +5,7 @@ import StyledMasonry from './MasonryStyles';
 import { brakePoints } from '../../constants';
 
 const Masonry = ({ children }) => {
-  const [columns, setColumns] = useState(1);
+  const [columns, setColumns] = useState(6);
   const [masonryRef, setRef] = useState(null);
 
   // get number of columns based on how wide screen is
@@ -47,7 +47,13 @@ const Masonry = ({ children }) => {
 
   return (
     <StyledMasonry ref={ref => setRef(ref)} columns={columns}>
-      {children}
+      {mapChildren().map((col, i) => (
+        <div className="column" key={i}>
+          {col.map(child => (
+            <div key={child.props.pin._id}>{child}</div>
+          ))}
+        </div>
+      ))}
     </StyledMasonry>
   );
 };
