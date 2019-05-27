@@ -34,7 +34,7 @@ const HomePage = () => {
         return (
           data && (
             <MasonryHOC
-              pins={data.pins}
+              pins={data.pins || []}
               onLoadMore={() => {
                 fetchMore({
                   variables: {
