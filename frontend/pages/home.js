@@ -8,11 +8,15 @@ import MasonryHOC from '../components/Masonry/MasonryHOC';
 import { limit } from '../constants';
 
 const HomeStyles = styled.div`
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
   position: relative;
-  .loader {
+  .top-loader {
+    position: absolute;
+    top: 5rem;
+  }
+  .bottom-loader {
     position: absolute;
     bottom: 1rem;
   }
@@ -20,29 +24,56 @@ const HomeStyles = styled.div`
 
 const HomePage = () => {
   return (
-    <Query query={ALL_PINS_QUERY} variables={{ skip: 0, limit }}>
+    <Query
+      query={ALL_PINS_QUERY}
+      variables={{ skip: 0, limit }}
+      fetchPolicy="cache-and-network">
       {({ data, error, loading, fetchMore }) => {
         if (error) return <ErrorMessage error={error} />;
-        if (loading) return <Loader className="loader" />;
+        if (loading)
+          return (
+            <HomeStyles>
+              <MasonryHOC
+                pins={data.pins}
+                onLoadMore={() => {
+                  fetchMore({
+                    variables: {
+                      skip: data.pins.length,
+                    },
+                    updateQuery: (prev, { fetchMoreResult }) => {
+                      if (!fetchMoreResult) return prev;
+                      return Object.assign({}, prev, {
+                        pins: [...prev.pins, ...fetchMoreResult.pins],
+                      });
+                    },
+                  });
+                }}
+              />
+              <Loader className="top-loader" />
+              <Loader className="bottom-loader" />
+            </HomeStyles>
+          );
 
         return (
           data && (
-            <MasonryHOC
-              pins={data.pins}
-              onLoadMore={() => {
-                fetchMore({
-                  variables: {
-                    skip: data.pins.length,
-                  },
-                  updateQuery: (prev, { fetchMoreResult }) => {
-                    if (!fetchMoreResult) return prev;
-                    return Object.assign({}, prev, {
-                      pins: [...prev.pins, ...fetchMoreResult.pins],
-                    });
-                  },
-                });
-              }}
-            />
+            <HomeStyles>
+              <MasonryHOC
+                pins={data.pins}
+                onLoadMore={() => {
+                  fetchMore({
+                    variables: {
+                      skip: data.pins.length,
+                    },
+                    updateQuery: (prev, { fetchMoreResult }) => {
+                      if (!fetchMoreResult) return prev;
+                      return Object.assign({}, prev, {
+                        pins: [...prev.pins, ...fetchMoreResult.pins],
+                      });
+                    },
+                  });
+                }}
+              />
+            </HomeStyles>
           )
         );
       }}
