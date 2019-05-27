@@ -21,22 +21,17 @@ const HomeStyles = styled.div`
 const HomePage = () => {
   return (
     <Query query={ALL_PINS_QUERY} fetchPolicy="cache-and-network">
-      {({ data: { pins }, error, loading, fetchMore }) => {
+      {({ data: { pins }, error, loading }) => {
         if (error) return <ErrorMessage error={error} />;
         if (loading) {
           return (
             <HomeStyles>
-              <MasonryHOC collection={pins} onLoadMore={() => ({})} />
-              <Loader className="loader" />
+              test <Loader className="loader" />
             </HomeStyles>
           );
         }
 
-        return (
-          <HomeStyles>
-            <MasonryHOC collection={pins} onLoadMore={() => ({})} />
-          </HomeStyles>
-        );
+        return <HomeStyles>test</HomeStyles>;
       }}
     </Query>
   );
