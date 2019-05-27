@@ -47,13 +47,7 @@ const Masonry = ({ children }) => {
 
   return (
     <StyledMasonry ref={ref => setRef(ref)} columns={columns}>
-      {mapChildren().map((col, i) => (
-        <div className="column" key={i}>
-          {col.map(child => (
-            <div key={child.props.pin._id}>{child}</div>
-          ))}
-        </div>
-      ))}
+      {children}
     </StyledMasonry>
   );
 };
