@@ -7,7 +7,8 @@ const Query = {
     return await User.findById(ctx.request.userId);
   },
   async pins(parent, { limit, skip }, ctx) {
-    return await Pin.find({}, null, { skip, limit });
+    // return await Pin.find({}, null, { skip, limit });
+    return await Pin.find({});
   },
   async pinDetails(parent, { pinId }, ctx) {
     return await Pin.findById(pinId);

@@ -46,7 +46,6 @@ const Mutation = {
     return { message: 'See you again soon!' };
   },
   async createPin(parent, { createPinInput }, ctx) {
-    console.log('create pin');
     const {
       image,
       largeImage,
