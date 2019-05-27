@@ -31,25 +31,26 @@ const HomePage = () => {
       {({ data, error, loading, fetchMore }) => {
         if (error) return <ErrorMessage error={error} />;
 
-        const handleLoadMore = () => {
-          fetchMore({
-            variables: {
-              skip: data.pins.length,
-            },
-            updateQuery: (prev, { fetchMoreResult }) => {
-              if (!fetchMoreResult) return prev;
-              return Object.assign({}, prev, {
-                pins: [...prev.pins, ...fetchMoreResult.pins],
-              });
-            },
-          });
-        };
-
         if (loading) {
           return (
             data && (
               <HomeStyles>
-                <MasonryHOC pins={data.pins} onLoadMore={handleLoadMore} />
+                <MasonryHOC
+                  pins={data.pins}
+                  onLoadMore={() => {
+                    fetchMore({
+                      variables: {
+                        skip: data.pins.length,
+                      },
+                      updateQuery: (prev, { fetchMoreResult }) => {
+                        if (!fetchMoreResult) return prev;
+                        return Object.assign({}, prev, {
+                          pins: [...prev.pins, ...fetchMoreResult.pins],
+                        });
+                      },
+                    });
+                  }}
+                />
                 <Loader className="top-loader" />
                 <Loader className="bottom-loader" />
               </HomeStyles>
@@ -60,7 +61,22 @@ const HomePage = () => {
         return (
           data && (
             <HomeStyles>
-              <MasonryHOC pins={data.pins} onLoadMore={handleLoadMore} />
+              <MasonryHOC
+                pins={data.pins}
+                onLoadMore={() => {
+                  fetchMore({
+                    variables: {
+                      skip: data.pins.length,
+                    },
+                    updateQuery: (prev, { fetchMoreResult }) => {
+                      if (!fetchMoreResult) return prev;
+                      return Object.assign({}, prev, {
+                        pins: [...prev.pins, ...fetchMoreResult.pins],
+                      });
+                    },
+                  });
+                }}
+              />
             </HomeStyles>
           )
         );
