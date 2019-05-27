@@ -79,6 +79,7 @@ const PageInner = styled.div`
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 `;
 
 export { theme, GlobalStyles, PageInner, PageWrap };
