@@ -21,11 +21,30 @@ const HomeStyles = styled.div`
 const HomePage = () => {
   return (
     <Query query={ALL_PINS_QUERY} variables={{ skip: 0, limit }}>
-      {({ data: { pins }, error, loading }) => {
+      {({ data, error, loading, fetchMore }) => {
         if (error) return <ErrorMessage error={error} />;
         if (loading) return <Loader className="loader" />;
 
-        return <MasonryHOC pins={pins} onLoadMore={() => ({})} />;
+        return (
+          data && (
+            <MasonryHOC
+              pins={data.pins}
+              onLoadMore={() => {
+                fetchMore({
+                  variables: {
+                    skip: data.pins.length,
+                  },
+                  updateQuery: (prev, { fetchMoreResult }) => {
+                    if (!fetchMoreResult) return prev;
+                    return Object.assign({}, prev, {
+                      pins: [...prev.pins, ...fetchMoreResult.pins],
+                    });
+                  },
+                });
+              }}
+            />
+          )
+        );
       }}
     </Query>
   );
