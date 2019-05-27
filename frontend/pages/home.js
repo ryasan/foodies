@@ -32,24 +32,22 @@ const HomePage = () => {
         if (error) return <ErrorMessage error={error} />;
 
         return (
-          data && (
-            <MasonryHOC
-              pins={data.pins || []}
-              onLoadMore={() => {
-                fetchMore({
-                  variables: {
-                    skip: data.pins.length,
-                  },
-                  updateQuery: (prev, { fetchMoreResult }) => {
-                    if (!fetchMoreResult) return prev;
-                    return Object.assign({}, prev, {
-                      pins: [...prev.pins, ...fetchMoreResult.pins],
-                    });
-                  },
-                });
-              }}
-            />
-          )
+          <MasonryHOC
+            pins={data.pins || []}
+            onLoadMore={() => {
+              fetchMore({
+                variables: {
+                  skip: data.pins.length,
+                },
+                updateQuery: (prev, { fetchMoreResult }) => {
+                  if (!fetchMoreResult) return prev;
+                  return Object.assign({}, prev, {
+                    pins: [...prev.pins, ...fetchMoreResult.pins],
+                  });
+                },
+              });
+            }}
+          />
         );
       }}
     </Query>
