@@ -12,6 +12,7 @@ const HomeStyles = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  min-height: 30rem;
   .loader {
     position: absolute;
     bottom: 1rem;
