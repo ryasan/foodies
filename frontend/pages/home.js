@@ -20,10 +20,7 @@ const HomeStyles = styled.div`
 
 const HomePage = () => {
   return (
-    <Query
-      query={ALL_PINS_QUERY}
-      variables={{ skip: 0, limit }}
-      fetchPolicy="cache-and-network">
+    <Query query={ALL_PINS_QUERY} variables={{ skip: 0, limit }}>
       {({ data: { pins }, error, loading, fetchMore }) => {
         if (error) return <ErrorMessage error={error} />;
         if (pins)
