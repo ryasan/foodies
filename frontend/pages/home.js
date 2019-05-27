@@ -21,21 +21,11 @@ const HomeStyles = styled.div`
 const HomePage = () => {
   return (
     <Query query={ALL_PINS_QUERY} variables={{ skip: 0, limit }}>
-      {({ data: { pins }, error, loading, fetchMore }) => {
+      {({ data: { pins }, error, loading }) => {
         if (error) return <ErrorMessage error={error} />;
-        if (loading) {
-          return (
-            <HomeStyles>
-              <Loader className="loader" />
-            </HomeStyles>
-          );
-        }
+        if (loading) return <Loader className="loader" />;
 
-        return (
-          <HomeStyles>
-            <MasonryHOC pins={pins} onLoadMore={() => ({})} />
-          </HomeStyles>
-        );
+        return <MasonryHOC pins={pins} onLoadMore={() => ({})} />;
       }}
     </Query>
   );
