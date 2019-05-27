@@ -32,9 +32,7 @@ const tabs = [
 const AccountPage = () => {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
-  const changeTabs = i => {
-    setSelectedIdx(i);
-  };
+  const changeTabs = i => setSelectedIdx(i);
 
   return (
     <PleaseSignin>

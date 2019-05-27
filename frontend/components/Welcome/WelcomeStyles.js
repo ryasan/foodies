@@ -10,7 +10,7 @@ const StyledWelcome = styled.header`
   .text {
     position: relative;
     z-index: 1;
-    background: rgba(34, 17, 1, 0.8);
+    background: rgba(34, 17, 1, 0.9);
     width: 100%;
     height: 100%;
     color: white;
