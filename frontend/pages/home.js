@@ -20,52 +20,21 @@ const HomeStyles = styled.div`
 
 const HomePage = () => {
   return (
-    <Query query={ALL_PINS_QUERY} variables={{ skip: 0, limit }}>
+    <Query query={ALL_PINS_QUERY} fetchPolicy="cache-and-network">
       {({ data: { pins }, error, loading, fetchMore }) => {
         if (error) return <ErrorMessage error={error} />;
-        if (pins)
-          if (loading) {
-            return (
-              <HomeStyles>
-                <MasonryHOC
-                  collection={pins}
-                  onLoadMore={() => {
-                    fetchMore({
-                      variables: {
-                        skip: pins.length,
-                      },
-                      updateQuery: (prev, { fetchMoreResult }) => {
-                        if (!fetchMoreResult) return prev;
-                        return Object.assign({}, prev, {
-                          pins: [...prev.pins, ...fetchMoreResult.pins],
-                        });
-                      },
-                    });
-                  }}
-                />
-                <Loader className="loader" />
-              </HomeStyles>
-            );
-          }
+        if (loading) {
+          return (
+            <HomeStyles>
+              <MasonryHOC collection={pins} onLoadMore={() => ({})} />
+              <Loader className="loader" />
+            </HomeStyles>
+          );
+        }
 
         return (
           <HomeStyles>
-            <MasonryHOC
-              collection={pins}
-              onLoadMore={() => {
-                fetchMore({
-                  variables: {
-                    skip: pins.length,
-                  },
-                  updateQuery: (prev, { fetchMoreResult }) => {
-                    if (!fetchMoreResult) return prev;
-                    return Object.assign({}, prev, {
-                      pins: [...prev.pins, ...fetchMoreResult.pins],
-                    });
-                  },
-                });
-              }}
-            />
+            <MasonryHOC collection={pins} onLoadMore={() => ({})} />
           </HomeStyles>
         );
       }}
