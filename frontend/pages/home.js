@@ -8,9 +8,9 @@ import MasonryHOC from '../components/Masonry/MasonryHOC';
 import { limit } from '../constants';
 
 const HomeStyles = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   position: relative;
   .loader {
     position: absolute;
