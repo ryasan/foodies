@@ -12,11 +12,7 @@ const HomeStyles = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  .top-loader {
-    position: absolute;
-    top: 5rem;
-  }
-  .bottom-loader {
+  .loader {
     position: absolute;
     bottom: 1rem;
   }
@@ -50,8 +46,7 @@ const HomePage = () => {
                   });
                 }}
               />
-              <Loader className="top-loader" />
-              <Loader className="bottom-loader" />
+              <Loader className="loader" />
             </HomeStyles>
           );
         }
