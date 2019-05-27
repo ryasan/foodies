@@ -6,7 +6,7 @@ const Query = {
     if (!ctx.request.userId) return null;
     return await User.findById(ctx.request.userId);
   },
-  async pins(parent, { limit, skip }, ctx) {
+  async pins(parent, args, ctx) {
     // return await Pin.find({}, null, { skip, limit });
     return await Pin.find({});
   },
