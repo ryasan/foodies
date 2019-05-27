@@ -21,10 +21,10 @@ const StyledTile = styled.div`
     padding: 0.5rem;
     border-radius: ${props => props.theme.br};
     transition: all 0.3s ease;
-    visibility: hidden;
-    animation: ${cardScale} 1s;
+    visibility: visible;
+    /* animation: ${cardScale} 1s;
     animation-delay: 0.8s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards; */
     &:hover {
       box-shadow: 0 0 1rem ${props => props.theme.bsColor},
         0 1rem 1rem -2px ${props => props.theme.bsColor};
