@@ -1,6 +1,5 @@
 const User = require('../models/user');
 const Pin = require('../models/pin');
-const perPage = 10;
 
 const Query = {
   async me(parent, args, ctx) {
