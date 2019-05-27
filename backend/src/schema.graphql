@@ -2,7 +2,7 @@
 type Query {
   users: [User!]!
   me: User
-  pins: [Pin!]!
+  pins(limit: Int!, skip: Int!): [Pin!]!
   pinDetails(pinId: ID!): Pin
   myPins: [Pin!]!
   likedPins: [Pin!]!

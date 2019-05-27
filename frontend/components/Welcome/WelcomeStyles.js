@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledWelcome = styled.header`
   position: relative;
-  height: 25rem;
+  height: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;
