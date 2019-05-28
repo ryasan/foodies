@@ -6,14 +6,20 @@ import styled from 'styled-components';
 import MY_PINS_QUERY from '../graphql/queries/myPins';
 import LIKED_PINS_QUERY from '../graphql/queries/likedPins';
 import PleaseSignin from '../components/PleaseSignin/PleaseSignin';
-import User from '../components/User/User';
-import Masonry from '../components/Masonry/Masonry';
-import Tile from '../components/Tile/Tile';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import Button from '../components/shared/Button';
+import MasonryHOC from '../components/Masonry/MasonryHOC';
+import Loader from '../components/Loader/Loader';
 
 const AccountPageStyles = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .loader {
+    margin-top: 2rem;
+  }
 
   button {
     margin-bottom: 1.5rem;
@@ -25,8 +31,8 @@ const AccountPageStyles = styled.div`
 `;
 
 const tabs = [
-  { title: 'My Pins', query: MY_PINS_QUERY, key: 'myPins' },
-  { title: 'Liked Pins', query: LIKED_PINS_QUERY, key: 'likedPins' },
+  { title: 'My Pins', query: MY_PINS_QUERY, fetch: 'myPins' },
+  { title: 'Liked Pins', query: LIKED_PINS_QUERY, fetch: 'likedPins' },
 ];
 
 const AccountPage = () => {
@@ -36,46 +42,35 @@ const AccountPage = () => {
     setSelectedIdx(i);
   };
 
+  const { query, fetch } = tabs[selectedIdx];
+
   return (
     <PleaseSignin>
-      <User>
-        {({ data: { me } }) => {
-          return (
-            me && (
-              <Query query={tabs[selectedIdx].query}>
-                {({ data, error, loading }) => {
-                  if (error) return <ErrorMessage error={error} />;
-                  if (loading) return <h2>Loading Pins...</h2>;
-                  const pins = data[tabs[selectedIdx].key];
+      <AccountPageStyles>
+        <div>
+          {tabs.map(({ title }, i) => (
+            <Button
+              key={title}
+              className={selectedIdx === i ? 'active' : ''}
+              onClick={() => changeTabs(i)}>
+              {title}
+            </Button>
+          ))}
+        </div>
+        <Query query={query}>
+          {({ data, error, loading, fetchMore }) => {
+            if (error) return <ErrorMessage error={error} />;
+            if (loading) return <Loader className="loader" />;
+            const pins = data[fetch];
 
-                  return (
-                    <AccountPageStyles>
-                      {tabs.map(({ title }, i) => (
-                        <Button
-                          key={title}
-                          className={selectedIdx === i ? 'active' : ''}
-                          onClick={() => changeTabs(i)}>
-                          {title}
-                        </Button>
-                      ))}
-
-                      {pins.length ? (
-                        <Masonry>
-                          {pins.map(pin => (
-                            <Tile key={pin._id} pin={pin} />
-                          ))}
-                        </Masonry>
-                      ) : (
-                        <h2>Nothing to see here 👀</h2>
-                      )}
-                    </AccountPageStyles>
-                  );
-                }}
-              </Query>
-            )
-          );
-        }}
-      </User>
+            return pins.length ? (
+              <MasonryHOC pins={pins || []} fetchMore={fetchMore} />
+            ) : (
+              <h2>Nothing to see here 👀</h2>
+            );
+          }}
+        </Query>
+      </AccountPageStyles>
     </PleaseSignin>
   );
 };

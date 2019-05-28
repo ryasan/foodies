@@ -17,7 +17,7 @@ const style = {
   margin: '0 auto',
 };
 
-const MasonryHOC = ({ pins, onLoadMore }) => {
+const MasonryHOC = ({ pins, fetchMore }) => {
   const getDocumentHeight = () => {
     const body = document.body;
     const html = document.documentElement;
@@ -40,7 +40,18 @@ const MasonryHOC = ({ pins, onLoadMore }) => {
 
   const handleScroll = () => {
     if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
-    onLoadMore();
+
+    fetchMore({
+      variables: {
+        skip: pins.length,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return Object.assign({}, prev, {
+          pins: [...prev.pins, ...fetchMoreResult.pins],
+        });
+      },
+    });
   };
 
   useEffect(() => {
@@ -59,7 +70,7 @@ const MasonryHOC = ({ pins, onLoadMore }) => {
 
 MasonryHOC.propTypes = {
   pins: PropTypes.array.isRequired,
-  onLoadMore: PropTypes.func.isRequired,
+  fetchMore: PropTypes.func.isRequired,
 };
 
 export default MasonryHOC;

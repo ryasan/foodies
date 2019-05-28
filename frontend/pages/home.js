@@ -33,22 +33,7 @@ const HomePage = () => {
         if (loading) {
           return (
             <HomeStyles>
-              <MasonryHOC
-                pins={data.pins || []}
-                onLoadMore={() => {
-                  fetchMore({
-                    variables: {
-                      skip: data.pins.length,
-                    },
-                    updateQuery: (prev, { fetchMoreResult }) => {
-                      if (!fetchMoreResult) return prev;
-                      return Object.assign({}, prev, {
-                        pins: [...prev.pins, ...fetchMoreResult.pins],
-                      });
-                    },
-                  });
-                }}
-              />
+              <MasonryHOC pins={data.pins || []} fetchMore={fetchMore} />
               <Loader className="loader" />
             </HomeStyles>
           );
@@ -56,22 +41,7 @@ const HomePage = () => {
 
         return (
           <HomeStyles>
-            <MasonryHOC
-              pins={data.pins || []}
-              onLoadMore={() => {
-                fetchMore({
-                  variables: {
-                    skip: data.pins.length,
-                  },
-                  updateQuery: (prev, { fetchMoreResult }) => {
-                    if (!fetchMoreResult) return prev;
-                    return Object.assign({}, prev, {
-                      pins: [...prev.pins, ...fetchMoreResult.pins],
-                    });
-                  },
-                });
-              }}
-            />
+            <MasonryHOC pins={data.pins || []} fetchMore={fetchMore} />
           </HomeStyles>
         );
       }}
