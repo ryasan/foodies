@@ -7,7 +7,6 @@ const Query = {
     return await User.findById(ctx.request.userId);
   },
   async pins(parent, { limit, skip }, ctx) {
-    console.log(await Pin.find({}, null, { limit, skip }));
     return await Pin.find({}, null, { limit, skip });
   },
   async pinDetails(parent, { pinId }, ctx) {
@@ -21,7 +20,6 @@ const Query = {
       limit,
       skip,
     });
-    console.log(pins);
     // 3. return pins
     return pins;
   },
