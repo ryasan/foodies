@@ -39,6 +39,7 @@ const StyledWelcome = styled.header`
   }
 
   button {
+    outline: none;
     position: absolute;
     z-index: 1;
     top: 0;
