@@ -13,9 +13,11 @@ const HomeStyles = styled.div`
   align-items: center;
   position: relative;
   min-height: 20rem;
+  padding-bottom: 5vh;
   .loader {
-    position: absolute;
-    bottom: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
   }
 `;
 
