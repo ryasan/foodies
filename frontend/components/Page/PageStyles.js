@@ -77,9 +77,9 @@ const PageWrap = styled.div`
 const PageInner = styled.div`
   padding: 2.5rem 5rem;
   min-height: 100vh;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; */
 `;
 
 export { theme, GlobalStyles, PageInner, PageWrap };

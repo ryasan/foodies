@@ -1,8 +1,21 @@
 import { useEffect } from 'react';
+import Masonry from 'react-masonry-component';
 import PropTypes from 'prop-types';
 
-import Masonry from './Masonry';
+// import Masonry from './Masonry';
+
 import Tile from '../Tile/Tile';
+
+const masonryOptions = {
+  transitionDuration: 500,
+  isFitWidth: true,
+};
+
+const style = {
+  listStyleType: 'none',
+  padding: 0,
+  margin: '0 auto',
+};
 
 const MasonryHOC = ({ pins, onLoadMore }) => {
   const getDocumentHeight = () => {
@@ -36,7 +49,7 @@ const MasonryHOC = ({ pins, onLoadMore }) => {
   });
 
   return (
-    <Masonry>
+    <Masonry style={style} elementType="ul" options={masonryOptions}>
       {pins.map(pin => (
         <Tile key={pin._id} pin={pin} />
       ))}

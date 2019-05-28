@@ -1,30 +1,14 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { darken } from 'polished';
 
-const cardScale = keyframes`
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-    visibility: visible;
-  }
-`;
-
-const StyledTile = styled.div`
+const StyledTile = styled.li`
   margin: 0.4rem;
 
   .content {
+    max-width: 250px;
     padding: 0.5rem;
     border-radius: ${props => props.theme.br};
     transition: all 0.3s ease;
-    visibility: visible;
-    /* animation: ${cardScale} 1s;
-    animation-delay: 0.8s;
-    animation-fill-mode: forwards; */
     &:hover {
       box-shadow: 0 0 1rem ${props => props.theme.bsColor},
         0 1rem 1rem -2px ${props => props.theme.bsColor};

@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 const StyledMasonry = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   justify-content: center;
-  align-content: stretch;
+  align-content: stretch; */
+  outline: 1px solid red;
   width: 100%;
+  .masonry {
+    outline: 1px solid red;
+    background: red;
+  }
 
   .column {
     min-width: ${props => `calc(300px / ${props.columns})`};

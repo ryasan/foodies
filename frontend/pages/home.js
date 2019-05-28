@@ -6,7 +6,6 @@ import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import Loader from '../components/Loader/Loader';
 import MasonryHOC from '../components/Masonry/MasonryHOC';
 import { limit } from '../constants';
-import Tile from '../components/Tile/Tile';
 
 const HomeStyles = styled.div`
   display: flex;

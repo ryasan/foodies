@@ -26,6 +26,7 @@
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.4",
     "react-icons": "^3.7.0",
+    "react-masonry-component": "^6.2.1",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
