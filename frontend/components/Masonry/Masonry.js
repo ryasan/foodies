@@ -1,65 +1,79 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import Masonry from 'react-masonry-component';
 import PropTypes from 'prop-types';
 
-import StyledMasonry from './MasonryStyles';
-import { brakePoints } from '../../constants';
+import Tile from '../Tile/Tile';
 
-const Masonry = ({ children }) => {
-  const [columns, setColumns] = useState(1);
-  const [masonryRef, setRef] = useState(null);
+const masonryOptions = {
+  transitionDuration: 500,
+  isFitWidth: true,
+};
 
-  // get number of columns based on how wide screen is
-  const getColumns = w => {
-    return (
-      brakePoints.reduceRight((p, c, i) => {
-        return c < w ? p : i;
-      }, brakePoints.length) + 1
+const style = {
+  listStyleType: 'none',
+  padding: 0,
+  margin: '0 auto',
+};
+
+const MasonryHOC = ({ pins, fetchMore }) => {
+  const getDocumentHeight = () => {
+    const body = document.body;
+    const html = document.documentElement;
+
+    return Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight,
     );
   };
 
-  // handle window resize
-  const onResize = () => {
-    if (masonryRef) {
-      const newColumns = getColumns(masonryRef.offsetWidth);
-      if (newColumns !== columns) setColumns(newColumns);
-    }
+  const getScrollTop = () => {
+    return window.pageYOffset !== undefined
+      ? window.pageYOffset
+      : (document.documentElement || document.body.parentNode || document.body)
+          .scrollTop;
   };
 
-  // put pins in columns
-  const mapChildren = () => {
-    const cols = [];
-    const numC = columns;
-    for (let i = 0; i < numC; i++) {
-      cols.push([]);
-    }
+  const handleScroll = () => {
+    if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
 
-    return children.reduce((c, child, i) => {
-      c[i % numC].push(child);
-      return c;
-    }, cols);
+    fetchMore({
+      variables: {
+        skip: pins.length,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return Object.assign({}, prev, {
+          pins: [
+            ...prev.pins,
+            ...fetchMoreResult.pins.filter(
+              m => !prev.pins.some(p => p._id === m._id),
+            ),
+          ],
+        });
+      },
+    });
   };
 
-  useEffect(onResize);
   useEffect(() => {
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   });
 
   return (
-    <StyledMasonry ref={ref => setRef(ref)} columns={columns}>
-      {mapChildren().map((col, i) => (
-        <div className="column" key={i}>
-          {col.map(child => (
-            <div key={child.props.pin._id}>{child}</div>
-          ))}
-        </div>
+    <Masonry style={style} elementType="ul" options={masonryOptions}>
+      {pins.map(pin => (
+        <Tile key={pin._id} pin={pin} />
       ))}
-    </StyledMasonry>
+    </Masonry>
   );
 };
 
-Masonry.propTypes = {
-  children: PropTypes.array.isRequired,
+MasonryHOC.propTypes = {
+  pins: PropTypes.array.isRequired,
+  fetchMore: PropTypes.func.isRequired,
 };
 
-export default Masonry;
+export default MasonryHOC;

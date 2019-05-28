@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import ALL_PINS_QUERY from '../graphql/queries/pins';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import Loader from '../components/Loader/Loader';
-import MasonryHOC from '../components/Masonry/MasonryHOC';
+import Masonry from '../components/Masonry/Masonry';
 import { limit } from '../constants';
 
 const HomeStyles = styled.div`
@@ -33,7 +33,7 @@ const HomePage = () => {
         if (loading) {
           return (
             <HomeStyles>
-              <MasonryHOC pins={data.pins || []} fetchMore={fetchMore} />
+              <Masonry pins={data.pins || []} fetchMore={fetchMore} />
               <Loader className="loader" />
             </HomeStyles>
           );
@@ -41,7 +41,7 @@ const HomePage = () => {
 
         return (
           <HomeStyles>
-            <MasonryHOC pins={data.pins || []} fetchMore={fetchMore} />
+            <Masonry pins={data.pins || []} fetchMore={fetchMore} />
           </HomeStyles>
         );
       }}

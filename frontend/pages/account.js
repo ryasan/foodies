@@ -8,7 +8,7 @@ import LIKED_PINS_QUERY from '../graphql/queries/likedPins';
 import PleaseSignin from '../components/PleaseSignin/PleaseSignin';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import Button from '../components/shared/Button';
-import MasonryHOC from '../components/Masonry/MasonryHOC';
+import Masonry from '../components/Masonry/Masonry';
 import Loader from '../components/Loader/Loader';
 
 const AccountPageStyles = styled.div`
@@ -64,7 +64,7 @@ const AccountPage = () => {
             const pins = data[fetch];
 
             return pins.length ? (
-              <MasonryHOC pins={pins || []} fetchMore={fetchMore} />
+              <Masonry pins={pins || []} fetchMore={fetchMore} />
             ) : (
               <h2>Nothing to see here 👀</h2>
             );
