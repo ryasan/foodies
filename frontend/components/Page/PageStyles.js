@@ -2,7 +2,7 @@ import styled, { createGlobalStyle, css } from 'styled-components';
 import device from '../../utils/device';
 
 const theme = {
-  primary: '#f64958',
+  primary: '#ff0033',
   white: '#fff',
   offWhite: '#faf6f6',
   black: '#333',

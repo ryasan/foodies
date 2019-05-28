@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { lighten } from 'polished';
 
 const loading = keyframes`
   from {
@@ -42,9 +43,9 @@ const Form = styled.form`
       display: block;
       background-image: linear-gradient(
         to right,
-        #f64958 0%,
-        #e2b04a 50%,
-        #f64958 100%
+        ${props => props.theme.primary} 0%,
+        ${props => lighten(0.3, props.theme.primary)} 50%,
+        ${props => props.theme.primary} 100%
       );
     }
     &[aria-busy='true']::before {
