@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 const MY_PINS_QUERY = gql`
-  query {
-    myPins {
+  query MY_PINS_QUERY($limit: Int!, $skip: Int!) {
+    myPins(limit: $limit, skip: $skip) {
       _id
       title
       description

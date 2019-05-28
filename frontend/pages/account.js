@@ -10,6 +10,7 @@ import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import Button from '../components/shared/Button';
 import Masonry from '../components/Masonry/Masonry';
 import Loader from '../components/Loader/Loader';
+import { limit } from '../constants';
 
 const AccountPageStyles = styled.div`
   width: 100%;
@@ -31,8 +32,8 @@ const AccountPageStyles = styled.div`
 `;
 
 const tabs = [
-  { title: 'My Pins', query: MY_PINS_QUERY, fetch: 'myPins' },
-  { title: 'Liked Pins', query: LIKED_PINS_QUERY, fetch: 'likedPins' },
+  { title: 'My Pins', query: MY_PINS_QUERY, propKey: 'myPins' },
+  { title: 'Liked Pins', query: LIKED_PINS_QUERY, propKey: 'likedPins' },
 ];
 
 const AccountPage = () => {
@@ -42,7 +43,7 @@ const AccountPage = () => {
     setSelectedIdx(i);
   };
 
-  const { query, fetch } = tabs[selectedIdx];
+  const { query, propKey } = tabs[selectedIdx];
 
   return (
     <PleaseSignin>
@@ -57,14 +58,21 @@ const AccountPage = () => {
             </Button>
           ))}
         </div>
-        <Query query={query}>
+        <Query
+          query={query}
+          variables={{ limit, skip: 0 }}
+          fetchPolicy="cache-and-network">
           {({ data, error, loading, fetchMore }) => {
             if (error) return <ErrorMessage error={error} />;
             if (loading) return <Loader className="loader" />;
-            const pins = data[fetch];
+            const pins = data[propKey];
 
             return pins.length ? (
-              <Masonry pins={pins || []} fetchMore={fetchMore} />
+              <Masonry
+                pins={pins || []}
+                fetchMore={fetchMore}
+                propKey={propKey}
+              />
             ) : (
               <h2>Nothing to see here 👀</h2>
             );

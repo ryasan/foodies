@@ -4,8 +4,8 @@ type Query {
   me: User
   pins(limit: Int!, skip: Int!): [Pin!]!
   pinDetails(pinId: ID!): Pin
-  myPins: [Pin!]!
-  likedPins: [Pin!]!
+  myPins(limit: Int!, skip: Int!): [Pin!]!
+  likedPins(limit: Int!, skip: Int!): [Pin!]!
 }
 
 type Mutation {

@@ -7,21 +7,29 @@ const Query = {
     return await User.findById(ctx.request.userId);
   },
   async pins(parent, { limit, skip }, ctx) {
+    console.log(await Pin.find({}, null, { limit, skip }));
     return await Pin.find({}, null, { limit, skip });
   },
   async pinDetails(parent, { pinId }, ctx) {
     return await Pin.findById(pinId);
   },
-  async myPins(parent, args, ctx) {
+  async myPins(parent, { limit, skip }, ctx) {
     // 1. find user
     const user = await User.findById(ctx.request.userId);
     // 2. get user's pin id collection and return actual pin item
-    const pins = await Pin.find({ _id: { $in: user.pins } });
+    const pins = await Pin.find({ _id: { $in: user.pins } }, null, {
+      limit,
+      skip,
+    });
+    console.log(pins);
     // 3. return pins
     return pins;
   },
-  async likedPins(parent, args, ctx) {
-    return await Pin.find({ likedByIds: ctx.request.userId });
+  async likedPins(parent, { limit, skip }, ctx) {
+    return await Pin.find({ likedByIds: ctx.request.userId }, null, {
+      limit,
+      skip,
+    });
   },
 };
 

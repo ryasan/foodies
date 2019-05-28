@@ -33,7 +33,11 @@ const HomePage = () => {
         if (loading) {
           return (
             <HomeStyles>
-              <Masonry pins={data.pins || []} fetchMore={fetchMore} />
+              <Masonry
+                pins={data.pins || []}
+                fetchMore={fetchMore}
+                propKey="pins"
+              />
               <Loader className="loader" />
             </HomeStyles>
           );
@@ -41,7 +45,11 @@ const HomePage = () => {
 
         return (
           <HomeStyles>
-            <Masonry pins={data.pins || []} fetchMore={fetchMore} />
+            <Masonry
+              pins={data.pins || []}
+              fetchMore={fetchMore}
+              propKey="pins"
+            />
           </HomeStyles>
         );
       }}

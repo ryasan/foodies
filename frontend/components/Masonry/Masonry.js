@@ -15,7 +15,7 @@ const style = {
   margin: '0 auto',
 };
 
-const MasonryHOC = ({ pins, fetchMore }) => {
+const MasonryHOC = ({ pins, fetchMore, propKey }) => {
   const getDocumentHeight = () => {
     const body = document.body;
     const html = document.documentElement;
@@ -46,10 +46,10 @@ const MasonryHOC = ({ pins, fetchMore }) => {
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
         return Object.assign({}, prev, {
-          pins: [
-            ...prev.pins,
-            ...fetchMoreResult.pins.filter(
-              m => !prev.pins.some(p => p._id === m._id),
+          [propKey]: [
+            ...prev[propKey],
+            ...fetchMoreResult[propKey].filter(
+              m => !prev[propKey].some(p => p._id === m._id),
             ),
           ],
         });
@@ -74,6 +74,7 @@ const MasonryHOC = ({ pins, fetchMore }) => {
 MasonryHOC.propTypes = {
   pins: PropTypes.array.isRequired,
   fetchMore: PropTypes.func.isRequired,
+  propKey: PropTypes.string.isRequired,
 };
 
 export default MasonryHOC;
