@@ -6,3 +6,4 @@
 6. ~~Infinite scroll *fetch more pins on scroll.~~
 7. Add follow feature.
 8. Update cache for optimistic response.
+9. Use low quality image before using high quality image. When high quality image loads, replace low quality image.
