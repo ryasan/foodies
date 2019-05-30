@@ -3,6 +3,7 @@ const Mutation = require('./resolvers/Mutation');
 const Query = require('./resolvers/Query');
 require('./db');
 
+// initialize graphql server
 const createServer = () => {
   return new GraphQLServer({
     typeDefs: 'src/schema.graphql',
