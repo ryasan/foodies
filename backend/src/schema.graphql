@@ -2,10 +2,10 @@
 type Query {
   users: [User!]!
   me: User
-  pins(limit: Int!, skip: Int!): [Pin!]!
+  pins(limit: Int, skip: Int): [Pin!]!
   pinDetails(pinId: ID!): Pin
-  myPins(limit: Int!, skip: Int!): [Pin!]!
-  likedPins(limit: Int!, skip: Int!): [Pin!]!
+  myPins(limit: Int, skip: Int): [Pin!]!
+  likedPins(limit: Int, skip: Int): [Pin!]!
 }
 
 type Mutation {
