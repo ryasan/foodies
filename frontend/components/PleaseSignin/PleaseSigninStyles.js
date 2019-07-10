@@ -5,7 +5,6 @@ const PleaseSigninStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
   .inner {
     width: ${props => props.theme.maxWidth};
   }

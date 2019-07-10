@@ -7,7 +7,7 @@ const PinDetailsPage = ({ query }) => (
   <User>
     {({ data: { me } }) => {
       return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <PinDetails pinId={query.id} currentUserId={me && me._id} />
         </div>
       );
