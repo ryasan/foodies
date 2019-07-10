@@ -12,7 +12,7 @@ const Tile = ({ pin: { title, image, likedByIds, creatorUsername, _id } }) => {
   return (
     <StyledTile>
       <div className="content">
-        <img src={image} onClick={goToDetails} />
+        <img src={image} onClick={goToDetails} alt={title} />
         <div className="card-body">
           {title}
           <div className="end">

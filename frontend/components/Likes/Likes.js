@@ -56,7 +56,7 @@ const withUser = Component => {
       </Query>
     );
   };
-  WithUser.displayName = 'WithUser';
+  WithUser.displayName = 'Likes';
 
   return WithUser;
 };
