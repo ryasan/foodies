@@ -1,9 +1,10 @@
-describe('sample test 101', () => {
-  it('works as expected', () => {
-    expect(1).toEqual(1);
-  });
+import CreatePin from './CreatePin';
+import { shallow } from 'enzyme';
 
-  it('handles ranges', () => {
-    expect(200).toBeGreaterThan(100);
+describe('<CreatePin />', () => {
+  const wrapper = shallow(<CreatePin />);
+
+  it('exists', () => {
+    expect(wrapper.exists()).toBe(true);
   });
 });
