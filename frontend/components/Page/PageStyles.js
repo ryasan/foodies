@@ -65,6 +65,7 @@ const GlobalStyles = createGlobalStyle`
 
 const loginOpenCSS = css`
   filter: blur(3px) grayscale(1);
+  transform: scale(1.1);
   pointer-events: none;
 `;
 
