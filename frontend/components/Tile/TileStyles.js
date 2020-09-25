@@ -1,40 +1,47 @@
-import styled from 'styled-components';
-import { darken } from 'polished';
+import styled from 'styled-components'
+import { darken } from 'polished'
 
-const StyledTile = styled.li`
-  margin: 0.4rem;
-
-  .content {
-    max-width: 250px;
-    padding: 0.5rem;
-    border-radius: ${props => props.theme.br};
+const Tile = styled.li`
+    border-radius: 0.5rem;
+    height: 35rem;
+    margin: 0.4rem;
+    padding: 0.5rem 0.5rem 0;
     transition: all 0.3s ease;
+    width: 23rem;
+
     &:hover {
-      box-shadow: 0 0 1rem ${props => props.theme.bsColor},
-        0 1rem 1rem -2px ${props => props.theme.bsColor};
+        box-shadow: var(--box-shadow-sm);
     }
+`
 
-    img {
-      width: 100%;
-      border-radius: ${props => props.theme.br};
-      cursor: zoom-in;
-    }
+Tile.Img = styled.img`
+    border-radius: 0.5rem;
+    cursor: zoom-in;
+    height: 93%;
+    object-fit: cover;
+    width: 100%;
+`
 
-    .card-body {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 900;
-      font-size: 1.4rem;
-      color: ${props => darken(0.3, props.theme.gray)};
-      font-size: 1.5rem;
-      .end {
-        display: flex;
-        align-items: center;
-        color: ${props => props.theme.gray};
-      }
-    }
-  }
-`;
+Tile.Body = styled.div`
+    align-items: center;
+    color: var(--gray-800);
+    display: flex;
+    font-size: var(--font-size-sm);
+    justify-content: space-between;
+    margin: auto;
+`
 
-export default StyledTile;
+Tile.Footer = styled.div`
+    align-items: center;
+    color: var(--gray-800);
+    display: flex;
+`
+
+Tile.Text = styled.span`
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`
+
+export default Tile

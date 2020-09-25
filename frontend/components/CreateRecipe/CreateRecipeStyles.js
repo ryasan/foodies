@@ -80,7 +80,7 @@ CreateRecipe.Field = styled.div`
 `
 
 CreateRecipe.AddBtn = styled.button`
-    ${btns.round}
+    ${btns.rounded}
     ${btns.clearGray}
 
     margin-left: 2rem;

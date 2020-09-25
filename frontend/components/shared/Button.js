@@ -46,7 +46,7 @@ export const btns = {
             color: var(--red-600);
         }
 `,
-    round: css`
+    rounded: css`
         ${base}
 
         border-radius: 50%;
@@ -57,6 +57,13 @@ export const btns = {
         ${base}
 
         height: 3.5rem;
+        min-width: 8rem;
+`,
+    wideRounded: css`
+        ${base}
+
+        border-radius: 2rem;
+        min-height: 3.5rem;
         min-width: 8rem;
 `
 }

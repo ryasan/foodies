@@ -99,7 +99,7 @@ const CreateRecipeComponent = () => {
                         <CreateRecipe.Fieldset disabled={loading}>
                             <ErrorMessage error={error} />
                             <CreateRecipe.TextInputs>
-                                <CreateRecipe.Field className='TextField'>
+                                <CreateRecipe.Field>
                                     <CreateRecipe.TextArea
                                         required
                                         name='title'

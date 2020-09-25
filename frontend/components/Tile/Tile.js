@@ -1,32 +1,32 @@
-import PropTypes from 'prop-types';
-import Router from 'next/router';
+import PropTypes from 'prop-types'
+import Router from 'next/router'
 
-import StyledTile from './TileStyles';
-import Likes from '../Likes/Likes';
+import Tile from './TileStyles'
+import Likes from '../Likes/Likes'
 
-const Tile = ({ recipe: { title, image, likedByIds, creatorUsername, _id } }) => {
-  const goToDetails = () => {
-    Router.push({ pathname: '/recipe-details', query: { id: _id } });
-  };
+const TileComponent = ({
+    recipe: { title, image, likedByIds, creatorUsername, _id }
+}) => {
+    const goToDetails = () => {
+        Router.push({ pathname: '/recipe-details', query: { id: _id } })
+    }
 
-  return (
-    <StyledTile>
-      <div className="content">
-        <img src={image} onClick={goToDetails} alt={title} />
-        <div className="card-body">
-          {title}
-          <div className="end">
-            <small>by {creatorUsername}</small>
-            <Likes recipeId={_id} likedByIds={likedByIds} />
-          </div>
-        </div>
-      </div>
-    </StyledTile>
-  );
-};
+    return (
+        <Tile>
+            <Tile.Img src={image} onClick={goToDetails} alt={title} />
+            <Tile.Body>
+                <Tile.Text>{title}</Tile.Text>
+                <Tile.Footer>
+                    <Tile.Text>by {creatorUsername}</Tile.Text>
+                    <Likes recipeId={_id} likedByIds={likedByIds} />
+                </Tile.Footer>
+            </Tile.Body>
+        </Tile>
+    )
+}
 
-Tile.propTypes = {
-  recipe: PropTypes.object.isRequired,
-};
+TileComponent.propTypes = {
+    recipe: PropTypes.object.isRequired
+}
 
-export default Tile;
+export default TileComponent

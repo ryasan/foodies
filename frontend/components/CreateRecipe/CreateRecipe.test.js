@@ -1,5 +1,6 @@
-import CreatePin from './CreatePin';
 import { shallow } from 'enzyme';
+
+import CreatePin from './CreatePin';
 
 describe('<CreatePin />', () => {
   const wrapper = shallow(<CreatePin />);

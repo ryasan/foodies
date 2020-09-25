@@ -1,42 +1,51 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components'
 
 const throb = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1.5);
-  }
-  40% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(1.5);
-  }
-  80% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-
-const StyledLikes = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: ${props => (props.liked ? props.theme.primary : props.theme.gray)};
-  &:hover {
-    color: ${props => props.theme.primary};
-    .icon {
-      animation: ${throb} 1.5s infinite;
+    0% {
+        transform: scale(1);
     }
-  }
 
-  .icon {
-    margin: 0 0.5rem;
-  }
-`;
+    20% {
+        transform: scale(1.5);
+    }
 
-export default StyledLikes;
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.5);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`
+
+const Likes = styled.div`
+    align-items: center;
+    color: ${props => (props.liked ? 'var(--red-600)' : 'var(--gray-500)')};
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+
+    &:hover {
+        color: var(--red-600);
+
+        svg {
+            animation: ${throb} 1.5s infinite;
+        }
+    }
+
+    svg {
+        height: 1.5rem;
+        margin-left: 0.5rem;
+        width: 1.5rem;
+    }
+`
+
+export default Likes

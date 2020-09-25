@@ -64,9 +64,9 @@ const MasonryHOC = ({ recipes, fetchMore, propKey }) => {
 
   return (
     <Masonry style={style} elementType="ul" options={masonryOptions}>
-      {/* {recipes.map(recipe => (
+      {recipes.map(recipe => (
         <Tile key={recipe._id} recipe={recipe} />
-      ))} */}
+      ))}
     </Masonry>
   );
 };

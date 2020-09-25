@@ -9,7 +9,7 @@ import CURRENT_USER_QUERY from '../../graphql/queries/currentUser'
 import SIGN_OUT_MUTATION from '../../graphql/mutations/signout'
 import User from '../User/User'
 import button from '../shared/button'
-import StyledHeader, { Logo } from './HeaderStyles'
+import Header from './HeaderStyles'
 
 Router.onRouteChangeStart = () => {
     NProgress.start()
@@ -28,17 +28,19 @@ const AuthView = me => {
             refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
             {signout => {
                 return (
-                    <nav>
+                    <Header.Nav>
                         <Link href='/account'>
-                            <button>{me.username}</button>
+                            <Header.Btn modifier='wideRounded'>{me.username}</Header.Btn>
                         </Link>
                         <Link href='/recipe-builder'>
-                            <button className='icon-btn'>
+                            <Header.Btn modifier='rounded' className='icon-btn'>
                                 <FaPlus />
-                            </button>
+                            </Header.Btn>
                         </Link>
-                        <button onClick={signout}>Signout</button>
-                    </nav>
+                        <Header.Btn modifier='wideRounded' onClick={signout}>
+                            Signout
+                        </Header.Btn>
+                    </Header.Nav>
                 )
             }}
         </Mutation>
@@ -49,34 +51,34 @@ const UnAuthView = () => {
     return (
         <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
             {toggleLogin => (
-                <nav>
+                <Header.Nav>
                     <Link href='/recipe-builder'>
-                        <button className='icon-btn'>
+                        <Header.Btn modifier='rounded' className='icon-btn'>
                             <FaPlus />
-                        </button>
+                        </Header.Btn>
                     </Link>
-                    <button onClick={toggleLogin}>Signin</button>
-                </nav>
+                    <Header.Btn modifier='wideRounded' onClick={toggleLogin}>
+                        Signin
+                    </Header.Btn>
+                </Header.Nav>
             )}
         </Mutation>
     )
 }
 
-const Header = () => {
+const HeaderComponent = () => {
     return (
-        <StyledHeader>
+        <Header>
             <Link href='/'>
-                <a className='brand-link'>
-                    <Logo>NP</Logo>
-                </a>
+                <Header.Logo>NP</Header.Logo>
             </Link>
             <User>
                 {({ data: { me } }) => {
                     return me ? AuthView(me) : UnAuthView()
                 }}
             </User>
-        </StyledHeader>
+        </Header>
     )
 }
 
-export default Header
+export default HeaderComponent

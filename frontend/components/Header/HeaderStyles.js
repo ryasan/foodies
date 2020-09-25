@@ -1,38 +1,44 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-const StyledHeader = styled.div`
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background: ${props => props.theme.white};
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0rem 2rem;
-  box-shadow: 0 0 0.4rem ${props => props.theme.bsColor};
-  z-index: 1;
+import { btns } from '../shared/Button'
 
-  .brand-link {
-    display: flex;
+const Header = styled.div`
     align-items: center;
-  }
-
-  nav {
+    background: white;
+    box-shadow: var(--box-shadow-xs);
     display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+`
+
+Header.Nav = styled.nav`
     align-items: center;
-  }
-`;
+    display: flex;
+`
 
-const Logo = styled.h1`
-  font-size: 1.8rem;
-  transform: skew(-10deg);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  padding: 0.5rem 1rem;
-  background: ${props => props.theme.primary};
-  color: white;
-  outline: 1px solid ${props => props.theme.primary};
-`;
+Header.Logo = styled.h1`
+    backface-visibility: hidden;
+    background: var(--red-600);
+    color: white;
+    font-size: 1.8rem;
+    padding: 0.5rem 1rem;
+    transform: skew(-10deg);
+`
 
-export { Logo };
-export default StyledHeader;
+Header.Btn = styled.button`
+    ${btns.clearGray}
+    ${props => btns[props.modifier]}
+
+    border-color: transparent;
+
+    &:hover {
+        border-color: inherit;
+    }
+`
+
+export default Header
