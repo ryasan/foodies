@@ -7,28 +7,30 @@ import MY_PINS_QUERY from '../graphql/queries/myPins';
 import LIKED_PINS_QUERY from '../graphql/queries/likedPins';
 import PleaseSignin from '../components/PleaseSignin/PleaseSignin';
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
-import Button from '../components/shared/Button';
+import button from '../components/shared/button';
 import Masonry from '../components/Masonry/Masonry';
 import Loader from '../components/Loader/Loader';
 import { limit } from '../constants';
 
 const AccountPageStyles = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  .loader {
-    margin-top: 2rem;
-  }
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
 
-  button {
-    margin-bottom: 1.5rem;
-    &.active {
-      background: ${props => lighten(0.35, props.theme.gray)};
-      pointer-events: none;
-    }
-  }
+        .loader {
+            margin-top: 2rem;
+        }
+
+        button {
+            margin-bottom: 1.5rem;
+
+            &.active {
+                background: ${props => lighten(0.35, props.theme.gray)};
+                pointer-events: none;
+            }
+        }
 `;
 
 const tabs = [
@@ -50,12 +52,12 @@ const AccountPage = () => {
       <AccountPageStyles>
         <div>
           {tabs.map(({ title }, i) => (
-            <Button
+            <button
               key={title}
               className={selectedIdx === i ? 'active' : ''}
               onClick={() => changeTabs(i)}>
               {title}
-            </Button>
+            </button>
           ))}
         </div>
         <Query

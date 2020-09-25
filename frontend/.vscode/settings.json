@@ -5,5 +5,8 @@
     "titleBar.activeBackground": "#1ABC9C",
     "titleBar.inactiveBackground": "#1ABC9C"
   },
-  "prettier.trailingComma": "all"
+  "standard.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
 }

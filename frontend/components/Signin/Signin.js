@@ -8,7 +8,7 @@ import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin';
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
 import Form from '../shared/Form';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import Button from '../shared/Button';
+import button from '../shared/button';
 
 const Signin = ({ setIsSignup }) => {
   const [fields, setFields] = useState({
@@ -66,9 +66,9 @@ const Signin = ({ setIsSignup }) => {
                       />
                     </div>
                   </div>
-                  <Button type="submit" color="clear">
+                  <button type="submit" color="clear">
                     Sign In
-                  </Button>
+                  </button>
                 </fieldset>
               </Form>
               <p>

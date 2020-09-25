@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin';
 import PleaseSigninStyles from './PleaseSigninStyles';
-import Button from '../shared/Button';
+import button from '../shared/button';
 
 const PleaseSignin = ({ children }) => (
   <PleaseSigninStyles>
@@ -18,9 +18,9 @@ const PleaseSignin = ({ children }) => (
               <h2>Please sign in before continuing</h2>
               <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
                 {toggleLogin => (
-                  <Button color="primary" onClick={toggleLogin}>
+                  <button color="primary" onClick={toggleLogin}>
                     Signin
-                  </Button>
+                  </button>
                 )}
               </Mutation>
             </div>

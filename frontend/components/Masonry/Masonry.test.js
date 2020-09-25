@@ -44,7 +44,7 @@ const testPins = [
 ];
 
 describe('<Masonry />', () => {
-  const wrapper = shallow(<Masonry pins={testPins} />);
+  const wrapper = shallow(<Masonry recipes={testPins} />);
 
   it('exists', () => {
     expect(wrapper.exists()).toBe(true);

@@ -6,7 +6,7 @@ import { repoUrl } from '../../constants';
 const Welcome = () => (
   <StyledWelcome>
     <div className="text">
-      <h2>NotPinterest</h2>
+      <h2>Foodies</h2>
       <p>Share, like, and follow stuff you&apos;re into.</p>
     </div>
     <div className="bg" />

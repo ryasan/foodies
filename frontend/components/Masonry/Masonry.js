@@ -10,12 +10,12 @@ const masonryOptions = {
 };
 
 const style = {
-  listStyleType: 'none',
-  padding: 0,
-  margin: '0 auto',
+    listStyleType: 'none',
+    padding: 0,
+    margin: '0 auto',
 };
 
-const MasonryHOC = ({ pins, fetchMore, propKey }) => {
+const MasonryHOC = ({ recipes, fetchMore, propKey }) => {
   const getDocumentHeight = () => {
     const body = document.body;
     const html = document.documentElement;
@@ -41,7 +41,7 @@ const MasonryHOC = ({ pins, fetchMore, propKey }) => {
 
     fetchMore({
       variables: {
-        skip: pins.length,
+        skip: recipes.length,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
@@ -64,15 +64,14 @@ const MasonryHOC = ({ pins, fetchMore, propKey }) => {
 
   return (
     <Masonry style={style} elementType="ul" options={masonryOptions}>
-      {pins.map(pin => (
-        <Tile key={pin._id} pin={pin} />
-      ))}
+      {/* {recipes.map(recipe => (
+        <Tile key={recipe._id} recipe={recipe} />
+      ))} */}
     </Masonry>
   );
 };
 
 MasonryHOC.propTypes = {
-  pins: PropTypes.array.isRequired,
   fetchMore: PropTypes.func.isRequired,
   propKey: PropTypes.string.isRequired,
 };

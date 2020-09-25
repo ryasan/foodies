@@ -1,9 +1,9 @@
 import PleaseSignin from '../components/PleaseSignin/PleaseSignin';
-import CreatePin from '../components/CreatePin/CreatePin';
+import CreateRecipe from '../components/CreateRecipe/CreateRecipe';
 
 const PinBuilderPage = () => (
   <PleaseSignin>
-    <CreatePin />
+    <CreateRecipe />
   </PleaseSignin>
 );
 

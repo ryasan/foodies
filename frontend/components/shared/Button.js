@@ -1,89 +1,50 @@
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components'
 
-const defaultCSS = css`
-  border: 3px solid transparent;
-  color: ${props => props.theme.gray};
-  background: none;
-  &:hover {
-    background: ${props => props.theme.lightGray};
-  }
-  &:active {
-    border: 3px solid #9fc0ff;
-  }
-`;
-
-const clearCSS = css`
-  border: 3px solid ${props => props.theme.primary};
-  color: ${props => props.theme.primary};
-  background: none;
-  &:hover {
-    color: ${props => props.theme.white};
-    background: ${props => props.theme.primary};
-  }
-`;
-
-const primaryCSS = css`
-  border: 3px solid ${props => props.theme.primary};
-  background: ${props => props.theme.primary};
-  color: ${props => props.theme.white};
-  &:hover {
-    color: ${props => props.theme.primary};
-    background: none;
-  }
-`;
-
-const StyledButton = styled.button`
-  border-radius: 10rem;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  min-height: 4rem;
-  transition: all 0.2s ease;
-
-  ${props => {
-    switch (props.color) {
-      case 'primary':
-        return primaryCSS;
-      case 'clear':
-        return clearCSS;
-      default:
-        return defaultCSS;
-    }
-  }};
-
-  &.icon-btn {
-    border-radius: 50%;
-    font-size: 2rem;
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    padding: 0;
-    justify-content: center;
+const base = css`
     align-items: center;
-  }
+    border-style: solid;
+    border-width: 0.2rem;
+    display: flex;
+    justify-content: center;
+    transition: all 0.2s;
+`
 
-  &:focus {
-    outline: none;
-  }
-`;
+export const btns = {
+    clear: css`
+        ${base}
 
-const Button = ({ color, onClick, children, type, className }) => (
-  <StyledButton
-    color={color}
-    onClick={onClick}
-    type={type}
-    className={className}>
-    {children}
-  </StyledButton>
-);
+        background: 0;
+        border-color: var(--red-600);
+        color: var(--red-600);
 
-Button.propTypes = {
-  color: PropTypes.string,
-  children: PropTypes.any,
-  onClick: PropTypes.func,
-  type: PropTypes.string,
-  className: PropTypes.string,
-};
+        &:hover {
+            background: var(--red-600);
+            color: white;
+        }
+`,
+    red: css`
+        ${base}
 
-export default Button;
+        background: var(--red-600);
+        border-color: var(--red-600);
+        color: white;
+
+        &:hover {
+            background: 0;
+            color: var(--red-600);
+        }
+`,
+    round: css`
+        ${base}
+
+        border-radius: 50%;
+        min-height: 3.5rem;
+        min-width: 3.5rem;
+`,
+    wide: css`
+        ${base}
+
+        height: 3.5rem;
+        min-width: 8rem;
+`
+}

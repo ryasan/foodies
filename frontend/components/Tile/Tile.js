@@ -4,9 +4,9 @@ import Router from 'next/router';
 import StyledTile from './TileStyles';
 import Likes from '../Likes/Likes';
 
-const Tile = ({ pin: { title, image, likedByIds, creatorUsername, _id } }) => {
+const Tile = ({ recipe: { title, image, likedByIds, creatorUsername, _id } }) => {
   const goToDetails = () => {
-    Router.push({ pathname: '/pin-details', query: { id: _id } });
+    Router.push({ pathname: '/recipe-details', query: { id: _id } });
   };
 
   return (
@@ -17,7 +17,7 @@ const Tile = ({ pin: { title, image, likedByIds, creatorUsername, _id } }) => {
           {title}
           <div className="end">
             <small>by {creatorUsername}</small>
-            <Likes pinId={_id} likedByIds={likedByIds} />
+            <Likes recipeId={_id} likedByIds={likedByIds} />
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@ const Tile = ({ pin: { title, image, likedByIds, creatorUsername, _id } }) => {
 };
 
 Tile.propTypes = {
-  pin: PropTypes.object.isRequired,
+  recipe: PropTypes.object.isRequired,
 };
 
 export default Tile;

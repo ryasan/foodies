@@ -4,7 +4,7 @@ import { FaArrowAltCircleUp, FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 import DropzoneStyles from './DropzoneStyles';
-import Button from '../shared/Button';
+import button from '../shared/button';
 
 const Dropzone = ({ setImgFile, loading }) => {
   const [imgPreview, setImgPreview] = useState(null);
@@ -31,9 +31,9 @@ const Dropzone = ({ setImgFile, loading }) => {
         <div className="image-preview-container">
           <img alt="Upload Preview" src={imgPreview} />
           <div className="overlay">
-            <Button className="icon-btn" onClick={removePreview}>
+            <button className="icon-btn" onClick={removePreview}>
               <FaTrash />
-            </Button>
+            </button>
           </div>
         </div>
       </DropzoneStyles>
