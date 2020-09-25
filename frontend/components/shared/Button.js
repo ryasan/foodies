@@ -38,8 +38,8 @@ export const btns = {
         ${base}
 
         background: 0;
-        border-color: var(--gray-400);
-        color: var(--gray-400);
+        border-color: var(--gray-600);
+        color: var(--gray-600);
 
         &:hover {
             border-color: var(--red-600);

@@ -40,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         background: ${theme.gray};
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-size: 1.5rem;
         margin: 0;
         padding: 0;
