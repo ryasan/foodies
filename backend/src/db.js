@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const { MLAB_USER, MLAB_PASSWORD } = process.env;
+const { MLAB_USER, MLAB_PASSWORD } = process.env
 
 // connect to mlab database
 mongoose
   .connect(
     `mongodb://${MLAB_USER}:${MLAB_PASSWORD}@ds259596.mlab.com:59596/notpinterest-db`,
-    { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false },
+    { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false }
   )
   .then(result => console.log('connected to DB'))
-  .catch(err => console.log(err));
+  .catch(err => console.log(err))
 
-module.exports = mongoose;
+module.exports = mongoose

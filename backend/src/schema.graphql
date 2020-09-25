@@ -2,19 +2,19 @@
 type Query {
   users: [User!]!
   me: User
-  pins(limit: Int, skip: Int): [Pin!]!
-  pinDetails(pinId: ID!): Pin
-  myPins(limit: Int, skip: Int): [Pin!]!
-  likedPins(limit: Int, skip: Int): [Pin!]!
+  recipes(limit: Int, skip: Int): [Recipe!]!
+  recipeDetails(recipeId: ID!): Recipe
+  myRecipes(limit: Int, skip: Int): [Recipe!]!
+  likedRecipes(limit: Int, skip: Int): [Recipe!]!
 }
 
 type Mutation {
   signup(signupInput: SignupInput): User!
   signin(email: String!, password: String!): User!
   signout: SuccessMessage
-  createPin(createPinInput: CreatePinInput): Pin!
-  updatePinLikes(pinId: ID!): Pin!
-  deletePin(pinId: ID!): Pin!
+  createRecipe(createRecipeInput: CreateRecipeInput): Recipe!
+  updateRecipeLikes(recipeId: ID!): Recipe!
+  deleteRecipe(recipeId: ID!): Recipe!
 }
 
 type User {
@@ -22,17 +22,18 @@ type User {
   email: String!
   password: String!
   username: String!
-  pins: [ID!]!
+  recipes: [ID!]!
 }
 
-type Pin {
+type Recipe {
   _id: ID!
   title: String!
   image: String!
   largeImage: String!
   imgPublicId: String!
   likedByIds: [ID!]!
-  description: String!
+  ingredients: [String]!
+  directions: [String]!
   creatorUsername: String!
   creatorId: String!
 }
@@ -48,10 +49,11 @@ input SignupInput {
   username: String!
 }
 
-input CreatePinInput {
+input CreateRecipeInput {
   image: String!
   largeImage: String!
   title: String!
-  description: String!
+  ingredients: [String]!
+  directions: [String]!
   imgPublicId: String!
 }

@@ -12,10 +12,10 @@ const userSchema = new Schema({
     unique: true,
   },
   password: String,
-  pins: [
+  recipes: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Pin',
+      ref: 'Recipe',
     },
   ],
 });
