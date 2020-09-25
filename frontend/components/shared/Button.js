@@ -10,7 +10,7 @@ const base = css`
 `
 
 export const btns = {
-    clear: css`
+    clearRed: css`
         ${base}
 
         background: 0;
@@ -31,6 +31,18 @@ export const btns = {
 
         &:hover {
             background: 0;
+            color: var(--red-600);
+        }
+`,
+    clearGray: css`
+        ${base}
+
+        background: 0;
+        border-color: var(--gray-400);
+        color: var(--gray-400);
+
+        &:hover {
+            border-color: var(--red-600);
             color: var(--red-600);
         }
 `,

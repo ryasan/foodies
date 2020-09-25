@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Mutation } from 'react-apollo'
-import { FaPlus } from 'react-icons/fa'
+import { FaPlus, FaTrash } from 'react-icons/fa'
 import Router from 'next/router'
 
-import CREATE_PIN_MUTATION from '../../graphql/mutations/createRecipe'
+import CREATE_RECIPE_MUTATION from '../../graphql/mutations/createRecipe'
 import ALL_RECIPES_QUERY from '../../graphql/queries/recipes'
 import CreateRecipe from './CreateRecipeStyles'
 import Dropzone from '../Dropzone/Dropzone'
@@ -53,7 +53,7 @@ const CreateRecipeComponent = () => {
         const res = await createRecipe()
 
         Router.push({
-            pathname: '/pin-details',
+            pathname: '/recipe-details',
             query: { id: res.data.createRecipe._id }
         })
     }
@@ -69,10 +69,22 @@ const CreateRecipeComponent = () => {
         }
     }
 
+    const handleRemoveListItem = e => {
+        const idx = +e.currentTarget.getAttribute('data-idx')
+        const name = e.currentTarget.getAttribute('name')
+
+        setLists(prev => ({
+            ...prev,
+            [name]: prev[name].filter((_, i) => i !== idx)
+        }))
+    }
+
     return (
         <Mutation
-            mutation={CREATE_PIN_MUTATION}
-            variables={{ createRecipeInput: { ...textFields, ...imgFields } }}
+            mutation={CREATE_RECIPE_MUTATION}
+            variables={{
+                createRecipeInput: { ...textFields, ...imgFields, ...lists }
+            }}
             refetchQueries={[{ query: ALL_RECIPES_QUERY }]}>
             {(createRecipe, { loading, error }) => (
                 <CreateRecipe onSubmit={e => handleSubmit(e, createRecipe)}>
@@ -100,7 +112,6 @@ const CreateRecipeComponent = () => {
                                 </CreateRecipe.Field>
                                 <CreateRecipe.Field>
                                     <CreateRecipe.TextArea
-                                        required
                                         name='ingredients'
                                         type='text'
                                         rows={1}
@@ -117,7 +128,6 @@ const CreateRecipeComponent = () => {
                                 </CreateRecipe.Field>
                                 <CreateRecipe.Field>
                                     <CreateRecipe.TextArea
-                                        required
                                         name='directions'
                                         type='text'
                                         rows={1}
@@ -141,16 +151,28 @@ const CreateRecipeComponent = () => {
                     <CreateRecipe.List>
                         <CreateRecipe.Title>Ingredients:</CreateRecipe.Title>
                         {lists.ingredients.map((text, i) => (
-                            <CreateRecipe.Item key={i}>
-                                {text}
+                            <CreateRecipe.Item
+                                key={i}
+                                data-idx={i}
+                                onClick={handleRemoveListItem}
+                                listStyleType='circle'
+                                name='ingredients'>
+                                <span>{text}</span>
+                                <FaTrash />
                             </CreateRecipe.Item>
                         ))}
                     </CreateRecipe.List>
                     <CreateRecipe.List>
                         <CreateRecipe.Title>Directions:</CreateRecipe.Title>
                         {lists.directions.map((text, i) => (
-                            <CreateRecipe.Item key={i}>
-                                {text}
+                            <CreateRecipe.Item
+                                key={i}
+                                data-idx={i}
+                                onClick={handleRemoveListItem}
+                                listStyleType='decimal'
+                                name='directions'>
+                                <span>{text}</span>
+                                <FaTrash />
                             </CreateRecipe.Item>
                         ))}
                     </CreateRecipe.List>

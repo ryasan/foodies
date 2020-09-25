@@ -5,13 +5,14 @@ import { btns } from '../shared/button'
 
 const CreateRecipe = styled.form`
     background: white;
-    box-shadow: var(--box-shadow-md);
+    box-shadow: var(--box-shadow-sm);
     color: var(--gray-800);
     display: grid;
     flex-grow: 0;
     gap: 2rem;
     grid-template-columns: repeat(4, 1fr);
     max-width: 1400px;
+    overflow-x: auto;
     padding: 5rem;
     width: 100%;
 
@@ -80,7 +81,7 @@ CreateRecipe.Field = styled.div`
 
 CreateRecipe.AddBtn = styled.button`
     ${btns.round}
-    ${btns.red}
+    ${btns.clearGray}
 
     margin-left: 2rem;
 
@@ -99,16 +100,34 @@ CreateRecipe.List = styled.ul`
     position: relative;
 `
 
-CreateRecipe.Title = styled.h4``
+CreateRecipe.Title = styled.h4`
+    position: relative;
+`
 
 CreateRecipe.Item = styled.li`
+    cursor: pointer;
     list-style-position: inside;
-    list-style-type: circle;
+    list-style-type: ${props => props.listStyleType};
     overflow: hidden;
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
+
+    svg {
+        color: var(--red-600);
+        float: right;
+        transition: visibility 0.2s;
+        visibility: hidden;
+    }
+
+    &:hover {
+        color: var(--red-600);
+
+        svg {
+            visibility: visible;
+        }
+    }
 `
 
 export default CreateRecipe

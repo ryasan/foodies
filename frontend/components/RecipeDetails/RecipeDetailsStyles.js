@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import device from '../../utils/device';
 
 const RecipeDetailsStyles = styled.div`
-    background: ${props => props.theme.white};
-    border-radius: ${props => props.theme.bigBr};
-    box-shadow: ${props => props.theme.bigBoxShadow};
+    background: white;
+    box-shadow: var(--box-shadow-sm);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

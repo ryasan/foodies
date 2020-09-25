@@ -13,7 +13,7 @@ const RecipeDetailsPage = ({ query }) => (
                         justifyContent: 'center'
                     }}>
                     <RecipeDetails
-                        pinId={query.id}
+                        recipeId={query.id}
                         currentUserId={me && me._id}
                     />
                 </div>
