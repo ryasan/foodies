@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Router from 'next/router'
+import Router, { useLocation } from 'next/router'
 import NProgress from 'nprogress'
 import { Mutation } from 'react-apollo'
 import { FaPlus, FaGithub } from 'react-icons/fa'
@@ -64,17 +64,20 @@ const UnAuthView = () => (
     </Mutation>
 )
 
-const NavbarComponent = () => (
-    <Navbar>
-        <Link href='/'>
-            <Navbar.Logo>FD</Navbar.Logo>
-        </Link>
-        <User>
-            {({ data: { me } }) => {
-                return me ? AuthView(me) : UnAuthView()
-            }}
-        </User>
-    </Navbar>
-)
+const NavbarComponent = () => {
+
+    return (
+        <Navbar>
+            <Link href='/'>
+                <Navbar.Logo>FD</Navbar.Logo>
+            </Link>
+            <User>
+                {({ data: { me } }) => {
+                    return me ? AuthView(me) : UnAuthView()
+                }}
+            </User>
+        </Navbar>
+    )
+}
 
 export default NavbarComponent

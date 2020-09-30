@@ -1,9 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { btns } from '../shared/Button'
 
 const Navbar = styled.div`
     align-items: center;
+    background: var(--red-600);
+    box-shadow: var(--box-shadow-sm);
     display: flex;
     height: 6rem;
     justify-content: space-between;
@@ -21,9 +23,9 @@ Navbar.Nav = styled.nav`
 
 Navbar.Logo = styled.h1`
     backface-visibility: hidden;
-    border: 2px solid var(--red-600);
+    border: 0.2rem solid white;
     border-radius: 50%;
-    color: var(--red-600);
+    color: white;
     cursor: pointer;
     font-size: 2rem;
     height: 4.5rem;
@@ -32,13 +34,12 @@ Navbar.Logo = styled.h1`
     width: 4.5rem;
 
     &:hover {
-        background: var(--red-600);
-        color: white;
+        background: var(--red-500);
     }
 `
 
 Navbar.Btn = styled.button`
-    ${btns.clearRed}
+    ${btns.clearWhite}
     ${props => btns[props.modifier]}
 
     border-color: transparent;

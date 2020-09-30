@@ -23,18 +23,6 @@ export const btns = {
             color: white;
         }
 `,
-    red: css`
-        ${base}
-
-        background: var(--red-600);
-        border-color: var(--red-600);
-        color: white;
-
-        &:hover {
-            background: 0;
-            color: var(--red-600);
-        }
-`,
     clearGray: css`
         ${base}
 
@@ -47,6 +35,30 @@ export const btns = {
             color: var(--red-600);
         }
 `,
+
+    clearWhite: css`
+        ${base}
+
+        background: 0;
+        color: white;
+
+        &:hover {
+            background-color: white;
+            color: var(--red-600);
+        }
+`,
+    red: css`
+        ${base}
+
+        background: var(--red-600);
+        border-color: var(--red-600);
+        color: white;
+
+        &:hover {
+            background: 0;
+            color: var(--red-600);
+        }
+`,
     rounded: css`
         ${base}
 
@@ -55,6 +67,13 @@ export const btns = {
         min-width: 3.5rem;
         padding: 1rem;
 `,
+    white: css`
+        ${base}
+
+        background-color: white;
+        color: var(--red-600);
+`,
+
     wide: css`
         ${base}
 

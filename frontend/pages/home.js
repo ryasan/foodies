@@ -1,17 +1,18 @@
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
-import { Element as ScrollElement } from 'react-scroll'
 
 import ALL_PINS_QUERY from '../graphql/queries/recipes'
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import Loader from '../components/Loader/Loader'
 import Masonry from '../components/Masonry/Masonry'
 import Landing from '../components/Landing/Landing'
-import ContentWrap from '../components/shared/ContentWrap'
 import { limit } from '../constants'
 import { Fragment } from 'react'
+import { Element } from 'react-scroll'
 
-const Home = styled(ContentWrap)`
+const Home = styled.div`
+    margin-top: 10rem;
+    min-height: calc(100vh - 6rem);
     position: relative;
 
     .loader {
@@ -25,7 +26,7 @@ const HomePage = () => {
     return (
         <Fragment>
             <Landing />
-            <ScrollElement name='home'>
+            <Element name='home'>
                 <Query
                     query={ALL_PINS_QUERY}
                     variables={{ skip: 0, limit }}
@@ -52,7 +53,7 @@ const HomePage = () => {
                         )
                     }}
                 </Query>
-            </ScrollElement>
+            </Element>
         </Fragment>
     )
 }

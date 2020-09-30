@@ -99,6 +99,7 @@ const loginOpenCSS = css`
 const Page = styled.div`
     background: white;
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
     transition: all 0.5s ease;
     ${props => props.loginIsOpen && loginOpenCSS}
@@ -108,6 +109,7 @@ Page.Inner = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
+    margin-top: 6rem;
 `
 
 export { theme, GlobalStyles, Page }

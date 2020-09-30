@@ -5,9 +5,10 @@ import { btns } from '../shared/Button'
 
 const Landing = styled.header`
     align-items: center;
+    box-shadow: var(--box-shadow-lg);
     display: flex;
     font-family: 'Poiret One', cursive, sans-serif;
-    height: 100vh;
+    height: calc(100vh - 6rem);
     justify-content: center;
     overflow: hidden;
     position: relative;
@@ -20,7 +21,7 @@ const Landing = styled.header`
         left: 0;
         position: absolute;
         width: 100%;
-        z-index: 999;
+        z-index: 99;
     }
 `
 
@@ -104,8 +105,7 @@ Landing.IconBtn = styled.button`
     border: 0;
     color: var(--red-600);
     height: 3.5rem;
-    margin-right: 23rem;
-    margin-top: 1.2rem;
+    margin: 2rem;
     outline: none;
     position: absolute;
     right: 0;
@@ -147,7 +147,7 @@ Landing.ScrollBtn = styled(Link)`
     position: absolute;
     transform: translateX(-50%);
     width: 5rem;
-    z-index: 999;
+    z-index: 100;
 `
 
 export default Landing
