@@ -19,7 +19,7 @@
     "graphql": "^14.3.0",
     "graphql-tag": "^2.10.1",
     "imagesloaded": "^4.1.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "next": "^8.1.0",
     "next-with-apollo": "^3.4.0",
     "nprogress": "^0.2.0",
