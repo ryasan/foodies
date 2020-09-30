@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser';
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin';
 import PleaseSigninStyles from './PleaseSigninStyles';
-import button from '../shared/button';
+import button from '../shared/Button';
 
 const PleaseSignin = ({ children }) => (
   <PleaseSigninStyles>

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import device from '../../utils/device'
 import ContentWrap from '../shared/ContentWrap'
-import { btns } from '../shared/button'
+import { btns } from '../shared/Button'
 
 const CreateRecipe = ContentWrap
 

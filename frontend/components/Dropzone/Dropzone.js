@@ -4,7 +4,7 @@ import { FaArrowAltCircleUp, FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 import DropzoneStyles from './DropzoneStyles';
-import button from '../shared/button';
+import button from '../shared/Button';
 
 const Dropzone = ({ setImgFile, loading }) => {
   const [imgPreview, setImgPreview] = useState(null);
