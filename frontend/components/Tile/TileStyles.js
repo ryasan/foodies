@@ -16,6 +16,7 @@ const Tile = styled.li`
 
 Tile.Img = styled.img`
     border-radius: 0.5rem;
+    box-shadow: var(--box-shadow-sm);
     cursor: zoom-in;
     height: 93%;
     object-fit: cover;

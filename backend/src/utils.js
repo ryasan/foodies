@@ -9,7 +9,6 @@ const setCookieToken = (ctx, token) => {
 
 const deleteImageFromCloud = (imgPublicId, response) => {
   response.setHeader('Cache-Control', 'no-cache');
-  // basic auth header
   const auth = Buffer.from(
     `${process.env.CLOUDINARY_API_KEY}:${process.env.CLOUDINARY_API_SECRET}`,
   ).toString('base64');

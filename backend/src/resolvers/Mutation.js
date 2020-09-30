@@ -50,7 +50,6 @@ const Mutation = {
             ingredients,
             imgPublicId
         } = createRecipeInput
-
         const { userId, user } = ctx.request
         if (!userId) throw Error('You must be logged in to do that')
         const recipe = await new Recipe({

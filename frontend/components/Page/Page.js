@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Query } from 'react-apollo'
 import PropTypes from 'prop-types'
@@ -12,7 +13,7 @@ const PageComponent = ({ children }) => (
     <ThemeProvider theme={theme}>
         <Query query={LOCAL_STATE_QUERY}>
             {({ data: { loginIsOpen } }) => (
-                <>
+                <Fragment>
                     <Meta />
                     <GlobalStyles />
                     <Login loginIsOpen={loginIsOpen} />
@@ -20,7 +21,7 @@ const PageComponent = ({ children }) => (
                         <Navbar />
                         <Page.Inner>{children}</Page.Inner>
                     </Page>
-                </>
+                </Fragment>
             )}
         </Query>
     </ThemeProvider>

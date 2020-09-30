@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledMasonry = styled.div`
+const Grid = styled.div`
     /* display: flex;
   flex-direction: row;
   justify-content: center;
@@ -24,4 +24,4 @@ const StyledMasonry = styled.div`
     }
 `;
 
-export default StyledMasonry;
+export default Grid;
