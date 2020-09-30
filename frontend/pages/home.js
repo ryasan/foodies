@@ -1,18 +1,17 @@
 import styled from 'styled-components'
 import { Query } from 'react-apollo'
+import { Element as ScrollElement } from 'react-scroll'
 
 import ALL_PINS_QUERY from '../graphql/queries/recipes'
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import Loader from '../components/Loader/Loader'
 import Masonry from '../components/Masonry/Masonry'
+import Landing from '../components/Landing/Landing'
+import ContentWrap from '../components/shared/ContentWrap'
 import { limit } from '../constants'
+import { Fragment } from 'react'
 
-const HomeStyles = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 20rem;
-    padding-bottom: 5vh;
+const Home = styled(ContentWrap)`
     position: relative;
 
     .loader {
@@ -24,32 +23,37 @@ const HomeStyles = styled.div`
 
 const HomePage = () => {
     return (
-        <Query
-            query={ALL_PINS_QUERY}
-            variables={{ skip: 0, limit }}
-            fetchPolicy='cache-and-network'>
-            {({ data, error, loading, fetchMore }) => {
-                if (error) return <ErrorMessage error={error} />
+        <Fragment>
+            <Landing />
+            <ScrollElement name='home'>
+                <Query
+                    query={ALL_PINS_QUERY}
+                    variables={{ skip: 0, limit }}
+                    fetchPolicy='cache-and-network'>
+                    {({ data, error, loading, fetchMore }) => {
+                        if (error) return <ErrorMessage error={error} />
 
-                if (loading) {
-                    return (
-                        <HomeStyles>
-                            <Loader className='loader' />
-                        </HomeStyles>
-                    )
-                }
+                        if (loading) {
+                            return (
+                                <Home>
+                                    <Loader className='loader' />
+                                </Home>
+                            )
+                        }
 
-                return (
-                    <HomeStyles>
-                        <Masonry
-                            recipes={data.recipes || []}
-                            fetchMore={fetchMore}
-                            propKey='recipes'
-                        />
-                    </HomeStyles>
-                )
-            }}
-        </Query>
+                        return (
+                            <Home>
+                                <Masonry
+                                    recipes={data.recipes || []}
+                                    fetchMore={fetchMore}
+                                    propKey='recipes'
+                                />
+                            </Home>
+                        )
+                    }}
+                </Query>
+            </ScrollElement>
+        </Fragment>
     )
 }
 

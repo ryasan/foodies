@@ -87,95 +87,100 @@ const CreateRecipeComponent = () => {
             }}
             refetchQueries={[{ query: ALL_RECIPES_QUERY }]}>
             {(createRecipe, { loading, error }) => (
-                <CreateRecipe onSubmit={e => handleSubmit(e, createRecipe)}>
-                    <CreateRecipe.Dropzone>
-                        <Dropzone
-                            imgFields={imgFields}
-                            loading={loading}
-                            setImgFile={setImgFile}
-                        />
-                    </CreateRecipe.Dropzone>
-                    <CreateRecipe.Inputs>
-                        <CreateRecipe.Fieldset disabled={loading}>
-                            <ErrorMessage error={error} />
-                            <CreateRecipe.TextInputs>
-                                <CreateRecipe.Field>
-                                    <CreateRecipe.TextArea
-                                        required
-                                        name='title'
-                                        type='text'
-                                        rows={1}
-                                        placeholder='Add Recipe Name'
-                                        value={textFields.title}
-                                        onChange={saveFields}
-                                    />
-                                </CreateRecipe.Field>
-                                <CreateRecipe.Field>
-                                    <CreateRecipe.TextArea
-                                        name='ingredients'
-                                        type='text'
-                                        rows={1}
-                                        placeholder='Add Ingredient'
-                                        value={textFields.ingredients}
-                                        onChange={saveFields}
-                                    />
-                                    <CreateRecipe.AddBtn
-                                        type='button'
-                                        name='ingredients'
-                                        onClick={handleAddListItem}>
-                                        <FaPlus />
-                                    </CreateRecipe.AddBtn>
-                                </CreateRecipe.Field>
-                                <CreateRecipe.Field>
-                                    <CreateRecipe.TextArea
-                                        name='directions'
-                                        type='text'
-                                        rows={1}
-                                        placeholder='Add Directions'
-                                        value={textFields.directions}
-                                        onChange={saveFields}
-                                    />
-                                    <CreateRecipe.AddBtn
-                                        type='button'
-                                        name='directions'
-                                        onClick={handleAddListItem}>
-                                        <FaPlus />
-                                    </CreateRecipe.AddBtn>
-                                </CreateRecipe.Field>
-                            </CreateRecipe.TextInputs>
-                            <CreateRecipe.SubmitBtn type='submit'>
-                                Save
-                            </CreateRecipe.SubmitBtn>
-                        </CreateRecipe.Fieldset>
-                    </CreateRecipe.Inputs>
-                    <CreateRecipe.List>
-                        <CreateRecipe.Title>Ingredients:</CreateRecipe.Title>
-                        {lists.ingredients.map((text, i) => (
-                            <CreateRecipe.Item
-                                key={i}
-                                data-idx={i}
-                                onClick={handleRemoveListItem}
-                                listStyleType='circle'
-                                name='ingredients'>
-                                <span>{text}</span>
-                                <FaTrash />
-                            </CreateRecipe.Item>
-                        ))}
-                    </CreateRecipe.List>
-                    <CreateRecipe.List>
-                        <CreateRecipe.Title>Directions:</CreateRecipe.Title>
-                        {lists.directions.map((text, i) => (
-                            <CreateRecipe.Item
-                                key={i}
-                                data-idx={i}
-                                onClick={handleRemoveListItem}
-                                listStyleType='decimal'
-                                name='directions'>
-                                <span>{text}</span>
-                                <FaTrash />
-                            </CreateRecipe.Item>
-                        ))}
-                    </CreateRecipe.List>
+                <CreateRecipe>
+                    <CreateRecipe.Form
+                        onSubmit={e => handleSubmit(e, createRecipe)}>
+                        <CreateRecipe.Dropzone>
+                            <Dropzone
+                                imgFields={imgFields}
+                                loading={loading}
+                                setImgFile={setImgFile}
+                            />
+                        </CreateRecipe.Dropzone>
+                        <CreateRecipe.Inputs>
+                            <CreateRecipe.Fieldset disabled={loading}>
+                                <ErrorMessage error={error} />
+                                <CreateRecipe.TextInputs>
+                                    <CreateRecipe.Field>
+                                        <CreateRecipe.TextArea
+                                            required
+                                            name='title'
+                                            type='text'
+                                            rows={1}
+                                            placeholder='Add Recipe Name'
+                                            value={textFields.title}
+                                            onChange={saveFields}
+                                        />
+                                    </CreateRecipe.Field>
+                                    <CreateRecipe.Field>
+                                        <CreateRecipe.TextArea
+                                            name='ingredients'
+                                            type='text'
+                                            rows={1}
+                                            placeholder='Add Ingredient'
+                                            value={textFields.ingredients}
+                                            onChange={saveFields}
+                                        />
+                                        <CreateRecipe.AddBtn
+                                            type='button'
+                                            name='ingredients'
+                                            onClick={handleAddListItem}>
+                                            <FaPlus />
+                                        </CreateRecipe.AddBtn>
+                                    </CreateRecipe.Field>
+                                    <CreateRecipe.Field>
+                                        <CreateRecipe.TextArea
+                                            name='directions'
+                                            type='text'
+                                            rows={1}
+                                            placeholder='Add Directions'
+                                            value={textFields.directions}
+                                            onChange={saveFields}
+                                        />
+                                        <CreateRecipe.AddBtn
+                                            type='button'
+                                            name='directions'
+                                            onClick={handleAddListItem}>
+                                            <FaPlus />
+                                        </CreateRecipe.AddBtn>
+                                    </CreateRecipe.Field>
+                                </CreateRecipe.TextInputs>
+                                <CreateRecipe.SubmitBtn type='submit'>
+                                    Save
+                                </CreateRecipe.SubmitBtn>
+                            </CreateRecipe.Fieldset>
+                        </CreateRecipe.Inputs>
+                        <CreateRecipe.List>
+                            <CreateRecipe.Title>
+                                Ingredients:
+                            </CreateRecipe.Title>
+                            {lists.ingredients.map((text, i) => (
+                                <CreateRecipe.Item
+                                    key={i}
+                                    data-idx={i}
+                                    onClick={handleRemoveListItem}
+                                    listStyleType='circle'
+                                    name='ingredients'>
+                                    <span>{text}</span>
+                                    <FaTrash />
+                                </CreateRecipe.Item>
+                            ))}
+                        </CreateRecipe.List>
+                        <CreateRecipe.List>
+                            <CreateRecipe.Title>Directions:</CreateRecipe.Title>
+                            {lists.directions.map((text, i) => (
+                                <CreateRecipe.Item
+                                    key={i}
+                                    data-idx={i}
+                                    onClick={handleRemoveListItem}
+                                    listStyleType='decimal'
+                                    name='directions'>
+                                    <span>{text}</span>
+                                    <FaTrash />
+                                </CreateRecipe.Item>
+                            ))}
+                        </CreateRecipe.List>
+                    </CreateRecipe.Form>
                 </CreateRecipe>
             )}
         </Mutation>

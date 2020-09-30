@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from 'styled-components'
+
 import device from '../../utils/device'
 import Theme from './Theme'
 
@@ -18,48 +19,75 @@ const theme = {
 }
 
 const GlobalStyles = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
-    ${Theme}
-    html {
-        box-sizing: border-box;
-        font-size: 10px;
+${Theme}
+html {
+    box-sizing: border-box;
+    font-size: 10px;
 
-        @media ${device.mobileL} {
-            font-size: 8px;
-        }
+    @media ${device.mobileL} {
+        font-size: 8px;
     }
+}
 
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    body {
-        background: ${theme.gray};
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.5rem;
-        margin: 0;
-        padding: 0;
-    }
+body {
+    background: ${theme.gray};
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
 
-    a {
-        cursor: pointer;
-        text-decoration: none;
-    }
+    /* transform: translate3d(0, 0, 0); */
+    transition: transform 0.7s ease;
+}
 
-    button {
-        cursor: pointer;
-    }
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
 
-    fieldset {
-        &[disabled] {
-            opacity: 0.5;
-        }
+button {
+    cursor: pointer;
+}
+
+fieldset {
+    &[disabled] {
+        opacity: 0.5;
     }
+}
+
+svg {
+    height: 100%;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray-300);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--red-600);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+
 `
 
 const loginOpenCSS = css`
@@ -68,15 +96,18 @@ const loginOpenCSS = css`
     transform: scale(1.1);
 `
 
-const PageWrap = styled.div`
-    background: var(--gray-200);
+const Page = styled.div`
+    background: white;
+    display: flex;
+    min-height: 100vh;
     transition: all 0.5s ease;
     ${props => props.loginIsOpen && loginOpenCSS}
 `
 
-const PageInner = styled.div`
-    min-height: 100vh;
-    padding: 2.5rem 5rem;
+Page.Inner = styled.div`
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 `
 
-export { theme, GlobalStyles, PageInner, PageWrap }
+export { theme, GlobalStyles, Page }

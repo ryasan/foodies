@@ -10,9 +10,10 @@ import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import button from '../components/shared/button'
 import Masonry from '../components/Masonry/Masonry'
 import Loader from '../components/Loader/Loader'
+import ContentWrap from '../components/shared/ContentWrap'
 import { limit } from '../constants'
 
-const AccountPageStyles = styled.div`
+const AccountPageStyles = styled(ContentWrap)`
     align-items: center;
     display: flex;
     flex-direction: column;

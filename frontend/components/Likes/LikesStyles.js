@@ -43,7 +43,7 @@ const Likes = styled.div`
 
     svg {
         height: 1.5rem;
-        margin-left: 0.5rem;
+        margin: 0 0.2rem;
         width: 1.5rem;
     }
 `

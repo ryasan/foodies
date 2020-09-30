@@ -6,7 +6,7 @@ const base = css`
     border-width: 0.2rem;
     display: flex;
     justify-content: center;
-    transition: all 0.2s;
+    outline: 0;
 `
 
 export const btns = {
@@ -19,6 +19,7 @@ export const btns = {
 
         &:hover {
             background: var(--red-600);
+            border-color: var(--red-600);
             color: white;
         }
 `,
@@ -52,6 +53,7 @@ export const btns = {
         border-radius: 50%;
         min-height: 3.5rem;
         min-width: 3.5rem;
+        padding: 1rem;
 `,
     wide: css`
         ${base}

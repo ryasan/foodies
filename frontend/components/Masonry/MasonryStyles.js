@@ -1,26 +1,27 @@
 import styled from 'styled-components';
 
 const StyledMasonry = styled.div`
-  /* display: flex;
+    /* display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: stretch; */
-  outline: 1px solid red;
-  width: 100%;
-  .masonry {
     outline: 1px solid red;
-    background: red;
-  }
+    width: 100%;
 
-  .column {
-    min-width: ${props => `calc(300px / ${props.columns})`};
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: stretch;
-    flex-grow: 1;
-  }
+    .masonry {
+        background: red;
+        outline: 1px solid red;
+    }
+
+    .column {
+        align-content: stretch;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: flex-start;
+        max-width: 400px;
+        min-width: ${props => `calc(300px / ${props.columns}) `};
+    }
 `;
 
 export default StyledMasonry;

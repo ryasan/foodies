@@ -1,16 +1,20 @@
 import styled from 'styled-components'
 
 import device from '../../utils/device'
+import ContentWrap from '../shared/ContentWrap'
 import { btns } from '../shared/button'
 
-const CreateRecipe = styled.form`
+const CreateRecipe = ContentWrap
+
+CreateRecipe.Form = styled.form`
     background: white;
-    box-shadow: var(--box-shadow-sm);
+    box-shadow: var(--box-shadow-xs);
     color: var(--gray-800);
     display: grid;
     flex-grow: 0;
     gap: 2rem;
     grid-template-columns: repeat(4, 1fr);
+    margin-top: 6rem;
     max-width: 1400px;
     overflow-x: auto;
     padding: 5rem;

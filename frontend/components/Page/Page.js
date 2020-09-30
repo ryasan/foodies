@@ -1,35 +1,33 @@
-import { ThemeProvider } from 'styled-components';
-import { Query } from 'react-apollo';
-import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components'
+import { Query } from 'react-apollo'
+import PropTypes from 'prop-types'
 
-import Header from '../Header/Header';
-import Login from '../Login/Login';
-import Meta from '../Meta/Meta';
-import { theme, GlobalStyles, PageInner, PageWrap } from './PageStyles';
-import LOCAL_STATE_QUERY from '../../graphql/queries/localState';
-import Welcome from './../Welcome/Welcome';
+import Navbar from '../Navbar/Navbar'
+import Login from '../Login/Login'
+import Meta from '../Meta/Meta'
+import LOCAL_STATE_QUERY from '../../graphql/queries/localState'
+import { theme, GlobalStyles, Page } from './PageStyles'
 
-const Page = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <Query query={LOCAL_STATE_QUERY}>
-      {({ data: { loginIsOpen } }) => (
-        <>
-          <Meta />
-          <GlobalStyles />
-          <Login loginIsOpen={loginIsOpen} />
-          <PageWrap loginIsOpen={loginIsOpen}>
-            <Welcome />
-            <Header />
-            <PageInner>{children}</PageInner>
-          </PageWrap>
-        </>
-      )}
-    </Query>
-  </ThemeProvider>
-);
+const PageComponent = ({ children }) => (
+    <ThemeProvider theme={theme}>
+        <Query query={LOCAL_STATE_QUERY}>
+            {({ data: { loginIsOpen } }) => (
+                <>
+                    <Meta />
+                    <GlobalStyles />
+                    <Login loginIsOpen={loginIsOpen} />
+                    <Page loginIsOpen={loginIsOpen}>
+                        <Navbar />
+                        <Page.Inner>{children}</Page.Inner>
+                    </Page>
+                </>
+            )}
+        </Query>
+    </ThemeProvider>
+)
 
-Page.propTypes = {
-  children: PropTypes.object.isRequired,
-};
+PageComponent.propTypes = {
+    children: PropTypes.object.isRequired
+}
 
-export default Page;
+export default PageComponent
