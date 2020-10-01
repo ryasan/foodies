@@ -1,64 +1,70 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
+
+import Icon from '../icons'
+import { btns } from '../shared/Button'
 
 const hideLoginCSS = css`
-  transform: scale(1.5);
-  opacity: 0;
-  pointer-events: none;
-`;
+    opacity: 0;
+    pointer-events: none;
+`
 
 const showLoginCSS = css`
-  transform: scale(1);
-  opacity: 1;
-  pointer-events: auto;
-`;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+`
 
-const StyledLogin = styled.div`
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background: transparent;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s ease;
-  ${props => (props.loginIsOpen ? showLoginCSS : hideLoginCSS)};
+const Login = styled.div`
+    align-items: center;
+    background: var(--black-400);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: fixed;
+    transition: all 0.5s ease;
+    width: 100%;
+    z-index: 1;
+    ${props => (props.loginIsOpen ? showLoginCSS : hideLoginCSS)}
+    .sign-form {
+        background: white;
+        box-shadow: var(--box-shadow-lg);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 30rem;
+        padding-top: 1rem;
+        width: 30rem;
 
-  .close {
-    top: 0;
-    right: 0;
+        button {
+            ${btns.wideRounded}
+            ${btns.cyan}
+
+            margin-top: 2rem;
+            padding: 0.5rem 0;
+            width: 100%;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 0 0 1rem;
+            text-align: center;
+
+            a {
+                color: var(--cyan-A400);
+            }
+        }
+    }
+`
+
+Login.Close = styled(Icon)`
+    color: var(--cyan-A400);
+    cursor: pointer;
+    height: 3rem;
     margin: 2rem;
     position: absolute;
-    color: ${props => props.theme.primary};
-    cursor: pointer;
-  }
+    right: 0;
+    top: 0;
+    width: 3rem;
+`
 
-  .sign-form {
-    width: 30rem;
-    min-height: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: ${props => props.theme.white};
-    box-shadow: 0 0 0.5rem ${props => props.theme.gray};
-    border-radius: ${props => props.theme.br};
-    padding-top: 1rem;
-
-    button {
-      width: 100%;
-      margin-top: 1rem;
-      border-radius: ${props => props.theme.br};
-    }
-
-    p {
-      text-align: center;
-      font-size: 1.2rem;
-      margin: 0 0 1rem 0;
-      a {
-        color: ${props => props.theme.primary};
-      }
-    }
-  }
-`;
-
-export default StyledLogin;
+export default Login

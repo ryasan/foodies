@@ -15,7 +15,7 @@ export const btns = {
 
         background: 0;
         border-color: var(--cyan-A400);
-        color: var(--black-400);
+        color: var(--cyan-A400);
 
         &:hover {
             background: var(--black-400);
@@ -58,7 +58,8 @@ export const btns = {
             color: var(--cyan-A400);
         }
 `,
-    red: css`
+
+    cyan: css`
         ${base}
 
         background: var(--cyan-A400);
@@ -66,7 +67,7 @@ export const btns = {
         color: white;
 
         &:hover {
-            background: 0;
+            background: var(--black-400);
             color: var(--cyan-A400);
         }
 `,

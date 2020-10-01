@@ -89,7 +89,7 @@ svg {
 `
 
 const loginOpenCSS = css`
-    filter: blur(3px) grayscale(1);
+    filter: grayscale(1) blur(3px);
     pointer-events: none;
     transform: scale(1.1);
 `

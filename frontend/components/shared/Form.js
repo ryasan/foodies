@@ -20,12 +20,13 @@ const Form = styled.form`
 
     h2 {
         color: ${props => props.theme.black};
+        margin: 2rem 0;
         text-align: center;
     }
 
     input {
         border: 1px solid ${props => props.theme.bsColor};
-        padding: 0.75rem 1.2rem;
+        padding: 0.75rem 2rem;
         text-indent: 2rem;
         width: 100%;
     }
@@ -42,9 +43,9 @@ const Form = styled.form`
             background-image:
                 linear-gradient(
                     to right,
-                    ${props => props.theme.primary} 0%,
-                    ${props => lighten(0.3, props.theme.primary)} 50%,
-                    ${props => props.theme.primary} 100%
+                    var(--cyan-A400) 0%,
+                    var(--black-400) 50%,
+                    var(--cyan-A400) 100%
                 );
             border-radius: ${props => props.theme.br};
             content: '';
@@ -63,14 +64,16 @@ const Form = styled.form`
         display: flex;
 
         input {
-            border-bottom: none;
+            border-bottom: 0;
             outline: none;
         }
 
-        .fa {
-            color: ${props => props.theme.bsColor};
+        svg {
+            color: var(--black-400);
+            height: 2rem;
             margin: 0 1rem;
             position: absolute;
+            width: 2rem;
         }
 
         &:first-child {
@@ -87,8 +90,8 @@ const Form = styled.form`
         }
 
         &:focus-within {
-            .fa {
-                color: ${props => props.theme.primary};
+            svg {
+                color: var(--cyan-A400);
             }
         }
     }

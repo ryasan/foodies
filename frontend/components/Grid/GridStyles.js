@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Grid = styled.div`
+    min-height: 100vh;
     position: relative;
     width: 100%;
 `;

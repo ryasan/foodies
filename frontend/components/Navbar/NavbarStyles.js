@@ -26,10 +26,6 @@ const Navbar = styled.div`
     top: 0;
     width: 100%;
     z-index: 999;
-
-    button {
-        color: var(--cyan-A400);
-    }
 `
 
 Navbar.Sticky = styled(Navbar)`

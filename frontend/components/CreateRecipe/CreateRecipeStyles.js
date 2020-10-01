@@ -98,8 +98,8 @@ CreateRecipe.AddBtn = styled.button`
 `
 
 CreateRecipe.SubmitBtn = styled.button`
-    ${btns.wide}
-    ${btns.red}
+    ${btns.wideRounded}
+    ${btns.cyan}
 `
 
 CreateRecipe.List = styled.ul`
