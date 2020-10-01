@@ -4,49 +4,66 @@ import PropTypes from 'prop-types'
 import Tile from '../Tile/Tile'
 import Grid from './GridStyles'
 
-const GridHOC = ({ recipes, fetchMore, propKey }) => {
-    const getDocumentHeight = () => {
-        const body = document.body
-        const html = document.documentElement
+const Column = ({ recipes }) => (
+    <Grid.Column>
+        {recipes.map(recipe => (
+            <Tile key={recipe._id} recipe={recipe} />
+        ))}
+    </Grid.Column>
+)
 
-        return Math.max(
-            body.scrollHeight,
-            body.offsetHeight,
-            html.clientHeight,
-            html.scrollHeight,
-            html.offsetHeight
-        )
-    }
+const getDocumentHeight = () => {
+    const body = document.body
+    const html = document.documentElement
 
-    const getScrollTop = () => {
-        return window.pageYOffset !== undefined
-            ? window.pageYOffset
-            : (
-                  document.documentElement ||
-                  document.body.parentNode ||
-                  document.body
-              ).scrollTop
-    }
+    return Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+    )
+}
+
+const getScrollTop = () => {
+    return window.pageYOffset !== undefined
+        ? window.pageYOffset
+        : (
+              document.documentElement ||
+              document.body.parentNode ||
+              document.body
+          ).scrollTop
+}
+
+const GridComponent = ({ recipes, fetchMore, propKey }) => {
+    const columns = recipes.reduce(
+        (m, t, i) => {
+            // prettier-ignore
+            m[i % 7].push(t)
+            console.log()
+            return m
+        },
+        [[], [], [], [], [], [], []]
+    )
 
     const handleScroll = () => {
-        if (getScrollTop() < getDocumentHeight() - window.innerHeight) return
-
-        fetchMore({
-            variables: {
-                skip: recipes.length
-            },
-            updateQuery: (prev, { fetchMoreResult }) => {
-                if (!fetchMoreResult) return prev
-                return Object.assign({}, prev, {
-                    [propKey]: [
-                        ...prev[propKey],
-                        ...fetchMoreResult[propKey].filter(
-                            m => !prev[propKey].some(p => p._id === m._id)
-                        )
-                    ]
-                })
-            }
-        })
+        // if (getScrollTop() < getDocumentHeight() - window.innerHeight) return
+        // fetchMore({
+        //     variables: {
+        //         skip: recipes.length
+        //     },
+        //     updateQuery: (prev, { fetchMoreResult }) => {
+        //         if (!fetchMoreResult) return prev
+        //         return Object.assign({}, prev, {
+        //             [propKey]: [
+        //                 ...prev[propKey],
+        //                 ...fetchMoreResult[propKey].filter(
+        //                     m => !prev[propKey].some(p => p._id === m._id)
+        //                 )
+        //             ]
+        //         })
+        //     }
+        // })
     }
 
     useEffect(() => {
@@ -57,18 +74,18 @@ const GridHOC = ({ recipes, fetchMore, propKey }) => {
     return (
         <Grid>
             <Grid.Text>Lorem Ipsum Shit</Grid.Text>
-            <Grid.Tiles>
-                {recipes.map(recipe => (
-                    <Tile key={recipe._id} recipe={recipe} />
+            <Grid.Columns>
+                {columns.map((items, i) => (
+                    <Column key={i} recipes={items} />
                 ))}
-            </Grid.Tiles>
+            </Grid.Columns>
         </Grid>
     )
 }
 
-GridHOC.propTypes = {
+GridComponent.propTypes = {
     fetchMore: PropTypes.func.isRequired,
     propKey: PropTypes.string.isRequired
 }
 
-export default GridHOC
+export default GridComponent
