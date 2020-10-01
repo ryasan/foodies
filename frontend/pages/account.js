@@ -10,10 +10,9 @@ import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import button from '../components/shared/Button'
 import Grid from '../components/Grid/Grid'
 import Loader from '../components/Loader/Loader'
-import ContentWrap from '../components/shared/ContentWrap'
 import { limit } from '../constants'
 
-const AccountPageStyles = styled(ContentWrap)`
+const AccountPageStyles = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;

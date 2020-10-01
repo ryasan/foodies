@@ -73,7 +73,7 @@ const GridComponent = ({ recipes, fetchMore, propKey }) => {
 
     return (
         <Grid>
-            <Grid.Text>Lorem Ipsum Shit</Grid.Text>
+            <Grid.Text>Bon Appetit</Grid.Text>
             <Grid.Columns>
                 {columns.map((items, i) => (
                     <Column key={i} recipes={items} />
