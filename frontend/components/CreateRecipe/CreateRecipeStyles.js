@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
 import device from '../../utils/device'
-import ContentWrap from '../shared/ContentWrap'
 import { btns } from '../shared/Button'
 
-const CreateRecipe = ContentWrap
+const CreateRecipe = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`
 
 CreateRecipe.Form = styled.form`
     background: white;
@@ -69,7 +73,6 @@ CreateRecipe.TextArea = styled.textarea`
     outline: none;
     padding: 1rem 0;
     resize: none;
-    transition: all 0.3s ease;
     width: 30rem;
 
     &:focus {
@@ -110,6 +113,7 @@ CreateRecipe.Title = styled.h4`
 
 CreateRecipe.Item = styled.li`
     cursor: pointer;
+    line-height: 2.5rem;
     list-style-position: inside;
     list-style-type: ${props => props.listStyleType};
     overflow: hidden;
@@ -121,8 +125,9 @@ CreateRecipe.Item = styled.li`
     svg {
         color: var(--red-600);
         float: right;
-        transition: visibility 0.2s;
+        height: 2.5rem;
         visibility: hidden;
+        width: 2.5rem;
     }
 
     &:hover {

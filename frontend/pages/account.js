@@ -8,7 +8,7 @@ import LIKED_RECIPES_QUERY from '../graphql/queries/likedRecipes'
 import PleaseSignin from '../components/PleaseSignin/PleaseSignin'
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import button from '../components/shared/Button'
-import Masonry from '../components/Masonry/Masonry'
+import Grid from '../components/Grid/Grid'
 import Loader from '../components/Loader/Loader'
 import ContentWrap from '../components/shared/ContentWrap'
 import { limit } from '../constants'
@@ -71,7 +71,7 @@ const AccountPage = () => {
                         const recipes = data[propKey]
 
                         return recipes.length ? (
-                            <Masonry
+                            <Grid
                                 recipes={recipes || []}
                                 fetchMore={fetchMore}
                                 propKey={propKey}

@@ -1,21 +1,10 @@
 import { useEffect } from 'react'
-import Masonry from 'react-masonry-component'
 import PropTypes from 'prop-types'
 
 import Tile from '../Tile/Tile'
+import Grid from './GridStyles'
 
-const masonryOptions = {
-    transitionDuration: 500,
-    isFitWidth: true
-}
-
-const style = {
-    listStyleType: 'none',
-    padding: 0,
-    margin: '0 auto'
-}
-
-const MasonryHOC = ({ recipes, fetchMore, propKey }) => {
+const GridHOC = ({ recipes, fetchMore, propKey }) => {
     const getDocumentHeight = () => {
         const body = document.body
         const html = document.documentElement
@@ -66,17 +55,20 @@ const MasonryHOC = ({ recipes, fetchMore, propKey }) => {
     })
 
     return (
-        <Masonry style={style} elementType='ul' options={masonryOptions}>
-            {recipes.map(recipe => (
-                <Tile key={recipe._id} recipe={recipe} />
-            ))}
-        </Masonry>
+        <Grid>
+            <Grid.Text>Lorem Ipsum Shit</Grid.Text>
+            <Grid.Tiles>
+                {recipes.map(recipe => (
+                    <Tile key={recipe._id} recipe={recipe} />
+                ))}
+            </Grid.Tiles>
+        </Grid>
     )
 }
 
-MasonryHOC.propTypes = {
+GridHOC.propTypes = {
     fetchMore: PropTypes.func.isRequired,
     propKey: PropTypes.string.isRequired
 }
 
-export default MasonryHOC
+export default GridHOC

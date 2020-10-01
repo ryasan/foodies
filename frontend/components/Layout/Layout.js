@@ -7,7 +7,7 @@ import Navbar from '../Navbar/Navbar'
 import Login from '../Login/Login'
 import Meta from '../Meta/Meta'
 import LOCAL_STATE_QUERY from '../../graphql/queries/localState'
-import { theme, GlobalStyles, Page } from './PageStyles'
+import { theme, GlobalStyles, Layout } from './LayoutStyles'
 
 const PageComponent = ({ children }) => (
     <ThemeProvider theme={theme}>
@@ -17,10 +17,9 @@ const PageComponent = ({ children }) => (
                     <Meta />
                     <GlobalStyles />
                     <Login loginIsOpen={loginIsOpen} />
-                    <Page loginIsOpen={loginIsOpen}>
-                        <Navbar />
-                        <Page.Inner>{children}</Page.Inner>
-                    </Page>
+                    <Layout loginIsOpen={loginIsOpen}>
+                        <Layout.Inner>{children}</Layout.Inner>
+                    </Layout>
                 </Fragment>
             )}
         </Query>

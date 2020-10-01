@@ -21,6 +21,7 @@ const theme = {
 const GlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap');
 
 ${Theme}
 html {
@@ -41,14 +42,11 @@ html {
 }
 
 body {
-    background: ${theme.gray};
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
     margin: 0;
     overflow-x: hidden;
     padding: 0;
-
-    /* transform: translate3d(0, 0, 0); */
     transition: transform 0.7s ease;
 }
 
@@ -96,20 +94,20 @@ const loginOpenCSS = css`
     transform: scale(1.1);
 `
 
-const Page = styled.div`
-    background: white;
+const Layout = styled.div`
+    background: var(--black-400);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: all 0.5s ease;
+    transition: all 0.3s;
     ${props => props.loginIsOpen && loginOpenCSS}
+
 `
 
-Page.Inner = styled.div`
+Layout.Inner = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin-top: 6rem;
 `
 
-export { theme, GlobalStyles, Page }
+export { theme, GlobalStyles, Layout }

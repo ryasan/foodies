@@ -5,10 +5,9 @@ import { btns } from '../shared/Button'
 
 const Landing = styled.header`
     align-items: center;
-    box-shadow: var(--box-shadow-lg);
     display: flex;
     font-family: 'Poiret One', cursive, sans-serif;
-    height: calc(100vh - 6rem);
+    height: 100vh;
     justify-content: center;
     overflow: hidden;
     position: relative;
@@ -20,6 +19,17 @@ const Landing = styled.header`
         height: 200px;
         left: 0;
         position: absolute;
+        width: 100%;
+        z-index: 99;
+    }
+
+    &::after {
+        background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.9));
+        content: '';
+        height: 200px;
+        left: 0;
+        position: absolute;
+        top: 0;
         width: 100%;
         z-index: 99;
     }
@@ -104,18 +114,19 @@ Landing.IconBtn = styled.button`
     background: 0;
     border: 0;
     color: var(--red-600);
-    height: 3.5rem;
-    margin: 2rem;
+    height: 3rem;
+    margin-right: 23rem;
+    margin-top: 1.5rem;
     outline: none;
     position: absolute;
     right: 0;
     top: 0;
     transition: all 0.2s;
-    width: 3.5rem;
-    z-index: 1;
+    width: 3rem;
+    z-index: 999;
 
     &:hover {
-        color: white;
+        color: var(--red-400);
     }
 `
 

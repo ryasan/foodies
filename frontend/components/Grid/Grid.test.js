@@ -1,4 +1,4 @@
-import Masonry from './Masonry';
+import Grid from './Grid';
 import { shallow } from 'enzyme';
 
 const testPins = [
@@ -43,8 +43,8 @@ const testPins = [
   },
 ];
 
-describe('<Masonry />', () => {
-  const wrapper = shallow(<Masonry recipes={testPins} />);
+describe('<Grid />', () => {
+  const wrapper = shallow(<Grid recipes={testPins} />);
 
   it('exists', () => {
     expect(wrapper.exists()).toBe(true);

@@ -63,9 +63,9 @@ export const btns = {
         ${base}
 
         border-radius: 50%;
-        min-height: 3.5rem;
-        min-width: 3.5rem;
-        padding: 1rem;
+        height: 3.5rem;
+        padding: 0.3rem;
+        width: 3.5rem;
 `,
     white: css`
         ${base}

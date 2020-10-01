@@ -15,7 +15,7 @@ const Form = styled.form`
     padding: 0.5rem;
 
     fieldset {
-        border: none;
+        border: 0;
     }
 
     h2 {

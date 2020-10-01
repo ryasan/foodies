@@ -28,13 +28,13 @@ const throb = keyframes`
 
 const Likes = styled.div`
     align-items: center;
-    color: ${props => (props.liked ? 'var(--red-600)' : 'var(--gray-500)')};
+    color: ${props => (props.liked ? 'var(--red-600)' : 'inherit')};
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
 
     &:hover {
-        color: var(--red-600);
+        color: white;
 
         svg {
             animation: ${throb} 1.5s infinite;

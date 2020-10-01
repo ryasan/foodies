@@ -36,16 +36,22 @@ import MarkerIcon from './marker'
 import MapIcon from './map'
 import PhoneIcon from './phone'
 import HeartIcon from './heart'
+import TrashIcon from './trash'
+import AddIcon from './add'
 
 const IconComponent = props => {
     switch (props.name) {
         case 'account-circle':
         case 'account-box':
             return <AccountIcon {...props} />
+        case 'add':
+            return <AddIcon {...props} />
         case 'briefcase':
             return <BriefcaseIcon {...props} />
         case 'cart':
             return <CartIcon {...props} />
+        case 'document':
+            return <DocumentIcon {...props} />
         case 'dollar':
             return <DollarIcon {...props} />
         case 'down-arrow':
@@ -110,15 +116,16 @@ const IconComponent = props => {
             return <StoreIcon {...props} />
         case 'title':
             return <TitleIcon {...props} />
+        case 'trash':
+            return <TrashIcon {...props} />
         case 'twitter-filled':
         case 'twitter-outlined':
             return <TwitterIcon {...props} />
         case 'upload-filled':
         case 'upload-outlined':
             return <UploadIcon {...props} />
-        case 'document':
         default:
-            return <DocumentIcon {...props} />
+            throw new Error('Icon not found')
     }
 }
 

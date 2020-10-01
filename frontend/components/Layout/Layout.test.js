@@ -1,4 +1,4 @@
-import Page from './Page';
+import Page from './Layout';
 import { shallow } from 'enzyme';
 
 describe('<Page />', () => {

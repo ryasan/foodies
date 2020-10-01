@@ -214,7 +214,7 @@ const Theme = css`
         --black-100: #212121;
         --black-200: #1f1f1f;
         --black-300: #1c1c1c;
-        --black-400: #171717;
+        --black-400: #191a1b;
         --black-500: #121212;
         --black-600: #0a0a0a;
         --black-700: #0d0d0d;
@@ -222,5 +222,6 @@ const Theme = css`
         --black-900: #030303;
     }
 `
+
 
 export default Theme

@@ -1,40 +1,40 @@
-import { ApolloProvider } from 'react-apollo';
-import App, { Container } from 'next/app';
-import PropTypes from 'prop-types';
+import { ApolloProvider } from 'react-apollo'
+import App, { Container } from 'next/app'
+import PropTypes from 'prop-types'
 
-import Page from '../components/Page/Page';
-import withData from '../utils/withData';
+import Layout from '../components/Layout/Layout'
+import withData from '../utils/withData'
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+    static async getInitialProps ({ Component, ctx }) {
+        let pageProps = {}
+        if (Component.getInitialProps) {
+            pageProps = await Component.getInitialProps(ctx)
+        }
+
+        // expose the query params to the user
+        pageProps.query = ctx.query
+
+        return { pageProps }
     }
 
-    // expose the query params to the user
-    pageProps.query = ctx.query;
+    render () {
+        const { Component, apollo, pageProps } = this.props
 
-    return { pageProps };
-  }
-
-  render() {
-    const { Component, apollo, pageProps } = this.props;
-
-    return (
-      <Container>
-        <ApolloProvider client={apollo}>
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </ApolloProvider>
-      </Container>
-    );
-  }
+        return (
+            <Container>
+                <ApolloProvider client={apollo}>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </ApolloProvider>
+            </Container>
+        )
+    }
 }
 
 MyApp.propTypes = {
-  Component: PropTypes.func.isRequired,
-};
+    Component: PropTypes.func.isRequired
+}
 
-export default withData(MyApp);
+export default withData(MyApp)

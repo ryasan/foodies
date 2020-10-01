@@ -2,14 +2,14 @@ import Link from 'next/link'
 import Router, { useLocation } from 'next/router'
 import NProgress from 'nprogress'
 import { Mutation } from 'react-apollo'
-import { FaPlus, FaGithub } from 'react-icons/fa'
 import { Element } from 'react-scroll'
 
-import Navbar from './NavbarStyles'
+import Navbar, { NavWrapper, Content } from './NavbarStyles'
 import User from '../User/User'
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin'
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser'
 import SIGN_OUT_MUTATION from '../../graphql/mutations/signout'
+import Icon from '../icons'
 
 Router.onRouteChangeStart = () => {
     NProgress.start()
@@ -35,7 +35,7 @@ const AuthView = me => (
                     </Link>
                     <Link href='/recipe-builder'>
                         <Navbar.Btn modifier='rounded' className='icon-btn'>
-                            <FaPlus />
+                            <Icon name='add' />
                         </Navbar.Btn>
                     </Link>
                     <Navbar.Btn modifier='wideRounded' onClick={signout}>
@@ -53,7 +53,7 @@ const UnAuthView = () => (
             <Navbar.Nav>
                 <Link href='/recipe-builder'>
                     <Navbar.Btn modifier='rounded' className='icon-btn'>
-                        <FaPlus />
+                        <Icon name='add' />
                     </Navbar.Btn>
                 </Link>
                 <Navbar.Btn modifier='wideRounded' onClick={toggleLogin}>
@@ -64,20 +64,38 @@ const UnAuthView = () => (
     </Mutation>
 )
 
-const NavbarComponent = () => {
-
-    return (
-        <Navbar>
-            <Link href='/'>
-                <Navbar.Logo>FD</Navbar.Logo>
-            </Link>
-            <User>
-                {({ data: { me } }) => {
-                    return me ? AuthView(me) : UnAuthView()
-                }}
-            </User>
-        </Navbar>
+const NavbarComponent = props => {
+    const userView = () => (
+        <User>
+            {({ data: { me } }) => {
+                return me ? AuthView(me) : UnAuthView()
+            }}
+        </User>
     )
+
+    switch (props.position) {
+        case 'sticky':
+            return (
+                <NavWrapper>
+                    <Navbar.Sticky>
+                        <Navbar.Logo href='/'>FD</Navbar.Logo>
+                        {userView()}
+                    </Navbar.Sticky>
+                    <Content>{props.children}</Content>
+                </NavWrapper>
+            )
+        case 'absolute':
+        default:
+            return (
+                <NavWrapper>
+                    <Navbar.Absolute>
+                        <Navbar.Logo href='/'>FD</Navbar.Logo>
+                        {userView()}
+                    </Navbar.Absolute>
+                    <Content>{props.children}</Content>
+                </NavWrapper>
+            )
+    }
 }
 
 export default NavbarComponent
