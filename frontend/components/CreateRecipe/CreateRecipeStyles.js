@@ -76,7 +76,7 @@ CreateRecipe.TextArea = styled.textarea`
     width: 30rem;
 
     &:focus {
-        border-color: var(--red-600);
+        border-color: var(--cyan-A400);
     }
 `
 
@@ -123,7 +123,7 @@ CreateRecipe.Item = styled.li`
     width: 100%;
 
     svg {
-        color: var(--red-600);
+        color: var(--cyan-A400);
         float: right;
         height: 2.5rem;
         visibility: hidden;
@@ -131,7 +131,7 @@ CreateRecipe.Item = styled.li`
     }
 
     &:hover {
-        color: var(--red-600);
+        color: var(--cyan-A400);
 
         svg {
             visibility: visible;

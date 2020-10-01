@@ -29,22 +29,33 @@ const Navbar = styled.div`
 `
 
 Navbar.Sticky = styled(Navbar)`
-    background: var(--red-600);
+    background: var(--cyan-A400);
     box-shadow: var(--box-shadow-xs);
     position: sticky;
 
     button {
         color: white;
+        color: var(--black-400);
     }
 
     a {
-        border-color: white;
-        color: white;
+        border-color: var(--black-400);
+        color: var(--black-400);
+
+        &:hover {
+            background: var(--black-400);
+            border-color: var(--cyan-A400);
+            color: var(--cyan-A400);
+        }
     }
 `
 
 Navbar.Absolute = styled(Navbar)`
     position: absolute;
+
+    button {
+        color: var(--cyan-A400);
+    }
 `
 
 Navbar.Nav = styled.nav`
@@ -54,9 +65,9 @@ Navbar.Nav = styled.nav`
 
 Navbar.Logo = styled.a`
     backface-visibility: hidden;
-    border: 0.2rem solid var(--red-600);
+    border: 0.2rem solid var(--cyan-A400);
     border-radius: 50%;
-    color: var(--red-600);
+    color: var(--cyan-A400);
     cursor: pointer;
     font-family: 'Poiret One', cursive, sans-serif;
     font-family: 'Oranienbaum', serif;
@@ -68,13 +79,13 @@ Navbar.Logo = styled.a`
     width: 4.5rem;
 
     &:hover {
-        background: var(--red-500);
+        background: var(--cyan-A400);
         color: white;
     }
 `
 
 Navbar.Btn = styled.button`
-    ${btns.clearRed}
+    ${btns.clearCyan}
     ${props => btns[props.modifier]}
 
     border-color: transparent;

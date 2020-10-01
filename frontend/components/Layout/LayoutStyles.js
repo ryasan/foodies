@@ -79,7 +79,7 @@ svg {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--red-600);
+    background: var(--cyan-A400);
 }
 
 ::-webkit-scrollbar-thumb:hover {

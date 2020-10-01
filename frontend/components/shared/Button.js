@@ -10,16 +10,15 @@ const base = css`
 `
 
 export const btns = {
-    clearRed: css`
+    clearCyan: css`
         ${base}
 
         background: 0;
-        border-color: var(--red-600);
-        color: var(--red-600);
+        border-color: var(--cyan-A400);
+        color: var(--black-400);
 
         &:hover {
-            background: var(--red-600);
-            border-color: var(--red-600);
+            background: var(--black-400);
             color: white;
         }
 `,
@@ -31,8 +30,8 @@ export const btns = {
         color: var(--gray-600);
 
         &:hover {
-            border-color: var(--red-600);
-            color: var(--red-600);
+            border-color: var(--cyan-A400);
+            color: var(--cyan-A400);
         }
 `,
 
@@ -44,19 +43,19 @@ export const btns = {
 
         &:hover {
             background-color: white;
-            color: var(--red-600);
+            color: var(--cyan-A400);
         }
 `,
     red: css`
         ${base}
 
-        background: var(--red-600);
-        border-color: var(--red-600);
+        background: var(--cyan-A400);
+        border-color: var(--cyan-A400);
         color: white;
 
         &:hover {
             background: 0;
-            color: var(--red-600);
+            color: var(--cyan-A400);
         }
 `,
     rounded: css`
@@ -71,7 +70,7 @@ export const btns = {
         ${base}
 
         background-color: white;
-        color: var(--red-600);
+        color: var(--cyan-A400);
 `,
 
     wide: css`

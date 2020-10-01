@@ -7,7 +7,7 @@ const Tile = styled.li`
     height: 35rem;
     list-style-type: none;
     padding: 0.5rem 0.5rem 0;
-    transition: all 0.3s;
+    transition: all 0.2s;
     width: 23rem;
 
     &:hover {

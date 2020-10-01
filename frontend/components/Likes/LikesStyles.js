@@ -28,7 +28,7 @@ const throb = keyframes`
 
 const Likes = styled.div`
     align-items: center;
-    color: ${props => (props.liked ? 'var(--red-600)' : 'inherit')};
+    color: ${props => (props.liked ? 'var(--red-500)' : 'inherit')};
     cursor: pointer;
     display: flex;
     justify-content: flex-end;

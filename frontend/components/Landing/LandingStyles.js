@@ -5,6 +5,7 @@ import { btns } from '../shared/Button'
 
 const Landing = styled.header`
     align-items: center;
+    background: var(--black-400);
     display: flex;
     font-family: 'Poiret One', cursive, sans-serif;
     height: 100vh;
@@ -113,7 +114,7 @@ Landing.Subtitle = styled.p`
 Landing.IconBtn = styled.button`
     background: 0;
     border: 0;
-    color: var(--red-600);
+    color: var(--cyan-A400);
     height: 3rem;
     margin-right: 23rem;
     margin-top: 1.5rem;
@@ -145,12 +146,12 @@ const hover = keyframes`
 `
 
 Landing.ScrollBtn = styled(Link)`
-    ${btns.clearRed}
     ${btns.rounded}
 
     animation: ${hover} 2s ease-in-out infinite forwards;
     bottom: 5rem;
     box-shadow: var(--box-shadow-md);
+    color: var(--cyan-A400);
     height: 5rem;
     left: 50%;
     outline: none;
@@ -159,6 +160,11 @@ Landing.ScrollBtn = styled(Link)`
     transform: translateX(-50%);
     width: 5rem;
     z-index: 100;
+
+    &:hover {
+        background: var(--black-400);
+        color: white;
+    }
 `
 
 export default Landing

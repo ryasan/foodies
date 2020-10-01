@@ -8,7 +8,7 @@ const Grid = styled.div`
 `;
 
 Grid.Text = styled.h1`
-    color: var(--red-600);
+    color: var(--cyan-A400);
     font-family: 'Poiret One', cursive, sans-serif;
     font-size: 7rem;
     left: 50%;
