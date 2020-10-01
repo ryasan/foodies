@@ -6,6 +6,7 @@ import RecipeDetailsStyles from './RecipeDetailsStyles'
 import RECIPE_DETAILS_QUERY from '../../graphql/queries/recipeDetails'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import DeleteRecipe from '../DeleteRecipe/DeleteRecipe'
+import NavbarComponent from '../Navbar/Navbar'
 
 const RecipeDetails = ({ recipeId, currentUserId }) => {
     return (
@@ -21,41 +22,46 @@ const RecipeDetails = ({ recipeId, currentUserId }) => {
                         <Head>
                             <title>NP | {recipeDetails.title}</title>
                         </Head>
-                        <RecipeDetailsStyles>
-                            <div className='column img-container'>
-                                <img
-                                    src={recipeDetails.largeImage}
-                                    alt={recipeDetails.title}
-                                />
-                            </div>
-                            <div className='column details-container'>
-                                <div className='body'>
-                                    <h1>{recipeDetails.title}</h1>
-                                    <ul>
-                                        {recipeDetails.ingredients.map(
-                                            (ingredient, i) => (
-                                                <li key={i}>{ingredient}</li>
-                                            )
-                                        )}
-                                    </ul>
-                                    <ul>
-                                        {recipeDetails.directions.map(
-                                            (direction, i) => (
-                                                <li key={i}>{direction}</li>
-                                            )
-                                        )}
-                                    </ul>
+                        <NavbarComponent>
+                            <RecipeDetailsStyles>
+                                <div className='column img-container'>
+                                    <img
+                                        src={recipeDetails.largeImage}
+                                        alt={recipeDetails.title}
+                                    />
                                 </div>
-                                <div className='footer'>
-                                    <p>
-                                        Post by: {recipeDetails.creatorUsername}
-                                    </p>
-                                    {ownsRecipe && (
-                                        <DeleteRecipe recipeId={recipeId} />
-                                    )}
+                                <div className='column details-container'>
+                                    <div className='body'>
+                                        <h1>{recipeDetails.title}</h1>
+                                        <ul>
+                                            {recipeDetails.ingredients.map(
+                                                (ingredient, i) => (
+                                                    <li key={i}>
+                                                        {ingredient}
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                        <ul>
+                                            {recipeDetails.directions.map(
+                                                (direction, i) => (
+                                                    <li key={i}>{direction}</li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <div className='footer'>
+                                        <p>
+                                            Post by:{' '}
+                                            {recipeDetails.creatorUsername}
+                                        </p>
+                                        {ownsRecipe && (
+                                            <DeleteRecipe recipeId={recipeId} />
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        </RecipeDetailsStyles>
+                            </RecipeDetailsStyles>
+                        </NavbarComponent>
                     </>
                 )
             }}

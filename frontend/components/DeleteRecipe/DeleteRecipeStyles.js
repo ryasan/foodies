@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { btns } from '../shared/Button'
 
 const DeleteRecipe = styled.button`
-    ${btns.clearCyan}
+    ${btns.clearRed}
     ${btns.wideRounded}
 
     width: 10rem;

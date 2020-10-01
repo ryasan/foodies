@@ -26,36 +26,21 @@ const Navbar = styled.div`
     top: 0;
     width: 100%;
     z-index: 999;
-`
-
-Navbar.Sticky = styled(Navbar)`
-    background: var(--cyan-A400);
-    box-shadow: var(--box-shadow-xs);
-    position: sticky;
-
-    button {
-        color: white;
-        color: var(--black-400);
-    }
-
-    a {
-        border-color: var(--black-400);
-        color: var(--black-400);
-
-        &:hover {
-            background: var(--black-400);
-            border-color: var(--cyan-A400);
-            color: var(--cyan-A400);
-        }
-    }
-`
-
-Navbar.Absolute = styled(Navbar)`
-    position: absolute;
 
     button {
         color: var(--cyan-A400);
     }
+`
+
+Navbar.Sticky = styled(Navbar)`
+    background: var(--black-400);
+    box-shadow: var(--box-shadow-sm);
+    position: sticky;
+
+`
+
+Navbar.Absolute = styled(Navbar)`
+    position: absolute;
 `
 
 Navbar.Nav = styled.nav`

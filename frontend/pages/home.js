@@ -12,7 +12,6 @@ import { Fragment } from 'react'
 import { Element } from 'react-scroll'
 
 const Home = styled.div`
-    min-height: 100vh;
     position: relative;
     width: 100%;
 

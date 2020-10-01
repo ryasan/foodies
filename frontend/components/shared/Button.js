@@ -34,6 +34,18 @@ export const btns = {
             color: var(--cyan-A400);
         }
 `,
+    clearRed: css`
+        ${base}
+
+        background: 0;
+        border-color: var(--red-600);
+        color: var(--red-600);
+
+        &:hover {
+            background: var(--red-600);
+            color: white;
+        }
+`,
 
     clearWhite: css`
         ${base}

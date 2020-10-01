@@ -114,6 +114,7 @@ Landing.Subtitle = styled.p`
 Landing.IconBtn = styled.button`
     background: 0;
     border: 0;
+    border-radius: 50%;
     color: var(--cyan-A400);
     height: 3rem;
     margin-right: 23rem;
@@ -127,7 +128,7 @@ Landing.IconBtn = styled.button`
     z-index: 999;
 
     &:hover {
-        color: var(--red-400);
+        color: var(--cyan-A100);
     }
 `
 

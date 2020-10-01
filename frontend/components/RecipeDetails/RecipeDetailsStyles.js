@@ -8,6 +8,7 @@ const RecipeDetailsStyles = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 6rem;
     max-width: 1000px;
     min-width: 50vw;
 
@@ -22,7 +23,7 @@ const RecipeDetailsStyles = styled.div`
 
     .img-container {
         img {
-            border-radius: ${props => props.theme.bigBr};
+            border-radius: 1rem;
             width: 100%;
         }
     }
