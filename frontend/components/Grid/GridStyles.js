@@ -25,18 +25,17 @@ Grid.Text = styled.h1`
 `
 
 Grid.Columns = styled.div`
-    column-gap: 0.5rem;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    height: 100%;
-    justify-items: center;
-    left: 50%;
-    margin-bottom: 6rem;
-    min-height: 70vh;
-    position: relative;
-    transform: translateX(-50%);
-    width: 1500px;
-
+column-gap: 1rem;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+height: 100%;
+justify-items: center;
+left: 50%;
+margin-bottom: 6rem;
+min-height: 70vh;
+position: relative;
+transform: translateX(-50%);
+width: 1500px;
 `
 
 Grid.Column = styled.ul`

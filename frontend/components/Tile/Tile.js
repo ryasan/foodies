@@ -24,10 +24,10 @@ const TileComponent = ({
                 />
                 <Tile.Body>
                     <Tile.Text>{title}</Tile.Text>
-                    <Tile.Footer>
+                    <Tile.Creator>
                         <Tile.Text>by {creatorUsername}</Tile.Text>
                         <Likes recipeId={_id} likedByIds={likedByIds} />
-                    </Tile.Footer>
+                    </Tile.Creator>
                 </Tile.Body>
             </Tile>
         </Reveal>
