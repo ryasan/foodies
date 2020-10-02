@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import StyledLoader from './LoaderStyles';
 
-const Loader = ({ className }) => (
+const LoaderComponent = ({ className }) => (
   <StyledLoader className={className}>
     <div className="line-scale-pulse-out">
       <div />
@@ -14,9 +14,9 @@ const Loader = ({ className }) => (
   </StyledLoader>
 );
 
-Loader.propTypes = {
+LoaderComponent.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
 };
 
-export default Loader;
+export default LoaderComponent;

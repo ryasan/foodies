@@ -1,13 +1,15 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Tile from '../Tile/Tile'
 import Grid from './GridStyles'
+import Loader from '../Loader/Loader'
+import { sleep } from '../../utils/sleep'
 
-const Column = ({ recipes }) => (
+const Column = ({ recipes, colIdx }) => (
     <Grid.Column>
-        {recipes.map(recipe => (
-            <Tile key={recipe._id} recipe={recipe} />
+        {recipes.map((recipe, i) => (
+            <Tile key={recipe._id} long={(colIdx + i) % 2} recipe={recipe} />
         ))}
     </Grid.Column>
 )
@@ -35,36 +37,48 @@ const getScrollTop = () => {
           ).scrollTop
 }
 
-const GridComponent = ({ recipes, fetchMore, propKey }) => {
-    const columns = recipes.reduce(
-        (m, t, i) => {
-            // prettier-ignore
-            m[i % 7].push(t)
-            console.log()
+// prettier-ignore
+const columnize = items =>
+    items.reduce((m, t, i) => {
+            m[i % 5].push(t)
             return m
         },
-        [[], [], [], [], [], [], []]
+        [[], [], [], [], []]
     )
 
+const GridComponent = ({ recipes, fetchMore, propKey, loading }) => {
+    const [items, setItems] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
     const handleScroll = () => {
-        // if (getScrollTop() < getDocumentHeight() - window.innerHeight) return
-        // fetchMore({
-        //     variables: {
-        //         skip: recipes.length
-        //     },
-        //     updateQuery: (prev, { fetchMoreResult }) => {
-        //         if (!fetchMoreResult) return prev
-        //         return Object.assign({}, prev, {
-        //             [propKey]: [
-        //                 ...prev[propKey],
-        //                 ...fetchMoreResult[propKey].filter(
-        //                     m => !prev[propKey].some(p => p._id === m._id)
-        //                 )
-        //             ]
-        //         })
-        //     }
-        // })
+        if (getScrollTop() < getDocumentHeight() - window.innerHeight) return
+        fetchMore({
+            variables: {
+                skip: recipes.length
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+                if (!fetchMoreResult) return prev
+                return Object.assign({}, prev, {
+                    [propKey]: [
+                        ...prev[propKey],
+                        ...fetchMoreResult[propKey].filter(
+                            m => !prev[propKey].some(p => p._id === m._id)
+                        )
+                    ]
+                })
+            }
+        })
     }
+
+    useEffect(() => {
+        if (recipes.length) {
+            setIsLoading(true)
+            sleep(5000).then(() => {
+                setIsLoading(false)
+                setItems(columnize(recipes))
+            })
+        }
+    }, [recipes.length])
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
@@ -73,12 +87,12 @@ const GridComponent = ({ recipes, fetchMore, propKey }) => {
 
     return (
         <Grid>
-            <Grid.Text>Bon Appetit</Grid.Text>
             <Grid.Columns>
-                {columns.map((items, i) => (
-                    <Column key={i} recipes={items} />
+                {items.map((items, i) => (
+                    <Column key={i} colIdx={i} recipes={items} />
                 ))}
             </Grid.Columns>
+            {isLoading && <Loader className='loader' />}
         </Grid>
     )
 }

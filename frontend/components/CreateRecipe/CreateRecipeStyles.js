@@ -18,7 +18,6 @@ CreateRecipe.Form = styled.form`
     flex-grow: 0;
     gap: 2rem;
     grid-template-columns: repeat(4, 1fr);
-    margin-top: 6rem;
     max-width: 1400px;
     overflow-x: auto;
     padding: 5rem;

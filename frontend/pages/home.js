@@ -10,16 +10,11 @@ import Navbar from '../components/Navbar/Navbar'
 import { limit } from '../constants'
 import { Fragment } from 'react'
 import { Element } from 'react-scroll'
+import { sleep } from '../utils/sleep'
 
 const Home = styled.div`
     position: relative;
     width: 100%;
-
-    .loader {
-        display: flex;
-        justify-content: center;
-        margin-top: 2rem;
-    }
 `
 
 const HomePage = () => (
@@ -32,23 +27,13 @@ const HomePage = () => (
                 fetchPolicy='cache-and-network'>
                 {({ data, error, loading, fetchMore }) => {
                     if (error) return <ErrorMessage error={error} />
-
-                    if (loading) {
-                        return (
-                            <Navbar position='sticky'>
-                                <Home>
-                                    <Loader className='loader' />
-                                </Home>
-                            </Navbar>
-                        )
-                    }
-
                     return (
                         <Navbar position='sticky'>
                             <Home>
                                 <Grid
                                     recipes={data.recipes || []}
                                     fetchMore={fetchMore}
+                                    loading={loading}
                                     propKey='recipes'
                                 />
                             </Home>

@@ -1,10 +1,17 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Grid = styled.div`
-    min-height: 100vh;
     position: relative;
     width: 100%;
-`;
+
+    .loader {
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        margin: 6rem 0;
+        position: relative;
+    }
+`
 
 Grid.Text = styled.h1`
     color: white;
@@ -15,47 +22,27 @@ Grid.Text = styled.h1`
     padding: 0;
     position: absolute;
     transform: translateX(-50%);
-
 `
 
 Grid.Columns = styled.div`
+    column-gap: 0.5rem;
     display: grid;
-    gap: 15px;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     height: 100%;
     justify-items: center;
     left: 50%;
-    margin: 0 auto;
+    margin-bottom: 6rem;
+    min-height: 70vh;
     position: relative;
     transform: translateX(-50%);
-    width: 1680px;
+    width: 1500px;
+
 `
 
 Grid.Column = styled.ul`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-    &:nth-child(2) {
-        margin-top: 10rem;
-    }
-
-    &:nth-child(3) {
-        margin-top: 15rem;
-    }
-
-    &:nth-child(4) {
-        margin-top: 20rem;
-    }
-
-    &:nth-child(5) {
-        margin-top: 15rem;
-    }
-
-    &:nth-child(6) {
-        margin-top: 10rem;
-    }
-
 `
 
-export default Grid;
+export default Grid
