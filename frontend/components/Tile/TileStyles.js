@@ -6,21 +6,19 @@ const Tile = styled.li`
     color: white;
     height: ${props => props.long ? '70rem' : '35rem'};
     list-style-type: none;
-    padding: 0.5rem 0.5rem 0;
     transition: all 0.2s;
-    width: 29.5rem;
+    width: 28.5rem;
 
     &:hover {
-        background: white;
         box-shadow: var(--box-shadow-sm);
-        color: var(--black-400);
+        color: var(--cyan-A400);
+        transform: scale(1.02);
     }
 
 `
 
 Tile.Img = styled.img`
     border-radius: 0.5rem;
-    box-shadow: var(--box-shadow-sm);
     cursor: zoom-in;
     height: ${props => props.long ? '67rem' : '32rem'};
     object-fit: cover;
