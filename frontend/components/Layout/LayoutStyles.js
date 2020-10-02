@@ -70,6 +70,10 @@ svg {
     width: 100%;
 }
 
+li {
+    list-style-position: inside;
+}
+
 ::-webkit-scrollbar {
     width: 0.3rem;
 }
@@ -83,7 +87,7 @@ svg {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: white;
+    background: var(--cyan-A100);
 }
 
 `

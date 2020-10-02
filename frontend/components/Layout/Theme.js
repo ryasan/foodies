@@ -3,11 +3,11 @@ import { css } from 'styled-components'
 const Theme = css`
     :root {
         --box-shadow-top: 0 -0.4rem 1rem rgba(20, 20, 20, 0.7); /* prettier-ignore */
-        --box-shadow-xs: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.12), 0 0.1rem 0.2rem rgba(0, 0, 0, 0.24); /* prettier-ignore */
-        --box-shadow-sm: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.16), 0 0.3rem 0.6rem rgba(0, 0, 0, 0.23); /* prettier-ignore */
-        --box-shadow-md: 0 1rem 2rem rgba(0, 0, 0, 0.19), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.23); /* prettier-ignore */
-        --box-shadow-lg: 0 1.4rem 2.8rem rgba(0, 0, 0, 0.25), 0 1rem 1rem rgba(0, 0, 0, 0.22); /* prettier-ignore */
-        --box-shadow-xlg: 0 1.9rem 3.8rem rgba(0, 0, 0, 0.3), 0 1.5rem 1.2rem rgba(0, 0, 0, 0.22); /* prettier-ignore */
+        --box-shadow-xs: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.48), 0 0.1rem 0.2rem rgba(0, 0, 0, 0.96); /* prettier-ignore */
+        --box-shadow-sm: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.64), 0 0.3rem 0.6rem rgba(0, 0, 0, 0.92); /* prettier-ignore */
+        --box-shadow-md: 0 1rem 2rem rgba(0, 0, 0, 0.76), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.92); /* prettier-ignore */
+        --box-shadow-lg: 0 1.4rem 2.8rem black, 0 1rem 1rem rgba(0, 0, 0, 0.88); /* prettier-ignore */
+        --box-shadow-xlg: 0 1.9rem 3.8rem rgba(0, 0, 0, 1.2), 0 1.5rem 1.2rem rgba(0, 0, 0, 0.88); /* prettier-ignore */
         --font-size-sm: 1.2rem;
         --font-size-md: 1.8rem;
         --font-size-lg: 2.4rem;

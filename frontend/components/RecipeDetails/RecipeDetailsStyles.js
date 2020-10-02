@@ -1,54 +1,135 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import device from '../../utils/device';
+import device from '../../utils/device'
 
-const RecipeDetailsStyles = styled.div`
+const RecipeDetails = styled.div`
     background: white;
-    box-shadow: var(--box-shadow-sm);
-    display: flex;
+    box-shadow: var(--box-shadow-xlg);
+    display: grid;
     flex-wrap: wrap;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 80% 20%;
+    height: 50rem;
     justify-content: center;
-    margin-top: 6rem;
-    max-width: 1000px;
-    min-width: 50vw;
+    margin-top: 20rem;
+    max-width: 1200px;
+    position: relative;
+`
 
-    .column {
-        padding: 3rem;
-        width: 50%;
+RecipeDetails.HugeText = styled.h1`
+    color: var(--gray-500);
+    font-family: 'Poiret One', cursive, sans-serif;
+    font-size: 30rem;
+    left: 60vw;
+    position: absolute;
+    text-transform: uppercase;
+    top: 5rem;
+    white-space: nowrap;
+`
 
-        @media ${device.laptop} {
-            width: 100%;
-        }
+RecipeDetails.GridLeft = styled.div`
+    display: flex;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    justify-content: center;
+    position: relative;
+`
+
+RecipeDetails.Img = styled.img`
+    box-shadow:
+        0 1.9rem 3.8rem rgba(0, 0, 0, 0.6),
+        0 1.5rem 1.2rem rgba(0, 0, 0, 0.44);
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: -10rem;
+    width: 70rem;
+`
+
+RecipeDetails.GridRight = styled.div`
+    grid-column: 2/3;
+    grid-row: 1/2;
+    overflow-y: scroll;
+`
+
+RecipeDetails.TextBody = styled.div`
+    position: initial;
+`
+
+RecipeDetails.Title = styled.h1`
+    color: var(--cyan-A400);
+    margin: 2rem 0;
+    position: relative;
+
+    &::before {
+        background: var(--cyan-A400);
+        border-radius: 5rem;
+        bottom: -2rem;
+        content: '';
+        height: 0.3rem;
+        left: 0;
+        position: absolute;
+        width: 40%;
+    }
+`
+
+RecipeDetails.Creator = styled.div`
+    font-weight: bold;
+    padding: 2rem 0;
+
+    span {
+        background: var(--cyan-A400);
+        border-radius: 1.5rem;
+        color: white;
+        padding: 0.5rem 1rem;
+    }
+`
+
+RecipeDetails.Directions = styled.ul`
+    overflow-y: scroll;
+`
+
+RecipeDetails.DirectionItem = styled.li`
+    font-weight: bold;
+    list-style-position: outside;
+    list-style-type: decimal;
+    margin: 2rem;
+
+    &:not(:first-child) {
+        margin-top: 2rem;
     }
 
-    .img-container {
-        img {
-            border-radius: 1rem;
-            width: 100%;
-        }
+    span {
+        font-weight: initial;
     }
+`
 
-    .details-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+RecipeDetails.GridBottom = styled.div`
+    align-items: center;
+    display: grid;
+    grid-column: 1/3;
+    grid-row: 2/3;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0 2rem 2rem;
+`
 
-    .body {
-        h1 {
-            font-size: 3.5rem;
-            margin-top: 0;
-        }
+RecipeDetails.Ingredients = styled.ul`
+    display: grid;
+    grid-template-columns: repeat(3, 25rem);
+    overflow-y: scroll;
+`
 
-        p {
-            font-size: 2rem;
-        }
-    }
+RecipeDetails.IngredientItem = styled.li`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`
 
-    .footer {
-        display: flex;
-        justify-content: space-between;
-    }
-`;
+RecipeDetails.DeleteRecipeContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`
 
-export default RecipeDetailsStyles;
+export default RecipeDetails

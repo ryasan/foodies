@@ -30,9 +30,10 @@ const Navbar = styled.div`
 
 Navbar.Sticky = styled(Navbar)`
     background: var(--black-400);
-    box-shadow: var(--box-shadow-sm);
+    box-shadow:
+        0 0.3rem 0.6rem rgba(0, 0, 0, 0.16),
+        0 0.3rem 0.6rem rgba(0, 0, 0, 0.23);
     position: sticky;
-
 `
 
 Navbar.Absolute = styled(Navbar)`

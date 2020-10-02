@@ -2,66 +2,92 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { Query } from 'react-apollo'
 
-import RecipeDetailsStyles from './RecipeDetailsStyles'
-import RECIPE_DETAILS_QUERY from '../../graphql/queries/recipeDetails'
+import RecipeDetails from './RecipeDetailsStyles'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import DeleteRecipe from '../DeleteRecipe/DeleteRecipe'
-import NavbarComponent from '../Navbar/Navbar'
+import Navbar from '../Navbar/Navbar'
+import RECIPE_DETAILS_QUERY from '../../graphql/queries/recipeDetails'
 
-const RecipeDetails = ({ recipeId, currentUserId }) => {
+const RecipeDetailsComponent = ({ recipeId, currentUserId }) => {
     return (
         <Query query={RECIPE_DETAILS_QUERY} variables={{ recipeId }}>
             {({ error, loading, data: { recipeDetails } }) => {
                 if (error) return <ErrorMessage error={error} />
                 if (loading) return <p>Loading...</p>
                 if (!recipeDetails) return <p>No recipe found for {recipeId}</p>
-                const ownsRecipe = currentUserId === recipeDetails.creatorId
+
+                console.log(recipeDetails.ingredients)
 
                 return (
                     <>
                         <Head>
-                            <title>NP | {recipeDetails.title}</title>
+                            <title>FD | {recipeDetails.title}</title>
                         </Head>
-                        <NavbarComponent>
-                            <RecipeDetailsStyles>
-                                <div className='column img-container'>
-                                    <img
+                        <Navbar>
+                            <RecipeDetails.HugeText>
+                                {recipeDetails.title}
+                            </RecipeDetails.HugeText>
+                            <RecipeDetails>
+                                <RecipeDetails.GridLeft>
+                                    <RecipeDetails.Img
                                         src={recipeDetails.largeImage}
                                         alt={recipeDetails.title}
                                     />
-                                </div>
-                                <div className='column details-container'>
-                                    <div className='body'>
-                                        <h1>{recipeDetails.title}</h1>
-                                        <ul>
-                                            {recipeDetails.ingredients.map(
-                                                (ingredient, i) => (
-                                                    <li key={i}>
-                                                        {ingredient}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                        <ul>
+                                </RecipeDetails.GridLeft>
+                                <RecipeDetails.GridRight>
+                                    <RecipeDetails.TextBody>
+                                        <RecipeDetails.Title>
+                                            {recipeDetails.title}
+                                        </RecipeDetails.Title>
+                                        <RecipeDetails.Creator>
+                                            By:{' '}
+                                            <span>
+                                                {recipeDetails.creatorUsername}
+                                            </span>
+                                        </RecipeDetails.Creator>
+
+                                        <RecipeDetails.Directions>
                                             {recipeDetails.directions.map(
                                                 (direction, i) => (
-                                                    <li key={i}>{direction}</li>
+                                                    <RecipeDetails.DirectionItem
+                                                        key={i}>
+                                                        <span>{direction}</span>
+                                                    </RecipeDetails.DirectionItem>
                                                 )
                                             )}
-                                        </ul>
-                                    </div>
-                                    <div className='footer'>
-                                        <p>
-                                            Post by:{' '}
-                                            {recipeDetails.creatorUsername}
-                                        </p>
-                                        {ownsRecipe && (
+
+                                            {recipeDetails.directions.map(
+                                                (direction, i) => (
+                                                    <RecipeDetails.DirectionItem
+                                                        key={i}>
+                                                        <span>{direction}</span>
+                                                    </RecipeDetails.DirectionItem>
+                                                )
+                                            )}
+                                        </RecipeDetails.Directions>
+                                    </RecipeDetails.TextBody>
+                                </RecipeDetails.GridRight>
+                                <RecipeDetails.GridBottom>
+                                    <RecipeDetails.Ingredients>
+                                        {recipeDetails.ingredients.map(
+                                            (ingredient, i) => (
+                                                <RecipeDetails.IngredientItem
+                                                    title={ingredient.trim()}
+                                                    key={i}>
+                                                    {ingredient}
+                                                </RecipeDetails.IngredientItem>
+                                            )
+                                        )}
+                                    </RecipeDetails.Ingredients>
+                                    <RecipeDetails.DeleteRecipeContainer>
+                                        {currentUserId ===
+                                            recipeDetails.creatorId && (
                                             <DeleteRecipe recipeId={recipeId} />
                                         )}
-                                    </div>
-                                </div>
-                            </RecipeDetailsStyles>
-                        </NavbarComponent>
+                                    </RecipeDetails.DeleteRecipeContainer>
+                                </RecipeDetails.GridBottom>
+                            </RecipeDetails>
+                        </Navbar>
                     </>
                 )
             }}
@@ -69,9 +95,9 @@ const RecipeDetails = ({ recipeId, currentUserId }) => {
     )
 }
 
-RecipeDetails.propTypes = {
+RecipeDetailsComponent.propTypes = {
     recipeId: PropTypes.string.isRequired,
     currentUserId: PropTypes.string
 }
 
-export default RecipeDetails
+export default RecipeDetailsComponent

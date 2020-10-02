@@ -73,7 +73,7 @@ const GridComponent = ({ recipes, fetchMore, propKey, loading }) => {
     useEffect(() => {
         if (recipes.length) {
             setIsLoading(true)
-            sleep(5000).then(() => {
+            sleep(3000).then(() => {
                 setIsLoading(false)
                 setItems(columnize(recipes))
             })

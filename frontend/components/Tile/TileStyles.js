@@ -12,7 +12,7 @@ const Tile = styled.li`
     width: 28rem;
 
     &:hover {
-        box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.64), 0 0.3rem 0.6rem rgba(0, 0, 0, 0.92);
+        box-shadow: var(--box-shadow-md);
         color: var(--cyan-A400);
         transform: scale(1.01);
     }
