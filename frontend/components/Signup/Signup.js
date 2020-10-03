@@ -6,10 +6,10 @@ import PropTypes from 'prop-types'
 import SIGNUP_MUTATION from '../../graphql/mutations/signup'
 import TOGGLE_LOGIN_MUTATION from '../../graphql/mutations/toggleLogin'
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser'
-import Form from '../shared/Form'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import button from '../shared/Button'
 import Icon from '../icons'
+import Login from '../Login/LoginStyles'
 
 const Signup = ({ setIsSignup }) => {
     const [fields, setFields] = useState({
@@ -37,18 +37,18 @@ const Signup = ({ setIsSignup }) => {
             {(signup, { loading, error }) => (
                 <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
                     {toggleLogin => (
-                        <div className='sign-form'>
-                            <Form
+                        <Login.FormOuter>
+                            <Login.Form
                                 onSubmit={e =>
                                     handleSubmit(e, signup, toggleLogin)
                                 }>
-                                <fieldset
+                                <Login.Fieldset
                                     disabled={loading}
                                     aria-busy={loading}>
-                                    <h2>Sign up for an account</h2>
+                                    <Login.Title>Sign up for an account</Login.Title>
                                     <ErrorMessage error={error} />
                                     <div>
-                                        <div className='input-container'>
+                                        <Login.InputContainer>
                                             <Icon name='envelope' />
                                             <input
                                                 required
@@ -58,8 +58,8 @@ const Signup = ({ setIsSignup }) => {
                                                 value={fields.email}
                                                 onChange={saveFields}
                                             />
-                                        </div>
-                                        <div className='input-container'>
+                                        </Login.InputContainer>
+                                        <Login.InputContainer>
                                             <Icon name='key-outlined' />
                                             <input
                                                 required
@@ -70,8 +70,8 @@ const Signup = ({ setIsSignup }) => {
                                                 onChange={saveFields}
                                                 autoComplete='true'
                                             />
-                                        </div>
-                                        <div className='input-container'>
+                                        </Login.InputContainer>
+                                        <Login.InputContainer>
                                             <Icon name='person' />
                                             <input
                                                 required
@@ -81,20 +81,20 @@ const Signup = ({ setIsSignup }) => {
                                                 value={fields.username}
                                                 onChange={saveFields}
                                             />
-                                        </div>
+                                        </Login.InputContainer>
                                     </div>
-                                    <button type='submit' color='primary'>
+                                    <Login.SubmitBtn type='submit'>
                                         Sign Up
-                                    </button>
-                                </fieldset>
-                            </Form>
-                            <p>
+                                    </Login.SubmitBtn>
+                                </Login.Fieldset>
+                            </Login.Form>
+                            <Login.Text>
                                 Already have an account?{' '}
                                 <a onClick={() => setIsSignup(false)}>
                                     Sign In
                                 </a>
-                            </p>
-                        </div>
+                            </Login.Text>
+                        </Login.FormOuter>
                     )}
                 </Mutation>
             )}

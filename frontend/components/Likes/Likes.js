@@ -2,7 +2,7 @@ import { Mutation, Query } from 'react-apollo'
 import { FaHeart } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
-import UPDATE_PIN_LIKES_MUTATION from '../../graphql/mutations/updateRecipeLikes'
+import UPDATE_RECIPE_LIKES_MUTATION from '../../graphql/mutations/updateRecipeLikes'
 import CURRENT_USER_QUERY from '../../graphql/queries/currentUser'
 import ALL_RECIPES_QUERY from '../../graphql/queries/recipes'
 import LIKED_RECIPES_QUERY from '../../graphql/queries/likedRecipes'
@@ -23,7 +23,7 @@ const LikesComponent = ({ recipeId, likedByIds, me }) => {
         <Mutation mutation={TOGGLE_LOGIN_MUTATION}>
             {toggleLogin => (
                 <Mutation
-                    mutation={UPDATE_PIN_LIKES_MUTATION}
+                    mutation={UPDATE_RECIPE_LIKES_MUTATION}
                     variables={{ recipeId }}
                     refetchQueries={[
                         { query: ALL_RECIPES_QUERY },

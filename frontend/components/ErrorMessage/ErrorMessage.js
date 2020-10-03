@@ -1,41 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import ErrorStyles from './ErrorStyles';
+import ErrorMessage from './ErrorStyles'
 
-const ErrorMessage = ({ error }) => {
-  if (!error || !error.message) return null;
-  if (
-    error.networkError &&
-    error.networkError.result &&
-    error.networkError.result.errors.length
-  ) {
-    return error.networkError.result.errors.map((err, i) => (
-      <ErrorStyles key={i}>
-        <p data-test="graphql-error">
-          <strong>Shoot!</strong>
-          {err.message.replace('GraphQL error: ', '')}
-        </p>
-      </ErrorStyles>
-    ));
-  }
+const ErrorMessageComponent = ({ error }) => {
+    if (!error || !error.message) return null
+    if (
+        error.networkError &&
+        error.networkError.result &&
+        error.networkError.result.errors.length
+    ) {
+        return error.networkError.result.errors.map((err, i) => (
+            <ErrorMessage key={i}>
+                <ErrorMessage.Text data-test='graphql-error'>
+                    <strong>Shoot!</strong>
+                    {err.message.replace('GraphQL error: ', '')}
+                </ErrorMessage.Text>
+            </ErrorMessage>
+        ))
+    }
 
-  return (
-    <ErrorStyles>
-      <p data-test="graphql-error">
-        <strong>Shoot!</strong>
-        {error.message.replace('GraphQL error: ', '')}
-      </p>
-    </ErrorStyles>
-  );
-};
+    return (
+        <ErrorMessage>
+            <ErrorMessage.Text data-test='graphql-error'>
+                <strong>Shoot!</strong>
+                {error.message.replace('GraphQL error: ', '')}
+            </ErrorMessage.Text>
+        </ErrorMessage>
+    )
+    s
+}
 
-ErrorMessage.defaultProps = {
-  error: {},
-};
+ErrorMessageComponent.defaultProps = {
+    error: {}
+}
 
-ErrorMessage.propTypes = {
-  error: PropTypes.object,
-};
+ErrorMessageComponent.propTypes = {
+    error: PropTypes.object
+}
 
-export default ErrorMessage;
+export default ErrorMessageComponent

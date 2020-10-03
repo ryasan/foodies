@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import { Mutation } from 'react-apollo'
 
-import DELETE_PIN_MUTATION from '../../graphql/mutations/deleteRecipe'
+import DELETE_RECIPE_MUTATION from '../../graphql/mutations/deleteRecipe'
 import ALL_RECIPES_QUERY from '../../graphql/queries/recipes'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import DeleteRecipe from './DeleteRecipeStyles'
@@ -18,7 +18,7 @@ const DeleteRecipeComponent = ({ recipeId }) => {
 
     return (
         <Mutation
-            mutation={DELETE_PIN_MUTATION}
+            mutation={DELETE_RECIPE_MUTATION}
             variables={{ recipeId }}
             update={update}>
             {(deleteRecipe, { error }) => {
