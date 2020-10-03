@@ -1,44 +1,59 @@
 import { useState } from 'react'
 import { Query } from 'react-apollo'
 import { lighten } from 'polished'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import MY_RECIPES_QUERY from '../graphql/queries/myRecipes'
 import LIKED_RECIPES_QUERY from '../graphql/queries/likedRecipes'
 import PleaseSignin from '../components/PleaseSignin/PleaseSignin'
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
-import button from '../components/shared/Button'
 import Grid from '../components/Grid/Grid'
 import Loader from '../components/Loader/Loader'
+import { btns } from '../components/shared/Button'
 import { limit } from '../constants'
 
-const AccountPageStyles = styled.div`
+const AccountPage = styled.div`
     align-items: center;
+    color: var(--cyan-A400);
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
+`
 
-    .loader {
-        margin-top: 2rem;
+AccountPage.BtnGroup = styled.div`
+    display: flex;
+    margin: 6rem 0;
+`
+
+AccountPage.Btn = styled.button`
+    width: 11rem;
+
+    ${btns.wide}
+    ${btns.clearCyan}
+
+    &:nth-child(2) {
+        border-left: 0;
     }
 
-    button {
-        margin-bottom: 1.5rem;
-
-        &.active {
-            background: ${props => lighten(0.35, props.theme.gray)};
-            pointer-events: none;
-        }
-    }
+    ${props =>
+        props.active &&
+        css`
+            background: var(--cyan-A400);
+            color: var(--black-400);
+        `}
 `
 
 const tabs = [
     { title: 'My Recipes', query: MY_RECIPES_QUERY, propKey: 'myRecipes' },
-    { title: 'Liked Recipes', query: LIKED_RECIPES_QUERY, propKey: 'likedRecipes' }
+    {
+        title: 'Liked Recipes',
+        query: LIKED_RECIPES_QUERY,
+        propKey: 'likedRecipes'
+    }
 ]
 
-const AccountPage = () => {
+const AccountPageComponent = () => {
     const [selectedIdx, setSelectedIdx] = useState(0)
 
     const changeTabs = i => {
@@ -49,24 +64,24 @@ const AccountPage = () => {
 
     return (
         <PleaseSignin>
-            <AccountPageStyles>
-                <div>
+            <AccountPage>
+                <AccountPage.BtnGroup>
                     {tabs.map(({ title }, i) => (
-                        <button
+                        <AccountPage.Btn
                             key={title}
-                            className={selectedIdx === i ? 'active' : ''}
+                            active={selectedIdx === i}
                             onClick={() => changeTabs(i)}>
                             {title}
-                        </button>
+                        </AccountPage.Btn>
                     ))}
-                </div>
+                </AccountPage.BtnGroup>
                 <Query
                     query={query}
                     variables={{ limit, skip: 0 }}
                     fetchPolicy='cache-and-network'>
                     {({ data, error, loading, fetchMore }) => {
                         if (error) return <ErrorMessage error={error} />
-                        if (loading) return <Loader className='loader' />
+                        if (loading) return <Loader />
                         const recipes = data[propKey]
 
                         return recipes.length ? (
@@ -80,9 +95,9 @@ const AccountPage = () => {
                         )
                     }}
                 </Query>
-            </AccountPageStyles>
+            </AccountPage>
         </PleaseSignin>
     )
 }
 
-export default AccountPage
+export default AccountPageComponent

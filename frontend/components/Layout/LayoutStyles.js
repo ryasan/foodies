@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle, css } from 'styled-components'
 
-import device from '../../utils/device'
+import { device }from '../../utils/device'
 import Theme from './Theme'
 
 const theme = {
