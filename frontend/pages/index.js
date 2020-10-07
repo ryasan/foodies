@@ -17,6 +17,7 @@ const Home = styled.div`
     width: 100%;
 `
 
+
 const Index = () => (
     <Fragment>
         <Landing />
